@@ -1,0 +1,24 @@
+/* pages/map/map.wxss */
+button {
+    top: 0;
+    z-index: 10;
+    float: left;
+    width: 50%;
+    font-size: 24rpx;
+}
+.addressBox {
+    position: absolute;
+    bottom: 0;
+    width:100%;
+    height:200px;
+    overflow:auto;
+    background: url(https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1507193363&di=2d06f94f3904029b7c949084c93c70c8&imgtype=jpg&er=1&src=http%3A%2F%2Fimg1.qunarzz.com%2Ftravel%2Fpoi%2F1501%2F4a%2F5595ac65860671.jpg_r_720x400x95_e48bf6df.jpg) no-repeat;
+    background-size: 100% 100%;
+
+}
+.addressItem {
+    padding: 10px;
+    background: #efefef;
+    margin: 10px;
+    font-size: 24rpx;
+}

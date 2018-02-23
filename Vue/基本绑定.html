@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, user-scalable=no,initial-scale=1, minimum-scale=1, maximum-scale=1">
+	<title>vue watch</title>
+</head>
+<body>
+	<div id="test" class="test-{{ id }}"></div>
+	<!-- v-if -->
+	<div id="greeting">
+		<p v-if="greeting">我显示出来了</p>
+		<p v-else>我是else</p><!-- 必须立即跟在 v-if 或 v-show 元素的后面——否则它不能被识别。 -->
+	</div>
+	<!-- v-bind -->
+	<div><a v-bind:href="url" id="vbind">跳转旅游</a></div> 
+	<!-- v-bind-class -->
+	<div class="static" v-bind:class="ClassObj">显示A</div>
+	<!-- v-bind-style -->
+	<div v-bind:style="styleObject" class="style">样式</div>
+</body>
+<script type="text/javascript" src="vue.js"></script>
+<script type="text/javascript">
+
+var test = new Vue({
+	el: '#test',
+	data: {
+		id: 'text'
+	}
+})
+//v-if
+var greeting = new Vue({
+	el: '#greeting',
+	data:{
+		greeting: false
+	}
+})
+//v-bind
+var a = new Vue({
+	el: '#vbind',
+	data:{
+		url: 'www.ly.com'
+	}
+})
+//v-bind class
+var clas = new Vue({
+	el: '.static',
+	data: {
+		ClassObj: {
+			isA: true,
+			isB: false
+		}
+	}
+})
+//v-bind style
+var style = new Vue({
+	el: '.style',
+	data: {
+		styleObject: {
+			fontSize: '10px',
+			color: 'red'
+		}
+	}
+})
+</script> 
+</html>

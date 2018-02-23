@@ -1,0 +1,142 @@
+@import "../selectCss.wxss";
+@import "../base.wxss";
+@import "../indexCommon.wxss";
+@import "../index/index.wxss";
+
+
+/*大首页tab*/
+.tab_box {
+    width: 100%;
+    background-color: #fff;
+    overflow: hidden;
+}
+.tab_content {
+    height: 90rpx;
+    margin: 0 40rpx;
+    overflow-x: auto;
+    white-space: nowrap;
+    position: relative;
+    font-size: 0;
+}
+.tab_item {
+    display: inline-block;
+    width: 20%;
+    height: 84rpx;
+    line-height: 84rpx;
+    text-align: center;
+    font-size: 32rpx;
+    color: #333;
+}
+.tab_item.tab_on {
+    color: #23BEAE;
+    border-bottom: 6rpx solid #23BEAE;
+}
+
+
+/* 轮播图样式 小点位置偏移解决方案 end */
+/* 媒体查询 end */
+.clearFix::after {
+    visibility: hidden;
+    display: block;
+    clear: both;
+    content: "";
+    height: 0;
+}
+.home_none {
+    display: none !important;
+}
+.uc_nav_content {
+    margin-bottom: 20px
+}
+#home_head {
+    width: 100%;
+}
+#home_head image {
+    width: 100%;
+}
+
+.home_icon_box{
+    position: fixed;
+    bottom: 4.5rem;
+    right: 0;
+    width: 3.6rem;
+    height: 5.3rem;
+}
+.home_icon::before {
+    content: '';
+    position: absolute;
+    background: url(https://img1.40017.cn/cn/TC_Car/h5/img/common/icon1.png) no-repeat;
+    background-size: 100%;
+    top: -1.2rem;
+    height: 5.3rem;
+    width: 6.5rem;
+    left: -6.5rem;
+    z-index: 0;
+}
+.home_icon{
+    position: absolute;
+    background: #ff4523;
+    width: 3rem;
+    height: 3.15rem;
+    top: 1rem;
+    right: -3.3rem;
+}
+.home_icon2::before {
+    background: url(https://img1.40017.cn/cn/TC_Car/h5/img/common/icon2.png) no-repeat;
+    background-size: 100% 100%;
+}
+.home_icon3::before {
+    background: url(https://img1.40017.cn/cn/TC_Car/h5/img/common/icon3.png) no-repeat;
+    background-size: 100% 100%;
+}
+.gray-bg {
+    background: #f7b4b0;
+}
+.i_foot_box {
+    position: fixed;
+    background-color: #FFF;
+    bottom: 0;
+    width: 100%;
+}
+.i_foot_list {
+    display: -webkit-flex;
+    display: flex;
+}
+.i_foot_item {
+    -webkit-flex-grow: 1;
+    flex-grow: 1;
+    padding: 32px 0 10px;
+    font-size: 0;
+    text-align: center;
+    position: relative;
+}
+.i_foot_item view {
+    height: 12px;
+    line-height: 12px;
+    font-size: 12px;
+    color: #666;
+}
+.i_foot_rp image {
+    position: absolute;
+    bottom: 28.5px;
+    left: 50%;
+    width: 25px;
+    height:25px;
+    margin-left: -12.5px;
+}
+.i_foot_kefu image {
+    position: absolute;
+    bottom: 28.5px;
+    left: 50%;
+    width: 19px;
+    height: 19px;
+    margin-left: -9.5px;
+}
+.i_foot_order image {
+    position: absolute;
+    bottom: 28.5px;
+    left: 50%;
+    width: 16px;
+    height: 16px;
+    margin-left: -8px;
+}

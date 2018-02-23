@@ -1,0 +1,392 @@
+/* 重置样式 start */
+body, dl, dd, h1, h2, h3, h4, h5, h6, p, hr, form {
+    margin: 0;
+}
+h1, h2, h3, h4, h5, h6 {
+    font-weight: normal;
+}
+ol, ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+body, button, input, select, textarea {
+    font: 14px/1.5 "Microsoft Yahei", Helvetica Neue, Helvetica, STHeiTi, sans-serif;
+}
+body {
+    background-color: #f2f4f7;
+}
+a {
+    text-decoration: none;
+}
+button {
+    padding: 0;
+}
+i {
+    font-style: normal;
+}
+/* 重置样式 end */
+
+/* 0.5px border start*/
+.border_top05,
+.border_bottom05,
+.border_top_bottom05 {
+    position: relative;
+}
+.border_top05::before,
+.border_bottom05::after,
+.border_top_bottom05::before,
+.border_top_bottom05::after {
+    display: block;
+    content: "";
+    width: 199%;
+    width: calc(200%);
+    height: 1px;
+    position: absolute;
+    left: -50%;
+    background-color: #E7E8EB;
+    -webkit-transform: scale(0.5);
+    -moz-transform: scale(0.5);
+    -ms-transform: scale(0.5);
+    -o-transform: scale(0.5);
+    transform: scale(0.5);
+    z-index: 1;
+}
+.border_top05::before,
+.border_top_bottom05::before {
+    top: 0;
+}
+.border_bottom05::after,
+.border_top_bottom05::after {
+    bottom: 0;
+}
+/* 0.5px border end*/
+/* border-box start */
+.border_box {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+/* border-box start */
+/* 清除浮动 start */
+.clear_both::after {
+    visibility: hidden;
+    display: block;
+    clear: both;
+    content: "";
+    height: 0;
+}
+/* 清除浮动 end */
+/* btn样式 start */
+.btn_orange {
+    background-color: #FF6815;
+}
+/* btn样式 end */
+/* 清除浮动 start */
+.clean_float::after {
+    visibility: hidden;
+    display: block;
+    clear: both;
+    height: 0;
+    content: "";
+}
+/* 清除浮动 end */
+/* 文字下划线 start */
+.text_underline {
+    text-decoration: underline;
+}
+/* 文字下划线 end */
+/*超出部分点点点*/
+.nowrap{
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+}
+.none{
+    display: none;
+}
+.online-talk-mask{
+    z-index: 2;
+}
+.online-talk-con{
+    z-index: 3;
+}
+.blue-word {
+    color: #23BEAE;
+}
+.blue-bg {
+    background-color: #23BEAE;
+}
+.orange-word {
+    color: #FF5346;
+}
+.orange-bg {
+    background-color: #FF5346;
+}
+.deepBlue-bg {
+    background-color: #6480A3;
+}
+/* 详情按钮吸底 start */
+#fixedBtnBox {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    z-index: 9;
+    width: 100%;
+    height: 50px;
+}
+#fixedBtnBox button {
+    margin: 0;
+    border: 0 none;
+    height: 50px;
+}
+#fixedBtnBox .flex_box {
+    display: -webkit-flex;
+    display: flex;
+}
+#fixedBtnBox .flex_item1 {
+    -webkit-flex-grow: 1;
+    flex-grow: 1;
+}
+#fixedBtnBox .flex_item2 {
+    -webkit-flex-grow: 2;
+    flex-grow: 2;
+}
+#fixedBtnBox .flex_item3 {
+    -webkit-flex-grow: 3;
+    flex-grow: 3;
+}
+#fixedBtnBox .flex_red {
+    background-color: #FF5346;
+    color: #FFF;
+}
+#fixedBtnBox .flex_white {
+    background-color: #FFF;
+    color: #686C6E;
+}
+#fixedBtnBox .flex_FT10 {
+    font-size: 10px;
+}
+#fixedBtnBox .flex_FT18 {
+    font-size: 18px;
+}
+#fixedBtnBox .flex_btn_cancel {
+    position: relative;
+    line-height: 80px;
+}
+#fixedBtnBox .flex_btn_cancel::before {
+    content: '';
+    position: absolute;
+    top: 7px;
+    left: 50%;
+    width: 21px;
+    height: 21px;
+    margin-left: -10px;
+    background: url(cancel_order.png?v=2017021401) no-repeat;
+    background-size: 100%;
+}
+#fixedBtnBox .flex_btn_kefu {
+    position: relative;
+    line-height: 80px;
+}
+#fixedBtnBox .flex_btn_kefu::before {
+    content: '';
+    position: absolute;
+    top: 7px;
+    left: 50%;
+    width: 22px;
+    height: 22px;
+    margin-left: -11px;
+    background: url(connect_kufu.png?v=2017021401) no-repeat;
+    background-size: 100%;
+}
+/* 详情按钮吸底 end */
+/* 按钮点击效果 start */
+.activeGrey:active {
+    background-color: #EEEEEE;
+}
+.activeRed:active {
+    background-color: #D9453D;
+}
+/* 按钮点击效果 end */
+/* 媒体查询 start */
+@media screen and (min-width: 300px) {
+    html {
+        /* 15 * 62.5% = 9.375 */
+        font-size: 9.375px;
+    }
+}
+@media screen and (min-width: 320px) {
+    html {
+        /* 16 * 62.5% = 10 */
+        font-size: 10px;
+    }
+}
+@media screen and (min-width: 340px) {
+    html {
+        /* 17 * 62.5% = 10.625 */
+        font-size: 10.625px;
+    }
+}
+@media screen and (min-width: 360px) {
+    html {
+        /* 18 * 62.5% = 11.25 */
+        font-size: 11.25px;
+    }
+}
+@media screen and (min-width: 375px) {
+    html {
+        /* 18.75 * 62.5% = 11.71875 */
+        font-size: 11.718px;
+    }
+}
+@media screen and (min-width: 380px) {
+    html {
+        /* 19 * 62.5% = 11.875 */
+        font-size: 11.875px;
+    }
+}
+@media screen and (min-width: 400px) {
+    html {
+        /* 20 * 62.5% = 12.5 */
+        font-size: 12.5px;
+    }
+}
+@media screen and (min-width: 414px) {
+    html {
+        /* 20.7 * 62.5% = 12.9375 */
+        font-size: 12.937px;
+    }
+}
+@media screen and (min-width: 420px) {
+    html {
+        /* 21 * 62.5% = 13.125 */
+        font-size: 13.125px;
+    }
+}
+@media screen and (min-width: 440px) {
+    html {
+        /* 22 * 62.5% = 13.75 */
+        font-size: 13.75px;
+    }
+}
+@media screen and (min-width: 460px) {
+    html {
+        /* 23 * 62.5% = 14.375 */
+        font-size: 14.375px;
+    }
+}
+@media screen and (min-width: 480px) {
+    html {
+        /* 24 * 62.5% = 15 */
+        font-size: 15px;
+    }
+}
+@media screen and (min-width: 500px) {
+    html {
+        /* 25 * 62.5% = 15.625 */
+        font-size: 15.625px;
+    }
+}
+@media screen and (min-width: 520px) {
+    html {
+        /* 26 * 62.5% = 16.25 */
+        font-size: 16.25px;
+    }
+}
+@media screen and (min-width: 540px) {
+    html {
+        /* 27 * 62.5% = 16.875 */
+        font-size: 16.875px;
+    }
+}
+@media screen and (min-width: 560px) {
+    html {
+        /* 28 * 62.5% = 17.5 */
+        font-size: 17.5px;
+    }
+}
+@media screen and (min-width: 580px) {
+    html {
+        /* 29 * 62.5% = 18.125 */
+        font-size: 18.125px;
+    }
+}
+@media screen and (min-width: 600px) {
+    html {
+        /* 30 * 62.5% = 18.75 */
+        font-size: 18.75px;
+    }
+}
+@media screen and (min-width: 620px) {
+    html {
+        /* 31 * 62.5% = 19.375 */
+        font-size: 19.375px;
+    }
+}
+@media screen and (min-width: 640px) {
+    html {
+        /* 32 * 62.5% = 20 */
+        font-size: 20px;
+    }
+}
+@media screen and (min-width: 660px) {
+    html {
+        /* 33 * 62.5% = 20.625 */
+        font-size: 20.625px;
+    }
+}
+@media screen and (min-width: 680px) {
+    html {
+        /* 34 * 62.5% = 21.25 */
+        font-size: 21.25px;
+    }
+}
+@media screen and (min-width: 700px) {
+    html {
+        /* 35 * 62.5% = 21.875 */
+        font-size: 21.875px;
+    }
+}
+@media screen and (min-width: 720px) {
+    html {
+        /* 36 * 62.5% = 22.5 */
+        font-size: 22.5px;
+    }
+}
+@media screen and (min-width: 740px) {
+    html {
+        /* 37 * 62.5% = 23.125 */
+        font-size: 23.125px;
+    }
+}
+@media screen and (min-width: 760px) {
+    html {
+        /* 38 * 62.5% = 23.75 */
+        font-size: 23.75px;
+    }
+}
+@media screen and (min-width: 780px) {
+    html {
+        /* 39 * 62.5% = 24.375 */
+        font-size: 24.375px;
+    }
+}
+@media screen and (min-width: 800px) {
+    html {
+        /* 40 * 62.5% = 25 */
+        font-size: 25px;
+    }
+}
+@media screen and (min-width: 1024px) {
+    html {
+        /* 51.2 * 62.5% = 32 */
+        font-size: 32px;
+    }
+}
+@media screen and (min-width: 1349px) {
+    html {
+        /* 67.45 * 62.5% = 42.15625 */
+        font-size: 42.156px;
+    }
+}

@@ -1,0 +1,83 @@
+<view class="refund-page">
+    <!--<loading hidden="{{hideLoading}}">-->
+        <!--{{loadContent}}-->
+    <!--</loading>-->
+
+    <!--<modal title="{{modalTitle}}" class="modal" hidden="{{hideModal}}" no-cancel="{{noCancel}}" bindconfirm="submitRefund" bindcancel="modalCancel">-->
+        <!--<view> {{modalContent}} </view>-->
+    <!--</modal>-->
+
+    <view class="request-body" wx:if="{{!showSuccess}}">
+        <view class="title" wx:if="{{!showChildTips}}">
+            请选择申请退票的乘机人
+        </view>
+        <view class="title tips" wx:else>
+            儿童无法单独乘机，已帮您自动勾选儿童退票
+        </view>
+
+        <view class="passenger-list  border-top">
+            <block wx:for="{{flight}}" wx:key="index">
+                <view class="passenger-item border-bottom" data-index="{{index}}" bindtap="passgerTap">
+                    <view class="passenger-name" wx:if="{{item.PassengerType == 1}}">
+                        {{item.PassengerName}} （成人）
+                    </view>
+                    <view class="passenger-name" wx:else>
+                        {{item.PassengerName}} （儿童）
+                    </view>
+                    <text class="item-select flight-icon {{item.checked?'icon-checkbox-active':'icon-checkbox'}}">
+                    </text>
+                </view>
+            </block>
+        </view>
+
+        <view class="refund-detail border-bottom border-top" wx:if="{{adultNum[1] > 0 || childNum[1] > 0 }}">
+            <view class="refund-detail-title" bindtap="toggleRefundDetail">
+                退票费详情
+                <text class="arrow flight-icon icon-right-arrow {{showDetail?'':'arrow1'}}"></text>
+            </view>
+            <view wx:if="{{showDetail && adultNum[1] > 0}}" class="border-top">
+                <view class="refund-detail-item border-bottom">成人价： ¥{{adultPrice}}</view>
+                <view class="refund-detail-item border-bottom">退票费： ¥{{adultRefundFee}}</view>
+                <view class="refund-detail-item ">成人应退： ¥{{adultPrice-adultRefundFee}}x{{adultNum[1]}}</view>
+            </view>
+            <view wx:if="{{showDetail && childNum[1] > 0}}" class="border-top">
+                <view class="refund-detail-item border-bottom">儿童价： ¥{{childPrice}}</view>
+                <view class="refund-detail-item border-bottom">退票费： ¥{{childRefundFee}}</view>
+                <view class="refund-detail-item ">儿童应退： ¥{{childPrice-childRefundFee}}x{{childNum[1]}}</view>
+            </view>
+        </view>
+
+        <view class="total-price border-top border-bottom" wx:if="{{adultNum[1] > 0 || childNum[1] > 0 }}">
+            <text class="total-price1">退款总额：</text><text class="total-price2">¥</text><text class="total-price3">{{(adultPrice-adultRefundFee)*adultNum[1]+(childPrice-childRefundFee)*childNum[1]}}</text>
+        </view>
+
+        <view class="refund-btns">
+            <view class="btn" bindtap="commitRefund">确认退票</view>
+        </view>
+    </view>
+
+    <view class="refund-success-page" wx:if="{{showSuccess}}">
+        <view class="empty"></view>
+        <view class="refund-desc border-bottom border-top">
+            您的退票已申请，我们正在为您处理，我们将在3个工作日内将退款还至您付款账户，逾期未到请及时联系我们。
+        </view>
+
+        <view class="refund-body border-top border-bottom">
+            <view class="flight">
+                {{orgCity}} - {{arrCity}}
+            </view>
+
+            <view class="order-no">
+                订单编号： <text class="order-no-text">{{serialid}}</text>
+            </view>
+
+            <view class="refund-price">
+                退款金额： <text class="refund-p">¥{{(adultPrice-adultRefundFee)*adultNum[1]+(childPrice-childRefundFee)*childNum[1]}}</text>
+            </view>
+        </view>
+
+        <view class="success-btns">
+            <view class="success-btn" bindtap="backDetail">返回详情</view>
+        </view>
+    </view>
+</view>

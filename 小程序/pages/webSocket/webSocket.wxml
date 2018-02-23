@@ -1,0 +1,5 @@
+<!--pages/webSocket/webSocket.wxml-->
+<button bindtap="openMsg">开启连接</button>
+<button bindtap="sendMsg" type="primary">发送连接</button>
+<button bindtap="closeMsg" type="warn">关闭连接</button>
+<view wx:for="{{messages}}">{{item}}</view>

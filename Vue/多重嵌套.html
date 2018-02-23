@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+<li class="main-data-list" v-for='item in items'>
+    <p class="tab">{{item.tab}}</p>
+    <div class="show">
+        <ul >
+            <li v-for='list in item.datalist'>
+                <label >{{ list.label }}</label>
+            </li>
+        <!--end -->
+        </ul>
+    </div>
+</li>
+
+<script type="text/javascript" src="vue.js"></script>
+<script type="text/javascript">
+	var List_App = {};
+	List_App.dataList = new Vue({
+	    el: ".main-data-list",
+	    data: {
+	        items:[
+	            {
+	                tab:'今天',
+	                datalist:[
+	                    {label:'互联网社区的9大特征1'},
+	                    {label:'互联网社区的9大特征2'}
+	                ]
+	            },
+	            {
+	                tab:'明天',
+	                datalist:[
+	                    {label:'互联网社区的9大特征3'},
+	                    {label:'互联网社区的9大特征4'}
+	                ]
+	            }
+	        ]
+	    }    
+	});
+</script>
+</body>
+</html>

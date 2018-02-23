@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, user-scalable=no,initial-scale=1, minimum-scale=1, maximum-scale=1">
+	<title>自定义过滤器</title>
+</head>
+<body>
+	<div id="two-way-filter-demo">
+		<input v-model="money | currentDisplay">
+		<p>{{ money }}</p>
+	</div>
+<script type="text/javascript" src="vue.js"></script>
+<script type="text/javascript">
+var vm = new Vue({
+	el: '#two-way-filter-demo',
+	data: {
+		money: 1223
+	},
+	filters:{
+		currentDisplay: {
+		  // model -> view
+		  // 在更新 `<input>` 元素之前格式化值
+			read: function(val){
+				return '$' + val.toFixed(2)
+			},
+		  // view -> model
+		  // 在写回数据之前格式化值
+			write: function(val, oldVal) {
+		        var number = +val.replace(/[^\d.]/g, '')
+		        return isNaN(number) ? 0 : parseFloat(number.toFixed(2))
+		    }
+		}
+	}
+})
+</script> 
+</body>
+</html>

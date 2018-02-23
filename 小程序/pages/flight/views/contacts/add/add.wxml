@@ -1,0 +1,113 @@
+<view class="contacts-add-page">
+  <view class="contacts-add-cell card">
+    <view class="contacts-add-line ">
+      <label>乘客姓名</label>
+      <input class="input" bindinput="passengerNameKeyDown" bindchange="changePassengerName" placeholder-class="placeholder-class" maxlength="25" type="text" placeholder="与证件保持一致" value="{{passName}}"/>
+      <span class="flight-icon icon-question contacts-add-name-icon" catchtap="showTips"></span>
+    </view>
+
+    <view class="contacts-add-line border-top">
+      <label>证件类型</label>
+      <picker class="contacts-add-picker" bindchange="bindCertTypeChange" range="{{idTypes}}" value="{{certIndex}}">
+        <view class="input contacts-add-iconright">{{idTypes[certIndex]}}</view>
+      </picker>
+    </view>
+
+    <view class="contacts-add-line border-top">
+      <label>证件号码</label>
+      <input wx:if="{{certIndex == 0}}" value="{{certNo}}" class="input" placeholder-class="placeholder-class" bindinput="changeIDCardNo" type="idcard" maxlength="18" placeholder="证件号码"/>
+      <input wx:if="{{certIndex != 0}}" value="{{certNo}}" class="input" placeholder-class="placeholder-class" bindinput="changeIDCardNo" type="text" maxlength="45" placeholder="证件号码"/>
+    </view>
+
+    <view class="contacts-add-line border-top" wx:if="{{showOther}}">
+      <label>出生日期</label>
+      <picker class="contacts-add-picker" mode="date" bindchange="bindDateChange" end="{{lastDate}}" value="{{pickBirthday}}">
+        <view wx:if="{{birthday}}" class="input contacts-add-iconright">
+          {{birthday}}
+        </view>
+        <view wx:else class="input contacts-add-iconright placeholder-class">
+          请选择出生日期
+        </view>
+      </picker>
+    </view>
+
+    <view class="contacts-add-line border-top" wx:if="{{showOther}}">
+      <label>乘客性别</label>
+      <picker class="contacts-add-picker" bindchange="bindSexChange" range="{{sexAry}}" value="{{sexIndex}}">
+        <view class="input contacts-add-iconright">
+          {{sexAry[sexIndex]}}
+        </view>
+      </picker>
+    </view>
+  </view>
+  <view class="contacts-add-title" >
+    <text catchtap="showInfo">购票须知</text><span catchtap="showInfo" class="flight-icon icon-info contacts-add-name-icon"></span>
+  </view>
+  <view class="contacts-add-save" catchtap="savePassenger" >保存</view>
+
+  <view class="toastView" wx:if="{{showToast}}">
+    <text class="toastContent">{{toastContent}}</text>
+  </view>
+
+  <view class="dialog" wx:if="{{!hideDialog}}">
+    <view class="mask"></view>
+    <view class="dialog-box">
+      <view class="dialog-body">
+        <view class="dialog-content">
+          <view class="dialog-title">{{dialogTitle}}</view>
+          <scroll-view scroll-y="true" style="height: 280px">
+            <view wx:for="{{dialogData}}" class="detail-in-title">
+              {{item[0]}}
+              <view wx:for="{{item[1]}}" wx:for-item="i" class="detail-in-content">
+                {{i}}
+              </view>
+            </view>
+          </scroll-view>
+        </view>
+        <view class="dialog-close">
+          <view class="close-button" bindtap="hideTips">
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+ </view>
+  <!--<modal title="姓名填写说明" hidden="{{hideQuestionLayer}}" bindconfirm="hideTips" no-cancel confirm-text="知道了">-->
+    <!--<scroll-view style="height:173px;" scroll-y="true">-->
+      <!--<view class="detail-in-title"> 1.中文姓名：</view>-->
+      <!--<view class="detail-in-content">（1）乘机人姓名需与登机证件的姓名一致。</view>-->
+      <!--<view class="detail-in-content">（2）姓名中的生僻字或繁体字可使用中文，无需用拼音替代，建议您直接输入证件上的姓名。</view>-->
+      <!--<view class="detail-in-content">（3）姓名中有特殊符号如“·”等，可不输入，例如“阿里木·库尔班”，可直接输入“阿里木库尔班”。</view>-->
+      <!--<view class="detail-in-title"> 2.英文姓名：</view>-->
+      <!--<view class="detail-in-content">（1）请按照证件上的姓名顺序填写。姓与名中间加“／”，如“Smith/Black” ，不区分大小写。</view>-->
+      <!--<view class="detail-in-content">（2）英文姓名不超过26个字符，如姓名过长请使用缩写，乘客的姓氏不能缩写，名可以缩写</view>-->
+    <!--</scroll-view>-->
+  <!--</modal>-->
+
+  <!--<modal title="购票须知" hidden="{{hideInfoLayer}}" bindconfirm="hideInfo" no-cancel confirm-text="知道了">-->
+    <!--<scroll-view style="height:173px;" scroll-y="true">-->
+      <!--<view class="detail-in-title">一、婴儿及儿童购票须知：</view>-->
+      <!--<view class="detail-in-content">婴儿票（14天-2周岁）：如有婴儿同行，需和成人一起下单，请致电4007-777-777电话预订。</view>-->
+      <!--<view class="detail-in-content">儿童票（2-未满12周岁）：儿童乘机需有满十八周岁的成人全程陪伴，如成人已出票补订儿童票，请致电4007-777-777电话预订；如无成人陪伴的儿童需要乘机，请直接联系航空公司预订并办理“陪护手续”。</view>-->
+      <!--<view class="detail-in-content">您可以通过以下方式为儿童购买机票：</view>-->
+      <!--<view class="detail-in-content">为儿童购买儿童票，票价为成人所购舱位全票价的50%（例如：成人购买头等舱全价票票价为1000，则儿童票价为500），机场建设费免收，燃油税为成人的一半。</view>-->
+      <!--<view class="detail-in-content">重要提醒：儿童购买成人票，存在登机风险，建议您先电话咨询航空公司后再购买。</view>-->
+
+      <!--<view class="detail-in-title">二、孕妇及老人购票须知：</view>-->
+      <!--<view class="detail-in-content">1.怀孕不足8个月（32周）的健康孕妇，可正常乘机。</view>-->
+      <!--<view class="detail-in-content">2.怀孕超过8个月（32周），不足9个月（36周）的健康孕妇需要乘机，应在乘机前72小时内提供省级以上医疗单位盖章的《诊断证明书》，经航空公司同意后方可购票乘机。</view>-->
+      <!--<view class="detail-in-content">3.怀孕超过9个月（36周）的孕妇不接受购票乘机</view>-->
+
+      <!--<view class="detail-in-title">三、高龄旅客乘机须知：</view>-->
+      <!--<view class="detail-in-content">超过70周岁的老年人以及身体欠佳者乘坐飞机，须提供三级甲等医院的健康证明，经航空公司同意后方可购票乘机。</view>-->
+
+      <!--<view class="detail-in-title">四、儿童票购票可用证件</view>-->
+      <!--<view class="detail-in-content">身份证、护照、户口本等，其他证件需提前咨询具体航空公司。</view>-->
+
+      <!--<view class="detail-in-title">五、儿童或婴儿如使用“户口簿”、“出生证明”及“其他”有效证件登机时，有效证件上面的“证件号码”栏如无身份证号可以选择出生年月日，格式为“20080808”。</view>-->
+
+      <!--<view class="detail-in-title">备注：</view>-->
+      <!--<view class="detail-in-content">若是失信被执行人则无法购票，详情可咨询4007-777-777</view>-->
+    <!--</scroll-view>-->
+  <!--</modal>-->
+<!--</view>-->

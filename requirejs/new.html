@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>require</title>
+</head>
+<body>
+	<script type="text/javascript" src="require.js"></script>
+	<script type="text/javascript">
+	require.config({
+		paths: {
+			//当百度的jquery没有加载成功后，会加载本地js目录下的jquery
+			"jquery": ["http://libs.baidu.com/jquery/2.0.3/jquery","js/jquery"]
+		}
+	})
+	//require中的依赖是一个数组，即使只有一个依赖，你也必须使用数组来定义
+	require(["jquery", "validate"],function($, validate){
+	    $(function(){
+	        console.log(validate.isEqual(1,1))
+	    })
+	})
+	</script>
+	<span>body</span>
+</body>
+</html>

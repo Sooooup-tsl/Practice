@@ -1,0 +1,178 @@
+<!-- tab 切换 -->
+<view class="tab_box">
+    <view class="tab_content">
+        <view class="tab_item {{tcFlag == item.tcFlag ? 'tab_on' : ''}}" wx:for="{{tabList}}" wx:key="{{index}}" data-tcflag="{{item.tcFlag}}" bindtap="changeTab">{{item.name}}</view>
+    </view>
+</view>
+
+
+<view>
+    <view class="home_container uc_nav_content">
+        <view class="home_container_jieji" wx:if="{{tcFlag == 12}}">
+            <view class="if_jj_box border_top05">
+                <view class="if_jj_number_item border_top_bottom05">
+                    <view class="if_jj_number">
+                        <view class="if_jj_num_promptB">填写航班号，航班晚点免费等待</view>
+                        <view class="if_jj_num_content if_jj_departure_contentB none"></view>
+                        <view class="if_jj_num_content if_jj_hbhB none"></view>
+                    </view>
+                </view>
+                <view class="if_jj_destination_item border_bottom05">
+                    <view class="if_jj_destination">
+                        <view class="if_jj_destination_content nowrap">您在哪下车</view>
+                    </view>
+                </view>
+                <view class="if_line_item if_jj_line_item none">
+                    <view class="if_line_prompt if_jj_line_prompt">正在加载您的路线信息…</view>
+                    <view class="if_line_content if_jj_line_content none"></view>
+                </view>
+                <view class="if_jj_time_itemB border_top_bottom05 none">
+                    <view class="if_jj_timeB">
+                        <view class="if_jj_time_contentB"></view>
+                        <view class="if_jj_time_promptB">航班到达时间</view>
+                    </view>
+                </view>
+                <view class="if_rp_item if_jj_rp_item none">您有<span class="if_rp_num if_jj_rp_num"></span>抵用券</view>
+                <view class="if_btn_item if_jj_btn_item">
+                    <button class="if_btn orange-bg activeRed if_jj_confirm">去选车</button>
+                </view>
+            </view>
+        </view>
+        <view class="home_container_songji" wx:if="{{tcFlag == 13}}">
+            <view class="if_sj_box border_top05">
+                <view class="if_sj_number_item none"></view>
+                <view class="if_sj_departure_item" bindtap="jumpToAddress">
+                    <view class="if_sj_departure border_bottom05">
+                        <view class="if_sj_departure_content nowrap {{hasChoose ? 'color333' : ''}}">{{startAddress.place}}</view>
+                    </view>
+                </view>
+                <view class="if_sj_destination_item">
+                    <view class="if_sj_destination">
+                        <view class="if_sj_destination_content nowrap">请选择航站楼</view>
+                    </view>
+                </view>
+                <view class="if_line_item if_sj_line_item none">
+                    <view class="if_line_prompt if_sj_line_prompt">正在加载您的路线信息…</view>
+                    <view class="if_line_content if_sj_line_content none"></view>
+                </view>
+                <view class="if_sj_time_item border_top_bottom05">
+                    <view class="if_sj_time">
+                        <picker mode="multiSelector" bindchange="bindMultiPickerChange" bindcolumnchange="bindMultiPickerColumnChange" value="{{multiIndex}}" range="{{multiArray}}">
+                            
+                            <view class="picker" class="if_sj_time_content color333 nowrap" wx:if="{{chooseSJTime}}">
+                                {{multiArray[0][multiIndex[0]]}} {{multiArray[1][multiIndex[1]]}}:{{multiArray[2][multiIndex[2]]}}
+                            </view>
+                            <view class="picker" class="if_sj_time_content nowrap" wx:else="">
+                                选择用车时间
+                            </view>
+                        </picker>
+                    </view>
+                </view>
+                <view class="if_rp_item if_sj_rp_item none">您有<span class="if_rp_num if_sj_rp_num"></span>抵用券</view>
+                <view class="if_btn_item if_sj_btn_item">
+                    <button class="if_btn orange-bg activeRed if_sj_confirm">去选车</button>
+                </view>
+            </view>
+        </view>
+        <view class="home_container_jiezhan" wx:if="{{tcFlag == 14}}">
+            <view class="index_jieche_box border_top_bottom05">
+                <view class="index_jieStation">
+                    <label for="index_jieStation"></label>
+                    <span id="index_jieStation" class="border_bottom05 nowrap">请选择到达的火车站</span>
+                </view>
+                <view class="index_destination index_train_endaddress border_bottom05">
+                    <label for="index_destination"></label>
+                    <span id="index_train_endaddress" class="nowrap">您要去哪儿</span>
+                </view>
+                <view class="none" id="jie_index_train_tips">
+                    <view class="jie_index_tips_carLine" >加载中...</view>
+                </view>
+                <view class="index_space"></view>
+                <view class="index_usecartime index_train_usecartime">
+                    <label for="index_usecartime"></label>
+                    <span id="index_jiecartime" class="nowrap">请选择用车时间</span>
+                </view>
+                <view class="index_redPacket index_train_redPacket home_none home_other home_JSZ"></view>
+                <button class="index_confirm orange-bg activeRed home_other home_JSZ" id="index_train_confirm">去选车</button>
+            </view>
+        </view>
+        <view class="home_container_songzhan" wx:if="{{tcFlag == 15}}">
+            <view class="index_songche_box border_top_bottom05">
+                <view class="index_startaddress index_train_startaddress">
+                    <label for="index_startaddress"></label>
+                    <span id="index_train_startaddress" class="border_bottom05 nowrap">您在哪上车</span>
+                </view>
+                <view class="index_songStation border_bottom05">
+                    <label for="index_songStation"></label>
+                    <span id="index_songStation" class="nowrap">请选择送往的火车站</span>
+                </view>
+                <view class="none" id="song_index_train_tips">
+                    <view class="song_index_tips_carLine" >加载中...</view>
+                </view>
+                <view class="index_space"></view>
+                <view class="index_usecartime index_train_usecartime">
+                    <label for="index_usecartime"></label>
+                    <span id="index_songcartime" class="nowrap">请选择用车时间</span>
+                </view>
+                <view class="index_redPacket index_train_redPacket home_none home_other home_JSZ"></view>
+                <button class="index_confirm orange-bg activeRed home_other home_JSZ" id="index_train_confirm">去选车</button>
+            </view>
+        </view>
+        <view class="home_container_zhuankuaiche" wx:if="{{tcFlag == 11}}">
+            <view class="index_appoint_box border_top_bottom05">
+                <view class="index_startaddress index_point_startaddress border_bottom05" id="test">
+                    <label for="index_startaddress"></label>
+                    <span id="index_point_startaddress" class="nowrap">正在获取当前地址...</span>
+                </view>
+                <view class="index_endaddress index_point_endaddress border_bottom05">
+                    <label for="index_endaddress"></label>
+                    <span id="index_point_endaddress" class="nowrap">请输入目的地</span>
+                </view>
+                <view class="none" id="appoint_tips">
+                    <view class="appoint_tips_carLine">正在加载您的路线信息…</view>
+                </view>
+                <view class="index_location_Icon" id="index_point_location_Icon">
+                    <img src="../../../img/index/locationIcon.png?v=20170224"/>
+                    <view>查看定位</view>
+                </view>
+                <view class="index_space index_point_space"></view>
+                <view class="index_usecartime index_point_usecartime">
+                    <label for="index_usecartime"></label>
+                    <span id="index_point_usecartime" class="nowrap">请选择用车时间</span>
+                </view>
+                <view class="index_redPacket index_point_redPacket home_none home_other home_ZKC"></view>
+                <button class="index_confirm orange-bg activeRed home_other home_ZKC" id="index_point_confirm">去选车</button>
+            </view>
+        </view>
+    </view>
+</view>
+
+<!-- 特色 -->
+<view class="index_feature hm_feature">
+    <span class="index_feature_time"></span>
+    <span class="index_feature_content">航班落地后免费等待1小时</span>
+</view>
+<view class="index_feature_point hm_feature  clearfix">
+    <image src="../../../img/index/yikoujia2.png?v=20161009" class="index_feature_img"></image>
+    <span class="index_feature_span">一口价 · 一次付清 无附加费用</span>
+</view>
+<view class="index_feature_taxi hm_feature  clearfix">
+    <image src="../../../img/index/jijiaqi.png?v=2017022201" class="index_feature_img"></image>
+    <span class="index_feature_span">计价器计价·面付司机</span>
+</view>
+<footer class="i_foot_box">
+    <view class="i_foot_list clear_both">
+        <view class="i_foot_item i_foot_rp">
+            <image src="../../../img/common/red_packet.png?v=2017031301"></image>
+            <view>优惠劵</view>
+        </view>
+        <view class="i_foot_item i_foot_kefu">
+            <image src="../../../img/index/kefu.png?v=2017031301"></image>
+            <view>咨询客服</view>
+        </view>
+        <view class="i_foot_item i_foot_order">
+            <image src="../../../img/index/order.png?v=2017031301"></image>
+            <view>我的订单</view>
+        </view>
+    </view>
+</footer>

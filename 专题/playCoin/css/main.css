@@ -1,0 +1,217 @@
+@CHARSET "UTF-8";
+
+* {
+    padding: 0;
+    margin: 0
+}
+
+body {
+    background-color: #9C0013;
+    font-size: 14px;
+    font-family: "Microsoft Yahei";
+    color: #000;
+}
+
+em {
+    font-style: normal;
+}
+
+.hide {
+    display: none;
+}
+
+h1,h2 {
+    font-weight: normal;
+}
+
+a,a:link {
+    text-decoration: none;
+    color: inherit;
+}
+
+.mt_10 {
+    margin-top: 10px
+}
+
+.mb_10 {
+    margin-bottom: 10px
+}
+
+.bgwhite {
+    background: #fff
+}
+
+div {
+    position: relative;
+}
+
+img {
+    width: 100%;
+    vertical-align: bottom;
+}
+
+.content {
+    width: 90%;
+    margin: auto;
+}
+
+header {
+    overflow: hidden;
+}
+
+header i {
+    background: url(../images/icon.png) no-repeat;
+    width: 15%;
+    height: 15%;
+    background-size: cover;
+}
+
+.icon1 {
+    position: absolute;
+    top: 53%;
+    left: 11%;
+    background-size: 90%;
+    transform: rotate(-48deg);
+    -webkit-transform: rotate(-48deg);
+    -webkit-animation: bounceInDown 1s 1s both;
+    animation: bounceInDown 1s 1s both;
+    transtion: all 1s;
+}
+
+.icon2 {
+    position: absolute;
+    top: 2%;
+    background-size: 100%;
+    right: 5%;
+    transform: rotate(-23deg);
+    -webkit-transform: rotate(-23deg);
+    -webkit-animation: bounceInDown 1s both;
+    animation: bounceInDown 1s both
+}
+
+.icon3 {
+    position: absolute;
+    top: 16%;
+    right: 0%;
+    background-size: 80%;
+    transform: rotate(15deg);
+    -webkit-transform: rotate(15deg);
+    -webkit-animation: bounceInDown 1s 0.5s both;
+    animation: bounceInDown 1s 0.5s both
+}
+
+.btn_oredr {
+    width: 90%;
+    margin: 5% auto;
+}
+
+.btn_oredr button {
+    height: 60px;
+    font-size: 34px;
+    color: #a70014;
+    width: 100%;
+    background: #edd368;
+    box-shadow: 0 5px 0px #DC9741;
+    -webkit-box-shadow: 0 5px 0px #DC9741;
+    border-radius: 10px;
+    border: 0;
+    font-family: "Microsoft Yahei";
+}
+
+.img_title {
+    text-align: center;
+    color: #f8c687;
+    margin: 7% 0 5% 0;
+    font-size: 17px
+}
+
+.img_title em{
+    width: 25%;
+    height: 1px;
+    background: #edd368;
+    display: inline-block;
+    vertical-align: super;
+    opacity: 0.6;
+    margin: 0 10px;
+}
+
+.rule {
+    border: 2px solid #000;
+    border-radius: 10px;
+    padding: 10px;
+    background: #edd368;
+    margin: 5% 0;
+    line-height: 24px
+}
+
+.rule span {
+    color: #ff0000
+}
+
+@-webkit-keyframes bounceInDown {
+    0%,100%,60%,75%,90% {
+        -webkit-transition-timing-function: cubic-bezier(.215,.61,.355,1);
+        transition-timing-function: cubic-bezier(.215,.61,.355,1)
+    }
+
+    0% {
+        opacity: 0;
+        -webkit-transform: translate3d(0,-300px,0)  rotate(-48deg);
+        transform: translate3d(0,-300px,0)  rotate(-48deg)
+    }
+
+    60% {
+        opacity: 1;
+        -webkit-transform: translate3d(0,25px,0) rotate(-48deg);
+        transform: translate3d(0,25px,0) rotate(-48deg)
+    }
+
+    75% {
+        -webkit-transform: translate3d(0,-10px,0) rotate(-48deg);
+        transform: translate3d(0,-10px,0) rotate(-48deg)
+    }
+
+    90% {
+        -webkit-transform: translate3d(0,5px,0) rotate(-48deg);
+        transform: translate3d(0,5px,0) rotate(-48deg)
+    }
+
+    100% {
+        -webkit-transform: none rotate(-48deg);
+        transform: none rotate(-48deg);
+    }
+}
+
+@keyframes bounceInDown {
+    0%,100%,60%,75%,90% {
+        -webkit-transition-timing-function: cubic-bezier(.215,.61,.355,1);
+        transition-timing-function: cubic-bezier(.215,.61,.355,1)
+    }
+
+    0% {
+        opacity: 0;
+        -webkit-transform: translate3d(0,-300px,0)  rotate(-48deg);
+        transform: translate3d(0,-300px,0)  rotate(-48deg)
+    }
+
+    60% {
+        opacity: 1;
+        -webkit-transform: translate3d(0,25px,0) rotate(-48deg);
+        transform: translate3d(0,25px,0) rotate(-48deg)
+    }
+
+    75% {
+        -webkit-transform: translate3d(0,-10px,0) rotate(-48deg);
+        transform: translate3d(0,-10px,0) rotate(-48deg)
+    }
+
+    90% {
+        -webkit-transform: translate3d(0,5px,0) rotate(-48deg);
+        transform: translate3d(0,5px,0) rotate(-48deg)
+    }
+
+    100% {
+        -webkit-transform: none rotate(-48deg);
+        transform: none rotate(-48deg);
+    }
+}

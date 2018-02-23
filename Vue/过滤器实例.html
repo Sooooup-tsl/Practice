@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, user-scalable=no,initial-scale=1, minimum-scale=1, maximum-scale=1">
+	<title>自定义过滤器</title>
+</head>
+<body>
+	<ul>
+		<li v-for="pro in products">
+			{{ pro.name | capitalize }}-{{ pro.price | discount price | currency}}
+		</li>
+	</ul>
+<script type="text/javascript" src="vue.js"></script>
+<script type="text/javascript">
+var vm = new Vue({
+    el : 'body',
+    data : {
+    	  price: 0.25,
+          products : [
+                {name: 'microphone', price: 25, category: 'electronics'},
+                {name: 'laptop case', price: 15, category: 'accessories'},
+                {name: 'screen cleaner', price: 17, category: 'accessories'},
+                {name: 'laptop charger', price: 70, category: 'electronics'},
+                {name: 'mouse', price: 40, category: 'electronics'},
+                {name: 'earphones', price: 20, category: 'electronics'},
+                {name: 'monitor', price: 120, category: 'electronics'}
+          ]
+    },
+    filters: {
+    	discount: function(value, discount){ //可配置
+			return value * discount 
+		}
+    }
+});
+
+    		console.table(vm.products)
+</script> 
+</body>
+</html>

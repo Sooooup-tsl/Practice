@@ -1,0 +1,194 @@
+page,.body,.page{
+    height:100%;
+}
+
+.card {
+    box-shadow: 0 2px 3px rgba(220,222,225,0.8);
+    border-radius: 2px;
+    background: #fff;
+}
+
+.page {
+    background: #efeff4;
+    padding: 4px 4px 48px 4px;
+    box-sizing: border-box;
+}
+
+.contact-btn {
+    height: 44px;
+    font-size: 16px;
+    line-height: 44px;
+    color: #09bb07;
+    position: relative;
+    padding-left: 50px;
+    background: #fff;
+}
+
+.contact-btn:before {
+    content: "";
+    background: url('http://img1.40017.cn/touch/hb/c/wxapp/image/common/icom_addcontact_common.png') no-repeat;
+    display: block;
+    position: absolute;
+    left: 15px;
+    top: 11px;
+    width: 22px;
+    height: 22px;
+    background-size: 100%;
+}
+
+.contact-btn:after {
+    content: "";
+    width: 9px;
+    height:15px;
+    background: url('http://img1.40017.cn/touch/hb/c/wxapp/image/common/arrow_list_common_right.png') no-repeat;
+    background-size: 100%;
+    display: block;
+    position: absolute;
+    top: 14px;
+    right: 15px;
+
+}
+
+.contact-item {
+    margin-top: 4px;
+    display: -webkit-box;
+}
+
+
+
+.contacts-left,
+.contacts-right {
+    width: 50px;
+    text-align: center;
+}
+
+.contacts-left{
+    padding:17px 0 15px 0;
+}
+
+.contacts-right {
+    display: -webkit-box;
+    -webkit-box-align: center;
+    -webkit-box-pack: center;
+    position: relative;
+    box-sizing: border-box;
+}
+
+.contacts-right:after{
+    content: " ";
+    width: 200%;
+    height: 200%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    border-left: 1px solid rgba(0, 0, 0, 0.2);
+    -webkit-transform: scale(0.5);
+    transform: scale(0.5);
+    -webkit-transform-origin: 0 0;
+    transform-origin: 0 0;
+    box-sizing: border-box;
+}
+
+
+.contacts-middle {
+    -webkit-box-flex: 1;
+     padding:15px 0;
+    
+}
+
+.contacts-checkbox {
+    background: url(http://img1.40017.cn/touch/hb/c/wxapp/image/common/checkbox_common_rest.png) no-repeat;
+    width: 24px;
+    height: 24px;
+    background-size: 100%;
+    display: inline-block;
+    border-radius:2px;
+}
+
+.contacts-checkbox.selected {
+    background: url(http://img1.40017.cn/touch/hb/c/wxapp/image/common/checkbox_common_selected.png) no-repeat;
+    width: 24px;
+    height: 24px;
+    background-size: 100%;
+    display: inline-block;
+}
+
+.contacts-edit-btn {
+    background: url(http://img1.40017.cn/touch/hb/c/wxapp/image/common/iconbtn_redact_common.png) no-repeat;
+    width: 20px;
+    height: 20px;
+    background-size: 100%;
+    display: inline-block;
+}
+.contacts-not-full{
+    font-size:13px;
+    color:#e64340;
+}
+.contacts-list-line {
+    display: -webkit-box;
+    padding: 5px 0;
+}
+
+.contacts-list-label {
+    margin-right:10px;
+    display: block;
+
+}
+
+.contacts-list-cell{
+    -webkit-box-flex: 1;
+}
+
+.contacts-list-label,
+.contacts-list-cell{
+    font-size: 13px;
+    color:#888;
+}
+
+.contacts-list-name{
+    max-width:60%;
+    font-size: 16px;
+    color:#000;
+    font-weight:bold;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    display: block
+}
+.contacts-list-cell-gender{
+    font-size:16px;
+
+ }
+.contacts-list-info{
+    font-size: 13px;
+    color:#888;
+}
+
+.save-wrap{
+    position: fixed;
+    bottom:0;
+    left:0;
+    width:100%;
+    box-sizing: border-box;
+    display: -webkit-box;
+    height: 44px;
+    line-height: 44px;
+    font-size: 16px;
+    color: #fff;
+}
+.contacts-remove{
+    -webkit-box-flex:1;
+    background: #fff;
+    text-align: center;
+    color:#666;
+}
+.contacts-select{
+    background: #ff5346;
+    text-align: center;
+    -webkit-box-flex:2;
+    color:#fff;
+}
+
+.empty-space{
+    height:50px;
+}

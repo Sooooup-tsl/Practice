@@ -1,0 +1,75 @@
+<view class="date flex">
+  <view class="date-previous" bindtap="previousDay">
+    <view class="data">
+      前一天
+      <view class="price">{{yesterdayPrice}}</view>
+    </view>
+  </view>
+  <view class="date-today flex-g-1" bindtap="showPriceCalendar">
+    <view class="datetime">
+        <image src="http://file.40017.cn/touchweixinqq/wxapp/img/home/index/icon_rili.png"></image>
+        <text>{{selectedDateDisplay}}</text>
+    </view>
+    <view class="price">{{todayPrice}}</view>
+    <view class="arrow"></view>
+  </view>
+  <view class="date-next" bindtap="nextDay">
+    <view class="data">
+      后一天
+      <view class="price">{{tomorrowPrice}}</view>
+    </view>
+  </view>
+</view>
+<view class="flight" wx:if="{{!noData}}">
+  <block wx:for="{{flightList}}" wx:key="index">
+    <view class="flight-list border-bottom" bindtap="goBook1_5" data-index="{{index}}">
+      <view class="list-info">
+        <view class="airport-info fn-clear flex">
+          <view class="from flex-g-1">
+            {{item.flyOffOnlyTime}}
+            <view class="station">{{item.otsn}}{{item.boardPoint}}</view>
+          </view>
+          <view class="arrow">
+            <view class="arrow-icons">
+              <view wx:if="{{item.stopNum > 0}}" class="stop">经停</view>
+              <view class="arrow-main">
+              </view>
+            </view>
+          </view>
+          <view class="to flex-g-1">
+            {{item.arrivalOnlyTime}}
+            <view class="station">{{item.atsn}}{{item.offPoint}}</view>
+          </view>
+        </view>
+      </view>
+      <view class="list-price">
+        <span>¥</span>{{item.lcp}}
+        <view class="discount" wx:if="{{item.lcdr/10 < 10}}">{{item.lcdr / 10 }}折</view>
+        <view class="discount" wx:else>全折{{item.lcd}}</view>
+      </view>
+      <view class="fn-clear"></view>
+      <view class="company-info">
+        <view class="company-icon flightLB_16 logo_{{item.airCompanyCode}}"></view>
+        {{item.airCompanyName}}{{item.flightNo}} | {{item.CraftName}}({{item.ACPlaneType}})
+      </view>
+    </view>
+  </block>
+</view>
+<view class="bar border-top flex" wx:if="{{!noData}}">
+  <view class="bar-item flex-g-1 {{sortBy == 'time' ? 'selected' : ''}}"
+        data-sort-by="time" bindtap="sortEvent">
+    <view class="flight-icon {{sortBy == 'time' ? 'icon-time-active' : 'icon-time'}}"></view>
+    <view>{{sortByTimeText}}</view>
+  </view>
+  <view class="bar-split"></view>
+  <view class="bar-item flex-g-1 {{sortBy == 'price' ? 'selected' : ''}}"
+        data-sort-by="price" bindtap="sortEvent">
+    <view class="flight-icon {{sortBy == 'price' ? 'icon-price-active' : 'icon-price'}}"></view>
+    <view>{{sortByPriceText}}</view>
+  </view>
+</view>
+<view class="no-data" wx:if="{{noData}}">
+  <view class="no-data-icon flight-icon icon-coffee-cup"></view>
+  <view>抱歉，没有查询到{{fromCity}}→{{toCity}}的机票</view>
+  <button type="primary" class="research" bindtap="navigateBack">重新搜索</button>
+</view>

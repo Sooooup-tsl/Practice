@@ -1,0 +1,68 @@
+
+@import "/pages/common/common.wxss";
+.card-style {
+	box-shadow: 0 2px 3px rgba(220, 222, 225, 0.8);
+	border-radius: 2px;
+	background: #fff;
+}
+page{
+  background: #efeff4;
+  height: 100%
+}
+.border-top::before {
+	content: " ";
+	position: absolute;
+	left: 0;
+	top: 0;
+	right: 0;
+	height: 1px;
+	border-top: 1px solid rgba(0, 0, 0, 0.2);
+	-webkit-transform-origin: 0 0;
+	transform-origin: 0 0;
+	-webkit-transform: scaleY(0.5);
+	transform: scaleY(0.5);
+}
+
+.border-bottom::after {
+	content: " ";
+	position: absolute;
+	left: 0;
+	bottom: 0;
+	right: 0;
+	height: 1px;
+	border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+	-webkit-transform-origin: 0 100%;
+	transform-origin: 0 100%;
+	-webkit-transform: scaleY(0.5);
+	transform: scaleY(0.5);
+}
+
+.hotel-flex {
+	display: -webkit-box;
+	display: flex;
+}
+
+.pub-logo {
+	width: 100%;
+	margin: 100rpx auto 30rpx;
+}
+
+.pub-logo image {
+	display: block;
+	width: 50%;
+	height: 170rpx;
+	margin: 0 auto;
+}
+
+.pub-logo .phone-tip {
+	height: 30px;
+	line-height: 30px;
+	margin-top: 10px;
+	font-size: 25rpx;
+	text-align: center;
+	color: #999;
+}
+
+.pub-logo .lb-phone {
+	color: royalblue;
+}

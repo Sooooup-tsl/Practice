@@ -1,0 +1,267 @@
+page {
+    background-color: #e6e9ef;
+}
+
+.date {
+    position:fixed;
+	top:0;
+	left:0;
+	z-index:100;
+	width:100%;
+	height:50px;
+	background-color:#fff;
+    font-size: 14px;
+    line-height: 18px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, .2);
+    color: #666;
+}
+.date-previous{
+    padding-top: 12px;
+    width: 85px;
+    position: relative;
+}
+.date-previous:after {
+    content: '';
+    -webkit-transform: scale(0.5);
+    transform: scale(0.5);
+    -webkit-transform-origin: 0 0;
+    transform-origin: 0 0;
+    border-right: 1px solid #eee;
+    position: absolute;
+    height: 100px;
+    right: 0;
+    top: 0;
+}
+.date-previous:before {
+    content: "";
+    position: absolute;
+    top: 50%;
+    margin-top: -4px;
+    left: 15px;
+    width: 10px;
+    height: 10px;
+    border-top: 2px solid #ccc;
+    border-left: 2px solid #ccc;
+    -webkit-transform: rotate(-45deg);
+    transform: rotate(-45deg);
+}
+.date-previous .data {
+    float: right;
+    text-align: center;
+    padding-right: 9px;
+}
+.date-next {
+    padding-top: 12px;
+    width: 85px;
+    position: relative;
+}
+.date-next:before {
+    content: '';
+    -webkit-transform: scale(0.5);
+    transform: scale(0.5);
+    -webkit-transform-origin: 0 0;
+    transform-origin: 0 0;
+    border-left: 1px solid #eee;
+    position: absolute;
+    height: 100px;
+    left: 0;
+    top: 0;
+}
+.date-next:after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    margin-top: -4px;
+    right: 15px;
+    width: 10px;
+    height: 10px;
+    border-top: 2px solid #ccc;
+    border-left: 2px solid #ccc;
+    -webkit-transform: rotate(135deg);
+    transform: rotate(135deg);
+}
+.date-next .data {
+    float: left;
+    text-align: center;
+    padding-left: 9px;
+}
+
+.date-previous .data .price, .date-next .data .price {
+    font-size:12px;
+    line-height:12px;
+}
+.date-today {
+    padding-top: 12px;
+    text-align: center;
+}
+.date-today .datetime text{
+    color: #09bb07;
+    vertical-align: middle;
+    line-height: 100%;
+}
+.date-today .datetime image{
+    width: 34rpx;
+    height: 30rpx;
+    vertical-align: middle;
+    margin-right: 16rpx;
+}
+.date-today .price {
+    font-size: 12px;
+    line-height: 12px;
+    color: #ff6633;
+}
+.date-today .arrow {
+    margin: 2px auto;
+    width: 0;
+    height: 0;
+    border-left: 3px solid transparent;
+    border-right: 3px solid transparent;
+    border-top: 3px solid #bbb;
+}
+.flight {
+	padding-top:50px;
+	padding-bottom: 50px;
+}
+.flight-list {
+    height: 85px;
+	position: relative;
+	padding: 18px 15px 17px;
+	background: #fff;
+}
+.flight-list .list-info {
+	float:left;
+	width:65%;
+    color: #333;
+}
+.flight-list .list-info .airport-info {
+	position:relative;
+}
+.flight-list .list-info .airport-info .from,
+.flight-list .list-info .airport-info .to {
+	font-size:17px;
+	line-height:17px;
+	text-align:center;
+	white-space:nowrap;
+}
+.flight-list .list-info .airport-info .from .station,
+.flight-list .list-info .airport-info .to .station {
+	display:block;
+	padding-top:7px;
+	font-size:10px;
+	line-height:10px;
+    text-align: center;
+	white-space:nowrap;
+}
+.flight-list .list-info .arrow {
+    width: 150rpx;
+    margin-left: 12px;
+    margin-right: 20px;
+}
+.flight-list .list-info .arrow .arrow-main {
+	display:block;
+    position: relative;
+	margin-top:15px;
+    border-top: 1px solid #ccc;
+}
+.flight-list .list-info .arrow .arrow-main:after {
+    content: '';
+    position: absolute;
+    right: -3px;
+    top: -3px;
+    width: 0;
+    height: 0;
+    border-bottom: 3px solid #ccc;
+    border-right: 10px solid transparent;
+}
+.flight-list .list-info .arrow-icons {
+	position:relative;
+}
+.flight-list .list-info .arrow-icons .stop {
+    position:absolute;
+    left:50%;
+    top:-9px;
+    margin-left:-20px;
+    width:40px;
+    height: 18px;
+    background:#fff;
+    border-radius:18px;
+    border: 1px solid #ccc;
+    color:#999;
+    line-height:18px;
+    font-size:10px;
+    text-align:center;
+    z-index: 10;
+}
+.flight-list .list-price {
+	float:right;
+	width:68px;
+    color:#f63;
+    font-size:22px;
+    line-height:22px;
+    text-align:right;
+}
+.flight-list .list-price span {
+    font-size: 12px;
+}
+.flight-list .list-price .discount {
+	margin-top: 3px;
+	color:#999;
+	font-size:12px;
+	line-height:12px
+}
+.flight-list .company-info {
+    position: absolute;
+	color:#999;
+	font-size:10px;
+	line-height:10px;
+	bottom: 14px;
+}
+.flight-list .company-info .company-icon{
+    position: relative;
+    top: 1px;
+    width: 10px;
+    height: 10px;
+    margin-right: 3px;
+}
+
+.bar {
+	position: fixed;
+	left: 0;
+	bottom: 0;
+	z-index: 50;
+	width: 100%;
+	height: 50px;
+	background-color: #f5f5f5;
+    font-size: 14px;
+    color: #666;
+    text-align: center;
+}
+.bar-item.selected {
+    color: #09bb07;
+}
+.bar-item .flight-icon {
+    margin-top: 10px;
+}
+.bar-split {
+    border-left: 1px solid #dcdcdc;
+    margin-top: 15px;
+    height: 48px;
+    -webkit-transform: scale(0.5);
+    transform: scale(0.5);
+    -webkit-transform-origin: 0 0;
+    transform-origin: 0 0;
+}
+
+.no-data {
+    padding-top:50px;
+    text-align: center;
+    color: #999;
+    font-size: 14px;
+}
+.no-data-icon {
+    margin: 140px auto 21px;
+}
+.research {
+    width: 165px;
+    margin: 25px auto;
+}

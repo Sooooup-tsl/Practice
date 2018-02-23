@@ -1,0 +1,739 @@
+/*@import "../../styles/base.wxss";*/
+page{
+    -webkit-overflow-scrolling: touch;
+    height: 100%;
+}
+.booking{
+    height: 100%;
+    background-color: #e8ecf2;
+    color: #666;
+    font-size: 12px;
+}
+.section{
+    background-color: #fff;
+}
+
+/* 航班信息 */
+.flight{
+    padding: 12px 15px;
+}
+
+.flight-info{
+    margin-bottom: 7px;
+    font-size: 14px;
+    color: #333;
+}
+
+.flight-info::before{
+    content: '';
+    display: inline-block;
+    width: 14px;
+    height: 14px;
+    background:url("https://wx.40017.cn/touch/weixin/flight/img/wxapp/wxapp-icons.png?v=2016100601") no-repeat -76px -62px;
+    background-size: 200px;
+    vertical-align: -2px;
+    margin-right: 5px;
+
+}
+
+.flight-airport{
+    margin-left: 19px;
+    color: #999;
+}
+
+/* 退改签信息 */
+
+.refundchange{
+    padding:  12px 0 12px 15px;
+}
+.refundchange text{
+    color: #ff6633;
+}
+.refundchange-price{
+    margin-top: 4px;
+}
+
+.refundprice{
+    float: left;
+}
+.changeprice{
+    float: left;
+    margin-left: 30rpx;
+}
+.arrow-icon-price{
+  position: relative;
+}
+.arrow-icon-price::after{
+    content:'';
+    position: absolute;
+    right: 15px;
+    top: 12px;
+    width: 4px;
+    height: 12px;
+    background: url("https://wx.40017.cn/touch/weixin/flight/img/wxapp/wxapp-icons.png?v=2016100601") no-repeat -65px -7px;
+    background-size: 200px;
+}
+.moreinfo{
+    float: right;
+    color: #999;
+}
+.moreinfo span{
+    vertical-align: middle;
+}
+.moreinfo::before{
+    content: "";
+    float: right;
+    width: 4px;
+    height: 12px;
+    background:url("https://wx.40017.cn/touch/weixin/flight/img/wxapp/wxapp-icons.png?v=2016100601") no-repeat -65px -7px;
+    background-size: 200px;
+    vertical-align: middle;
+    margin: 3px 0 0 6px;
+}
+
+/* 乘机人模块 */
+.passenger{
+    padding-left: 15px;
+    overflow: hidden;
+}
+.passenger-top{
+    height: 44px;
+    padding-right: 15px;
+    line-height: 44px;
+}
+.passenger-top strong{
+    font-size: 14px;
+    color: #000;
+}
+.passenger-top span{
+    margin-left: 12px;
+    color: #999;
+}
+
+.passenger-top .addpass{
+    float: right;
+}
+
+.passenger-top .addpass span{
+    margin-left: 4px;
+    vertical-align: middle;
+    color: #09bb07;
+}
+
+.passenger-top .addpass::before{
+    content: "";
+    display: inline-block;
+    width: 17px;
+    height: 17px;
+    background:url("https://wx.40017.cn/touch/weixin/flight/img/wxapp/wxapp-icons.png?v=2016100601") no-repeat -32px -88px;
+    background-size: 200px;
+    vertical-align: middle;
+}
+
+/* 已选择的乘机人信息 */
+.passenger-info{
+    position: relative;
+    height: 55px;
+    line-height: 55px;
+}
+.passenger-info-des{
+    float: left;
+    height: 55px;
+    width: 91.47%;
+}
+.passenger-info-des strong{
+    display: block;
+    margin: 12px 0 6px;
+    font-size: 14px;
+    color: #333;
+    line-height: 14px;
+}
+.passenger-info-des p{
+    display: block;
+    line-height: 12px;
+    color: #666;
+}
+
+.passenger-info-icon{
+    position: relative;
+    float: left;
+    width: 26px;
+    height: 54px;
+    z-index: 10;
+}
+.passenger-info-icon::before{
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 50%;
+    margin-top: -8px;
+    width: 16px;
+    height: 16px;
+    background-color: #e64340;
+    border-radius: 50%;
+}
+.passenger-info-icon::after{
+    content: "";
+    position: absolute;
+    left: 4px;
+    top:50%;
+    width: 8px;
+    height: 2px;
+    margin-top: -1px;
+    background-color: #fff;
+    -webkit-transition: all .2s ease;
+    transition: all .2s ease;
+}
+.passenger-info-icon_rotate::after{
+    -webkit-transform: rotate(90deg);
+    transform: rotate(90deg);
+}
+.passenger-info-del{
+    position: absolute;
+    top: 0;
+    right:0;
+    z-index: 100;
+    width: 60px;
+    height: 100%;
+    background-color: #e64340;
+    -webkit-transform: translateX(100%);
+    transform: translateX(100%);
+    -webkit-transition: all .2s ease;
+    transition: all .2s ease;
+}
+.passenger-info-del:active{
+    background-color: #d92a2d;
+}
+
+.passenger-info-del::after{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin: -10px 0 0 -10px;
+    content: "";
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    background:url("https://wx.40017.cn/touch/weixin/flight/img/wxapp/wxapp-icons.png?v=2016100601") no-repeat -45px -109px;
+    background-size: 200px;
+}
+
+.passenger-info .passenger-info-del_show{
+    -webkit-transform: translateX(0);
+    transform: translateX(0);
+}
+
+
+/* 手机号 */
+.mobile{
+    height: 45px;
+    padding: 0 15px;
+    font-size: 14px;
+    color: #000;
+    line-height: 45px;
+}
+.mobile span{
+    float: left;
+}
+.mobile input{
+    float: left;
+    height: 45px;
+    margin-left: 15px;
+    width: 80%;
+}
+.mobile::-webkit-input-placeholder{
+    color: #ccc;
+}
+
+/* 保险及报销凭证等模块*/
+
+.panel_checkable{
+    height: 56px;
+    padding: 8px 15px;
+}
+
+.panel_checkable switch{
+    float: right;
+    margin-top: 4px;
+}
+
+.panel_checkable-info{
+    float: left;
+    font-size: 14px;
+}
+.panel_checkable-info view strong{
+    margin-right: 15px;
+    font-size: 14px;
+   
+}
+.panel_checkable-info view strong span{
+    vertical-align: middle;
+    color: #333;
+}
+.panel_checkable-info view span{
+    vertical-align: middle;
+}
+.panel_checkable-info view i{
+    vertical-align: middle;
+}
+.panel_checkable-info view .panel_checkable-info-icon::after{
+    content: "";
+    display: inline-block;
+    width: 14px;
+    height: 14px;
+    margin-left: 6px;
+    background:url("https://wx.40017.cn/touch/weixin/flight/img/wxapp/wxapp-icons.png?v=2016100601") no-repeat -75px -79px;
+    background-size: 200px;
+    vertical-align: middle;
+}
+
+.panel_checkable-info p{
+    color: #999;
+    font-size: 12px;
+    line-height: 26px;
+}
+
+.panel_checkable-info view span{
+    color: #ff6633;
+}
+.panel_checkable-info view i{
+    color: #666;
+}
+
+/* 报销凭证 */
+.mail{
+    padding-left: 15px;
+}
+
+.mail-title{
+    width: 60px;
+    margin-right: 18px;
+    font-size: 14px;
+    color: #333;
+    vertical-align: top;
+}
+.mail-invoice .invoice-title{
+    width: 60px;
+    margin-right: 18px;
+    font-size: 14px;
+    color: #333;
+    vertical-align: top;
+    -webkit-box-flex: 0;
+}
+.mail-invoice .invoice-type {
+  -webkit-box-flex: 1;
+}
+.mail-invoice .invoice-type span {
+  position: relative;
+  padding-left: 22px;
+  font-size: 14px;
+  color: #333;
+}
+.mail-invoice .invoice-type span.person {
+  margin-left: 30px;
+}
+.mail-invoice .invoice-type span:before {
+  content: "";
+  display: inline-block;
+  width: 16px;
+  height: 16px;
+  background: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACIAAAAiCAMAAAANmfvwAAAAP1BMVEUAAADMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzFR7UUAAAAFXRSTlMABxSN+Ol3JdrJgEcdpJm8t2U2bVhrttilAAAA6UlEQVQ4y5VTWbKDIBDMbAyLCC73P+vTeiaFCsTwMSXS1d0z0K/fFgTKVsRmClAFIEkyQRE1mCw03BkMeyzw2xYuFIn0/GcgdyJS6+/KRrTgsKbmbpEPDyRfb9E4eH9RawzkDxnWFgRZC2hDatwrCHYGzrubkHqXEtddx/Qg066UQw8yu61Y7UFQtiLYgwA/gDwTSl/sPms65K+jA276PQ77Skv8f6U8tEmOdn37SdEb6xpSxsInELJUGy4joGJqIZlPwXKEF6d0vRnwbKDYLkz36OvIcZoRAOcpctT6FNbRCbO4ccXXT+sPY20F90RPQmwAAAAASUVORK5CYII=");
+  background-size: 100%;
+  border-radius: 50%;
+  position: absolute;
+  top: 50%;
+  left: 0;
+  margin-top: -8px;
+}
+.mail-invoice .invoice-type span.active:before {
+  content: "";
+  display: inline-block;
+  width: 16px;
+  height: 16px;
+  background: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACIAAAAiCAMAAAANmfvwAAAAYFBMVEUAAAAoxU0oxU0oxU0oxU0oxU0oxU0oxU0oxU0oxU0oxU0oxU0oxU0oxU0oxU0oxU0oxU0oxU0oxU3///83ylrP89iu6r3b9eHD781AzGHj+Oi57MWg5rGV46eI35xe1Hm0tkK3AAAAEnRSTlMA6vcHi8mbJRLbuh2AWEct1HPPAQT2AAABBklEQVQ4y5WT27KCMAxFSelFysVjAigq+v9/eTKMtAVSZ1wv8LBm795S/EbZaV8BVF53pSicNGAAdH1MuCjcoJpyF+HxgNkEuQoF4JxksCE6Iaf0mMGs67lgluZTo/KKcoui8Qt2WQl8U9SJlQ4lHvcJF9pcz43oHZu8lEE0rvtmRTi2kegRjo8VkIxbXG+ijPPn55kaqGLRm+tXY0AmKfJxE0/+zGz0GDHppgeiGV9E19RAmx5dz86wN7DdXEB/JaL7dLwAbopONGIPU6vovCbhMTANZtHrwzQ54y8MSg2yAa4InCE/JCHHCC1uN7DNfmD1cfSdVYlgXSFRttaAUmBseyp+4h95uje1i5X/IQAAAABJRU5ErkJggg==");
+  background-size: 100%;
+  border-radius: 50%;
+  position: absolute;
+  top: 50%;
+  left: 0;
+  margin-top: -8px;
+}
+.invoice-write{
+    padding-bottom: 4px;
+    padding-right: 15px;
+}
+.invoice-write .input-side {
+  background-color: #f7f7f7;
+  padding: 5px 10px;
+  border-radius: 5px;
+  margin-bottom: 6px;
+}
+.invoice-write .input-side input {
+  width: 100%;
+  border: 0;
+  background: none;
+  color: #333;
+  padding: 0;
+  font-size: 14px;
+}
+.invoice-write .input-side::-webkit-input-placeholder {
+  color: #ccc;
+}
+.mail-method view,.mail-address view,.mail-invoice view,.mail-thing view{
+    display: inline-block;
+}
+.mail-invoice view.invoice-title,.mail-invoice view.invoice-type{
+    display: block;
+}
+.mail-method,.mail-address,.mail-invoice,.mail-thing{
+    padding: 10px 15px 10px 0;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: flex;
+}
+.invoice-main .mail-invoice{
+    display: -webkit-box;
+}
+.mail-method-name,.mail-address-name,.mail-thing-name{
+    font-size: 14px;
+    color: #666;
+}
+.mail-method-des,.mail-address-des{
+    color: #999;
+}
+.mail-address .mail-address-des{
+    width: 200px;
+}
+.mail-address .mail-address-name{
+    width: 100%;
+}
+.mail-address .mail-address-name::after{
+    right: 0;
+}
+.mail-address .mail-address-name .mail-address-name-none{
+    color: #ccc;
+}
+
+.mail-content{
+    -webkit-box-flex: 1;
+    -webkit-flex: 1;
+    flex: 1;
+
+}
+.mail-content p{
+    line-height: 18px;
+}
+.mail-invoice input{
+    display: inline-block;
+    width: 200px;
+    font-size: 14px;
+    vertical-align: middle;
+}
+.mail-invoice .mail-title{
+    vertical-align: middle;
+}
+.mail-invoice input::-webkit-input-placeholder{
+    color: #ccc;
+    
+}
+
+
+/* 条款等 */
+.agreement{
+    padding: 10px 15px 72px;
+    background-color: #e8ecf2;
+    font-size: 11px;
+}
+.agreement .agreement-info{
+    color: #576b95;
+    line-height: 28px;
+
+}
+
+/* 底部价格及提交按钮 */
+.bottom_bar{
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: 52px;
+    z-index: 300;
+    background-color: #fff;
+    box-shadow: 0px -2px 8px 0px rgba( 0, 0, 0, 0.1);
+    font-size: 16px;
+}
+
+.bottom_bar .total_price{
+    float: left;
+    padding-left: 15px;
+    line-height: 52px;
+    color: #010101;
+}
+.bottom_bar .total_price::after{
+    content: "";
+    display: inline-block;
+    width: 16px;
+    height: 12px;
+    background:url("https://wx.40017.cn/touch/weixin/flight/img/wxapp/wxapp-icons.png?v=2016100601") no-repeat -96px -63px;
+    background-size: 200px;
+    vertical-align: middle;
+    margin-left: 10px;
+}
+.bottom_bar .total_price_up::after{
+    background-position: -96px -79px;
+}
+.bottom_bar .total_price text{
+    color: #ff6633;
+    vertical-align: middle;
+}
+.bottom_bar .submit_btn{
+    float: right;
+    width: 100px;
+    height: 52px;
+    line-height: 52px;
+    background-color: #ff6633;
+    color: #fff;
+    text-align: center;
+}
+.bottom_bar .submit_btn:active{
+    background-color: #da5c18;
+    color: rgba(255, 255, 255, 0.6)
+}
+
+/* 金额明细 */
+.mask{
+    position: fixed;
+    top:0;
+    left: 0;
+    z-index: 200;
+    width:100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, .6)
+}
+
+.price_detail{
+    position: fixed;
+    left: 0;
+    bottom: 52px;
+    background-color: #f6f6f6;
+    width: 100%;
+    font-size: 14px;
+}
+
+.price_detail p{
+    height: 40px;
+    padding-left: 15px;
+    color: #666;
+    line-height: 40px;
+}
+.price_detail span{
+    display: inline-block;
+    vertical-align: middle;
+    color: #333;
+}
+.price_detail .price_detail-ticket{
+    padding: 0 15px;
+}
+.price_detail .price_detail-others{
+    padding: 0 15px 2px;
+    border-bottom: none;
+}
+
+.price_detail .price_detail-item{
+    width: 96px;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+}
+.price_detail .price_detail-price{
+    width: 66px;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    color: #ff6633;
+}
+.price_detail ul{
+    padding: 8px 0;
+}
+.price_detail li{
+    height: 22px;
+    line-height: 22px;
+}
+.adult_price{
+    border-bottom: 1px solid #dcdcdc;
+}
+
+/* 通用样式 */
+.non-border-top{
+    border-top: none;
+}
+
+.non-border-bottom{
+    border-bottom: none;
+}
+
+.mt6{
+    margin-top: 6px;
+}
+.arrow-icon{
+    position: relative;
+}
+.arrow-icon::after{
+    content:'';
+    position: absolute;
+    right: 15px;
+    top: 50%;
+    margin-top: -6px;
+    width: 4px;
+    height: 12px;
+    background: url("https://wx.40017.cn/touch/weixin/flight/img/wxapp/wxapp-icons.png?v=2016100601") no-repeat -65px -7px;
+    background-size: 200px;
+}
+
+.clearfix::after{
+    content: "";
+    display: block;
+    clear: both;
+}
+
+
+/* 航班信息展示弹窗 */
+.popup{
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.6);
+}
+
+.popup-box{
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    -webkit-transform: translate(-50%,-50%);
+    transform: translate(-50%,-50%);
+    width: 82.5%;
+}
+.popup-box-content{
+    background-color: #fff;
+    border-radius: 4px;
+    padding: 18px 0 20px;
+}
+
+.popup-box-close{
+    position: relative;
+    width: 28px;
+    height: 28px;
+    border: 1px solid #949494;
+    border-radius: 50%;
+    margin: 26px auto 0;
+    background-color: rgba(0, 0, 0, 0.15)
+}
+.popup-box-close::before,.popup-box-close::after{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    content: "";
+    width: 1px;
+    height: 16px;
+    margin: -8px 0 0 -0.5px;
+    background-color: #e3e3e3;
+
+}
+.popup-box-close::before{
+    -webkit-transform: rotate(45deg);
+    transform: rotate(45deg);
+}
+.popup-box-close::after{
+    -webkit-transform: rotate(-45deg);
+    transform: rotate(-45deg)
+}
+.popup-box-content-top{
+    border-bottom: 1px dotted #dddddd;
+    padding-bottom: 12px;
+    text-align: center;
+
+}
+.popup-box-content .flight_info,.popup-box-content .time {
+    color: #333;
+
+}
+.popup-box-content .flight_info{
+    font-size: 12px;
+}
+.popup-box-content .airplane_info,.popup-box-content .airport{
+    color: #999;
+    font-size: 10px;
+}
+
+.popup-box-content .airplane_info{
+    margin-top: 8px;
+}
+.popup-box-content-bottom .time{
+    margin-bottom: 6px;
+    font-size: 17px;
+}
+
+.popup-box-content-bottom{
+    margin-top: 10px;
+    text-align: center;
+}
+
+.popup-box-content-bottom view{
+    display: inline-block;
+    text-align: center;
+}
+.popup-box-content-bottom .long_arrow{
+    position: relative;
+    width: 26%;
+    height: 1px;
+    background-color: #ccc;
+    background-size: 200px;
+    margin: 0 12px 16px;
+}
+
+.popup-box-content-bottom .long_arrow::after{
+    position: absolute;
+    right: 0;
+    top: -3px;
+    content: "";
+    display:inline-block;
+    background: url("https://wx.40017.cn/touch/weixin/flight/img/wxapp/wxapp-icons.png?v=2016100601") no-repeat -31px -41px;
+    background-size: 200px;
+    width: 8px;
+    height: 4px;
+}
+
+.long_arrow .stop{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 34px;
+    height: 16px;
+    margin-left: -17px;
+    margin-top: -8px;
+    border: 1px solid #ccc;
+    -webkit-border-radius: 40%/100%;
+    border-radius: 40%/100%;
+    background-color: #fff;
+    font-size: 10px;
+    color: #999;
+}
+
+/* 重新定义一个分割线，因为base中的分割线 after伪元素被占用*/
+.split-top-line::before {
+    content: "";
+    width: 200%;
+    height: 1px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    border-bottom: 1px solid #dcdcdc;
+    -webkit-transform: scale(0.5);
+    transform: scale(0.5);
+    -webkit-transform-origin: 0 0;
+    transform-origin: 0 0;
+    box-sizing: border-box;
+}

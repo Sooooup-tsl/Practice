@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>seajs初次认识</title>
+</head>
+<body>
+	<script src="../sea-modules/sea.js"></script>
+	<script type="text/javascript">
+		seajs.config({
+		  base: "../sea-modules/",
+		  alias: {
+		    "zepto": "zepto/zepto.min.js"
+		  }
+		});
+
+		// 加载入口模块
+		//seajs.use("static/main.js");
+		seajs.use("static/main.js", function(a){
+			a.init()
+		})
+	</script>
+	<script type="text/javascript">
+		// 所有模块都通过 define 来定义
+		define(function(require, exports, module) {
+
+		  // 通过 require 引入依赖
+		  var $ = require('zepto');
+		  var Spinning = require('./main');
+		  // 通过 exports 对外提供接口
+		  //exports.doSomething = ...
+
+		  // 或者通过 module.exports 提供整个接口
+		  ///module.exports = ...
+
+		});
+	</script>
+</body>
+</html>

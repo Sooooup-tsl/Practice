@@ -1,0 +1,36 @@
+{
+  "pages":[
+      "page/home/usecar/index",
+    "pages/useCar/useCar/useCar",
+    "pages/map/map",
+    "pages/index/index",
+    "pages/location/location",
+    "pages/useCar/addressList/addressList",
+    "pages/common/city/city",
+    "pages/common/calendar/calendar",
+    "pages/webSocket/webSocket",
+    "pages/calc/calc",
+    "pages/history/history", 
+    "pages/list/list",
+    "pages/key/index",
+    "pages/image/image",
+    "pages/logs/logs"
+  ],
+  "window":{
+    "backgroundTextStyle":"light",
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTitleText": "WeChat",
+    "navigationBarTextStyle":"black"
+  },
+  "tabBar": {
+    "color": "red",
+    "selectedColor": "green",
+    "list": [{
+      "pagePath": "pages/index/index",
+      "text": "首页"
+    },{
+      "pagePath": "pages/index/index",
+      "text": "测试页"
+    }]
+  }
+}

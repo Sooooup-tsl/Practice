@@ -1,0 +1,63 @@
+/*@import "../../../styles/base.wxss";*/
+.mail {
+    height: 100%;
+    background-color: #efeff4;
+    font-size: 14px;
+}
+.mail ul {
+    padding-left: 15px;
+    background-color: #fff;
+}
+.mail li {
+    height: 45px;
+    padding-right: 15px;
+    line-height:45px;
+    color: #333;
+}
+.mail li label {
+    display: inline-block;
+    height: 45px;
+    width: 100%;
+}
+
+.mail li label input, .mail li label .input {
+    display: inline-block;
+    margin-left: 16px;
+    height: 45px;
+    width: 75%;
+    line-height: 45px;
+    color: #666;
+    vertical-align: middle;
+}
+
+.mail li label .placeholder, .mail li label input.placeholder, .mail li label .input.placeholder {
+    color: #cecece;
+}
+
+.mail li label picker {
+    display: inline-block;
+    width: 75%;
+}
+.mail li label picker .input {
+    width: 100%;
+}
+.save_btn {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    background-color: #28c54d;
+    height: 50px;
+    color: #fff;
+    text-align: center;
+    line-height: 50px;
+    font-size: 16px;
+}
+
+.save_btn_disable {
+    background-color: #aee5bb;
+}
+
+.save_btn:active {
+    background-color: #20bb45;
+}

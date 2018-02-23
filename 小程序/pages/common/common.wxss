@@ -1,0 +1,271 @@
+/*flex布局*/
+.flex {
+    -webkit-box-align: center;
+    align-items: center;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+    flex-direction: row;
+    -webkit-box-pack: justify;
+    justify-content: space-between;
+    display: -webkit-box;
+    display: flex;
+    box-sizing: border-box;
+}
+
+/*.flex-row {
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+    flex-direction: row;
+}
+
+.flex-center {
+    -webkit-box-align: center;
+    align-items: center;
+}*/
+
+.flex-g-1 {
+    -webkit-box-flex: 1;
+    flex: 1;
+}
+
+.flex-g-2 {
+    -webkit-box-flex: 2;
+    flex: 2;
+}
+
+/*元素隐藏显示*/
+.hide {
+    display: none !important;
+}
+
+.show {
+    display: block !important;
+}
+
+/*文本相关*/
+
+/*不换行加...*/
+.t-ellipsis, .t-ellipsis-2{
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+.t-ellipsis {
+    white-space: nowrap;
+}
+
+.t-ellipsis-2 {
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+}
+
+/*文字左*/
+.tl {
+    text-align: left;
+}
+/*文字居中*/
+.tc {
+    text-align: center;
+}
+/*文字右*/
+.tr {
+    text-align: right;
+}
+/*两端对齐*/
+.tj {
+    text-align: justify;
+}
+
+/*浮动*/
+/*左浮*/
+.pl {
+    float: left;
+}
+/*右浮*/
+.pr {
+    float: right;
+}
+
+/*清除浮动*/
+.clear:before,
+.clear:after {
+    display: table;
+    content: ' ';
+}
+.clear:after {
+    clear: both;
+}
+
+/*公共颜色*/
+.c-base{
+    color: #fff;
+}
+
+.bg-base{
+    background: #fff;
+}
+
+/*字体*/
+.fs-10 {
+    font-size: 10px;
+}
+.fs-12 {
+    font-size: 12px;
+}
+.fs-14 {
+    font-size: 14px;
+}
+.fs-16 {
+    font-size: 16px;
+}
+.fs-18 {
+    font-size: 18px;
+}
+.fs-20 {
+    font-size: 20px;
+}
+.fs-22 {
+    font-size: 22px;
+}
+.box-s{
+    box-sizing: border-box;
+}
+.ff-a{
+    font-family: Arial;
+}
+/*黄色*/
+.color-1th {
+    color: #ff5346;
+}
+/*绿色*/
+.color-2th {
+    color: #09bb07;
+}
+.color-3th {
+    color: #000;
+}
+.color-4th {
+    color: #333;
+}
+.color-5th {
+    color: #888;
+}
+.color-6th {
+    color: #b2b2b2;
+}
+.bus-icon, .item-delete::after{
+    background: url(http://img1.40017.cn/touch/bus/wx_bus/wxxcx.png) no-repeat;
+    background-size: 375px 375px;
+}
+
+.swap-btn {
+    width: 20%;
+    height: 70rpx;
+    margin-top: 15px;
+    border: 0;
+}
+
+.swap-btn.change-train {
+    background: url("http://wx.40017.cn/touch/weixin/wx-small-app/public/changetrain.png") no-repeat 49% 0;
+    background-size: contain;
+}
+
+
+.swap-btn.change-flight {
+    background: url("http://wx.40017.cn/touch/weixin/wx-small-app/public/changeflight.png") no-repeat 49% 0;
+    background-size: contain;
+}
+
+.swap-btn.change-bus {
+    background: url("http://wx.40017.cn/touch/weixin/wx-small-app/public/changebug.png") no-repeat 49% 0;
+    background-size: contain;
+}
+
+
+
+.search-box{
+  /*margin-top: 20px;*/
+  background-color: #fff;
+}
+.city-bar{
+  box-sizing: border-box;
+  width: 100%;
+}
+.city-inner{
+  width: 100%;
+  padding: 16px 15px;
+  border-bottom: 1px solid #E5E5E5;
+}
+.city-from,
+.city-to{
+  width: 40%;
+}
+.label-from,
+.label-to{
+  margin-bottom: 12px;
+  font-size: 13px;
+  color: #bfbfbf;
+}
+.text-from,
+.text-to{
+  color: #333;
+}
+/*.label-to,
+.text-to{
+  text-align: right;
+}*/
+/*.swap-btn{
+  width: 20%;
+  height: 70rpx;
+  margin-top: 15px;
+  background: url("http://file.40017.cn/huochepiao/train_weapp/change-fs9.png") no-repeat 49% 0;
+  background-size: contain;
+  border:0;
+}*/
+.calendar-bar{
+  position: relative;
+  padding: 15px;
+  font-size: 17px;
+  border-bottom: 1px solid #E5E5E5;
+}
+.label-calendar{
+  color: #888888;
+}
+
+.choose-date,
+.choose-diff,
+.choose-week{
+  display:inline-block;
+  margin-left:13px;
+}
+
+.choose-date{
+    color: #333;
+}
+
+.choose-diff,
+.choose-week{
+  color: #999;
+}
+
+.search-bar{
+  border-bottom: 1px solid #E5E5E5;
+  padding: 0px 30rpx;
+}
+
+.search-btn {
+  margin: 15px 0;
+}
+
+button.search-btn{
+  width: 100%;
+  border: 0;
+  color: #fff;
+  height: 44px;
+  line-height: 44px;
+  font-size: 18px;
+  background-color: #08BB06;
+}
+button.search-btn:active{
+  background-color: #079606;
+}

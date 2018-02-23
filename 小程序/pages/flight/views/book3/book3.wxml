@@ -1,0 +1,54 @@
+<view class="flight" wx-if="{{flgihtdetail&&flgihtdetail.length > 0}}">
+    <view class="order-money border-bottom">
+        <text>订单总额</text>¥{{flight.CustomerShouldPay}}
+    </view>
+    <view class="order-info">
+        <view class="content border-bottom border-top">
+            <view class="flight-info border-bottom">
+                <view class="flgihtno">
+                    <text>{{flgihtdetail[0].FlyOffDate}}</text>
+                    <text>{{flgihtdetail[0].Week}}</text>
+                    <text>{{flgihtdetail[0].FlightNo}}</text>
+                </view>
+                <view class="flight-date">
+                    <view class="air left">
+                        <text>{{flgihtdetail[0].StartTime}}</text>
+                        <text>{{flgihtdetail[0].StartPortName}} {{flgihtdetail[0].StartPortFloor}}</text>
+                    </view>
+                    <view class="center">
+                        <view class="arrow-main"></view>
+                    </view>
+                    <view class="air right">
+                        <text>{{flgihtdetail[0].EndTime}}</text>
+                        <text>{{flgihtdetail[0].EndPortName}} {{flgihtdetail[0].EndPortFloor}}</text>
+                    </view>
+                    <text class="jinting" wx:if="{{flgihtdetail[0].StopNum > 0}}">经停 {{flgihtdetail[0].StopCity}}</text>
+                </view>
+            </view>
+            <view class="passger-list border-bottom">
+                <block wx:for="{{passgerlist}}" wx:key="index">
+                    <view class="passger-info {{index + 1 == passgerlist.length?'last':''}}">
+                        <text class="passger-tt" wx:if="{{passgerlist.length > 1}}">乘机人{{index + 1}}</text>
+                        <text class="passger-tt" wx:else>乘机人</text>
+                        <view class="passger-detail {{index + 1 == passgerlist.length?'':'border-bottom'}}">
+                            <view><text>{{item.PassengerName}}</text><text>({{item.PassengerTypeName}})</text></view>
+                            <view><text>{{item.CertName}}/{{item.CertNo}}</text><text wx:if="{{item.Gender == 1}}">(男)</text><text wx:else>(女)</text></view>
+                        </view>
+                    </view>
+                </block>            
+            </view>
+            <view class="phone">
+                <text>联系手机</text>
+                <text>{{flgihtdetail[0].LinkMobile}}</text>
+            </view>
+        </view>
+    </view>
+    <view class="bottom-pay">
+        <button bindtap="{{deadTime <= 0?'':'wxPay'}}" class="{{deadTime <= 0?'gray':''}}">微信支付</button>
+        <view class="{{deadTime <= 0 || arrTime.length <= 0?'none':''}}">价格实时变动，剩余支付时间<text>{{arrTime[0]}}</text><text>{{arrTime[1]}}</text>:<text>{{arrTime[2]}}</text><text>{{arrTime[3]}}</text></view>
+        <view class="expired {{deadTime <= 0?'':'none'}}">订单已失效</view>
+    </view>
+</view>
+<!--<modal title="温馨提示" no-cancel="true" confirm-text="{{modalConfirm}}" hidden="{{modalHidden}}" bindconfirm="modalChange" bindcancel="modalChange">-->
+ <!--{{modalContent}}-->
+<!--</modal>-->

@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, user-scalable=no,initial-scale=1, minimum-scale=1, maximum-scale=1">
+	<title>vue watch</title>
+</head>
+<body>
+	<div id="demo" v-demo:hello.a.b="msg"></div>
+	<div id="color" v-demo-directive:LightSlateGray="msg"></div>
+</body>
+<script type="text/javascript" src="vue.js"></script>
+<script type="text/javascript">
+
+Vue.directive("demo",{
+	bind: function(){
+		console.log("demo bound")
+	},
+	/*el: 指令绑定的元素。
+	vm: 拥有该指令的上下文 ViewModel。
+	expression: 指令的表达式，不包括参数和过滤器。
+	arg: 指令的参数。
+	name: 指令的名字，不包含前缀。
+	modifiers: 一个对象，包含指令的修饰符。
+	descriptor: 一个对象，包含指令的解析结果。*/
+	update: function(value){
+		this.el.innerHTML =
+		'name - '       + this.name + '<br>' +
+		'expression - ' + this.expression + '<br>' +
+		'argument - '   + this.arg + '<br>' +
+		'modifiers - '  + JSON.stringify(this.modifiers) + '<br>' +
+		'value - '      + value + '<br>' + 
+		'descriptor - ' + JSON.stringify(this.descriptor)
+  }
+})
+Vue.directive('demo-directive',{
+	//bind: 仅调用一次，当指令第一次绑定元素的时候
+	bind: function(){
+		this.el.style.color = 'red';
+		this.el.style.backgroundColor = this.arg
+	},
+	 //第一次是紧跟在 bind之后调用，获得的参数是绑定的初始值；以后每当绑定的值发生变化就会被调用，获得新值与旧值两个参数
+	update: function(value){
+		this.el.innerHTML = value
+	},
+	unbind: function(){
+		// 比如移除在 bind() 中添加的事件监听器
+	}
+})
+var vmm = new Vue({
+	el: "#color",
+	data: {
+		msg: "hello"
+	}
+})
+var vm = new Vue({
+	el: "#demo",
+	data: {
+		msg: "world"
+	}
+})
+</script> 
+</html>

@@ -1,0 +1,6 @@
+<!--pages/image/image.wxml-->
+<view class="classname">图片上传</view>
+<button bindtap="uploadImage">上传</button>
+<view class="classname">
+    <image src="{{itemName}}" class="imageItem" wx:for="{{imageInfo}}" wx:for-item="itemName"></image>
+</view>

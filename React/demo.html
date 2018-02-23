@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<meta name="viewport" content="width=device-width,height=device-height, user-scalable=no,initial-scale=1, minimum-scale=1, maximum-scale=1">
+</head>
+<body>
+	<script type="text/javascript">
+(function(){
+	var str
+	var aaa="aaa"
+	var o = {
+		geto:function(str){
+			document.write(str)
+		},
+		seto:function (str){
+			o.geto(str);
+		}
+	}
+	o.seto("bbb");
+})()
+
+</script>
+</body>
+</html>

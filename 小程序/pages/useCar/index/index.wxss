@@ -1,0 +1,345 @@
+
+#indexPage {
+	padding-bottom: 60px;
+}
+
+/* 通用 */
+.if_btn {
+	width: 94%;
+	width: calc(100% - 30px);
+	height: 44px;
+	line-height:44px;
+	font-size: 18px;
+	color: #FFF;
+	border: 0 none;
+	display: block;
+	margin: 0 auto;
+	-webkit-border-radius: 3px;
+	-moz-border-radius: 3px;
+	border-radius: 3px;
+}
+.if_space15 {
+	display: inline-block;
+	width: 15px;
+	height: 100%;
+	vertical-align: middle;
+}
+.if_line_item {
+	background-color: #FFF7DC;
+	text-align: center;
+}
+.if_line_prompt,
+.if_line_content {
+	height: 30px;
+	line-height: 30px;
+	font-size: 12px;
+	color: #9E8052;
+}
+.if_rp_item {
+	margin-top: 15px;
+	height: 12px;
+	line-height: 12px;
+	color: #666;
+	text-align: center;
+}
+.if_rp_num {
+	display: inline-block;
+	height: 12px;
+	color: #FF5346;
+}
+.if_btn_item {
+	margin-top: 10px;
+}
+/* 接机 */
+#indexFlight {
+	height: 100%;
+}
+.if_banner_box {
+	font-size: 0;
+}
+.if_banner_box image {
+	width: 100%;
+}
+.if_tab_title {
+	background-color: #FFF;
+	border-top: 3px solid #E3E5E8;
+}
+.if_tab_title li {
+	width: 50%;
+	height: 44px;
+	line-height: 44px;
+	text-align: center;
+	font-size: 18px;
+	color: #333;
+	float: left;
+}
+.if_tab_title .if_tab_on {
+	color: #23BEAE;
+	border-bottom: 3px solid #23BEAE;
+}
+.if_sj_number_item,
+.if_jj_number_item,
+.if_jj_departure_item,
+.if_jj_destination_item,
+.if_jj_time_item {
+	background-color: #FFF;
+}
+.if_jj_departure_item {
+	margin-top: 10px;
+	position: relative;
+}
+.if_sj_number,
+.if_jj_number {
+	position: relative;
+	padding: 13px 0 13px 27px;
+	margin-left: 15px;
+}
+.if_sj_number::before,
+.if_jj_number::before {
+	content: '';
+	position: absolute;
+	top: 50%;
+	left: 0;
+	margin-top: -8px;
+	width: 16px;
+	height: 16px;
+	background: url('https://img1.40017.cn/cn/TC_Car/h5/img/common/flightnumber.png?v=2016122901')  no-repeat top center;
+	background-size: 100% 100%;
+}
+.if_jj_num_prompt {
+	height: 18px;
+	line-height: 18px;
+	font-size: 17px;
+	color: #bbb;
+	margin-bottom: 10px;
+}
+.if_jj_num_prompt1 {
+	height: 12px;
+	line-height: 12px;
+	font-size: 12px;
+	color: #bbb;
+	margin-bottom: 0;
+}
+.if_sj_hbh,
+.if_jj_hbh {
+	height: 18px;
+	line-height: 18px;
+	font-size: 17px;
+	color: #333;
+	margin-bottom: 10px;
+}
+.if_sj_num_time,
+.if_jj_num_time {
+	height: 12px;
+	line-height: 12px;
+	font-size: 12px;
+	color: #333;
+}
+.if_sj_departure_item::before,
+.if_jj_number_item::before{
+	content: '';
+	position: absolute;
+	top: 50%;
+	right: 16.5px;
+	margin-top: -5px;
+	width: 8px;
+	height: 8px;
+	border-top: 2px solid #BFBFBF;
+	border-right: 2px solid #BFBFBF;
+	-webkit-transform: rotate(45deg);
+	-moz-transform: rotate(45deg);
+	-ms-transform: rotate(45deg);
+	-o-transform: rotate(45deg);
+	transfrom: rotate(45deg);
+}
+
+.if_jj_destination::after {
+	content: '';
+	position: absolute;
+	top: 50%;
+	right: 16.5px;
+	margin-top: -5px;
+	width: 8px;
+	height: 8px;
+	border-top: 2px solid #BFBFBF;
+	border-right: 2px solid #BFBFBF;
+	-webkit-transform: rotate(45deg);
+	-moz-transform: rotate(45deg);
+	-ms-transform: rotate(45deg);
+	-o-transform: rotate(45deg);
+	transfrom: rotate(45deg);
+}
+.if_jj_departure p,
+.if_jj_destination p {
+	font-size: 17px;
+}
+.if_jj_departure_content,
+.if_jj_destination_content {
+	color: #bbb;
+}
+.if_jj_departure_content.color333,
+.if_jj_destination_content.color333 {
+	color: #333;
+}
+.if_jj_number_item {
+	position: relative;
+}
+.if_sj_number_item {
+	margin-bottom: 10px;
+}
+.if_jj_time::before {
+	content: '';
+	position: absolute;
+	top: 50%;
+	left: 15px;
+	width: 15px;
+	height: 15px;
+	margin-top: -7.5px;
+	background: url('https://img1.40017.cn/cn/TC_Car/h5/img/common/datetime.png?v=2017031301') no-repeat;
+    background-size: 100%;
+}
+.if_jj_time_content {
+	font-size: 17px;
+	color: #333;
+}
+.if_jj_time_prompt {
+	font-size: 17px;
+	color: #bbb;
+}
+/* 送机 */
+.if_sj_departure_item,
+.if_sj_destination_item,
+.if_sj_time_item {
+	background-color: #FFF;
+	position: relative;
+}
+.if_sj_time_item {
+	margin-top: 10px;
+}
+.if_sj_destination,
+.if_jj_destination,
+.if_sj_time,
+.if_jj_time {
+	position: relative;
+	padding: 16px 23px 16px 43px;
+}
+
+.if_sj_departure,
+.if_jj_departure {
+	position: relative;
+	padding: 16px 23px 16px 0px;
+	margin-left: 43px;
+}
+.if_sj_destination::after,
+.if_sj_time::after {
+	content: '';
+	position: absolute;
+	top: 50%;
+	right: 16.5px;
+	margin-top: -5px;
+	width: 8px;
+	height: 8px;
+	border-top: 2px solid #BFBFBF;
+	border-right: 2px solid #BFBFBF;
+	-webkit-transform: rotate(45deg);
+	-moz-transform: rotate(45deg);
+	-ms-transform: rotate(45deg);
+	-o-transform: rotate(45deg);
+	transfrom: rotate(45deg);
+}
+.if_sj_departure::before,
+.if_jj_departure::before {
+	content: '';
+	position: absolute;
+	top: 50%;
+	left: -23px;
+	width: 7px;
+	height: 7px;
+	margin-top: -3.5px;
+	background: url('https://img1.40017.cn/cn/TC_Car/h5/img/common/startAddress.png?v=2017031401') no-repeat top center;
+    background-size: 100%;
+}
+.if_sj_destination::before,
+.if_jj_destination::before {
+	content: '';
+	position: absolute;
+	top: 50%;
+	left: 20px;
+	width: 7px;
+	height: 7px;
+	margin-top: -3.5px;
+	background: url('https://img1.40017.cn/cn/TC_Car/h5/img/common/endAddress.png?v=2017031401') no-repeat;
+    background-size: 100%;
+}
+.if_sj_time::before {
+	content: '';
+	position: absolute;
+	top: 50%;
+	left: 15px;
+	width: 15px;
+	height: 15px;
+	margin-top: -7.5px;
+	background: url('https://img1.40017.cn/cn/TC_Car/h5/img/common/datetime.png?v=2017031401') no-repeat;
+    background-size: 100%;
+}
+.if_sj_departure_content,
+.if_sj_destination_content,
+.if_sj_time_content {
+	font-size: 17px;
+	color: #bbb;
+}
+.if_sj_departure_content.color333,
+.if_sj_destination_content.color333,
+.if_sj_time_content.color333 {
+	color: #333;
+}
+/* 底部 */
+.if_foot_box {
+	position: fixed;
+	background-color: #FFF;
+	bottom: 0;
+	left:0;
+	width: 100%;
+}
+.if_foot_list {
+	display: -webkit-flex;
+	display: flex;
+}
+.if_foot_item {
+	-webkit-flex-grow: 1;
+    flex-grow: 1;
+    padding: 32px 0 10px;
+    font-size: 0;
+    text-align: center;
+    position: relative;
+}
+.if_foot_item p {
+	height: 12px;
+    line-height: 12px;
+    font-size: 12px;
+    color: #666;
+}
+.if_foot_rp image {
+	position: absolute;
+    bottom: 28.5px;
+    left: 50%;
+    width: 25px;
+    height: 16px;
+    margin-left: -12.5px;
+}
+.if_foot_kefu image {
+	position: absolute;
+    bottom: 28.5px;
+    left: 50%;
+    width: 19px;
+    height: 19px;
+    margin-left: -9.5px;
+}
+.if_foot_order image {
+	position: absolute;
+    bottom: 28.5px;
+    left: 50%;
+    width: 16px;
+    height: 16px;
+    margin-left: -8px;
+}

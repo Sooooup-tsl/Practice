@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+    <script src="https://unpkg.com/vue/dist/vue.js"></script>
+    <script src="https://unpkg.com/vue-router/dist/vue-router.js"></script>
+</head>
+<body>
+	<div id='app'>
+		<router-link to='/foo'>got to foo</router-link>
+		<router-link to='/bar'>got to bar</router-link>
+
+		<router-view></router-view>
+	</div>
+</body>
+<script type="text/javascript">
+	const Foo = {template: '<div>foo</div>'}; 
+	const Bar = {template: '<div>bar</div>'}; 
+
+	const routes = [{
+		path: '/foo',
+		component: Foo
+	}, {
+		path: '/bar',
+		component: Bar
+	}]
+
+	const router = new VueRouter({
+		routes
+	})
+
+	const app = new Vue({
+		el: '#app',
+		router: router
+	})
+</script>	
+</html>

@@ -1,0 +1,223 @@
+@import "baseCss.wxss";
+.ui-select2 {
+	z-index: 1002;
+	margin: 0 auto;
+	position: fixed;
+	bottom: -260px;
+	left: 0;
+	display: none;
+	font: 14px/1.5 "\5fae\8f6f\96c5\9ed1","Microsoft YaHei","Hiragino Sans GB",Arial
+}
+
+.ui-select2 .ui-select2-c {
+	margin: 0 auto;
+	width: 90%
+}
+
+.ui-select2 .ui-select2-c-top {
+	width: 100%
+}
+
+.clearfix:after,.clearfix:before {
+	display: table;
+	content: ""
+}
+
+.clearfix:after {
+	clear: both
+}
+
+.ui-select2-bg {
+	position: fixed;
+	top: 0;
+	left: 0;
+	background: #333;
+	opacity: 0;
+	display: none;
+	z-index: 1001;
+	width: 100%;
+	height: 100%
+}
+
+.ui-select2-bg {
+	-webkit-user-select: none;
+	-webkit-tap-highlight-color: rgba(255,255,255,0);
+	-webkit-transform: translateZ(0);
+	-webkit-user-drag: none
+}
+
+.ui-select2 .select2-content,.ui-select2 .ui-select2-c>.select2-cancel,.ui-select2 .ui-select2-c>.select2-ok {
+	background: #fff
+}
+
+.ui-select2 li {
+	list-style: none;
+	height: 45px;
+	line-height: 45px;
+	text-align: center
+}
+
+.ui-select2 .ui-select2-c>.select2-cancel,.ui-select2 .ui-select2-c>.select2-ok {
+	margin: 10px auto;
+	display: block;
+	text-align: center;
+	height: 45px;
+	line-height: 45px;
+	width: 100%;
+	color: #46d264;
+	border-radius: 5px
+}
+
+.ui-select2 .ui-select2-c h3:after,.ui-select2 .ui-select2-c>.select2-ok:after {
+	height: 1px;
+	position: absolute;
+	width: 100%;
+	content: ''
+}
+
+.select2-title-content {
+	background: #0b3c39
+}
+
+.ui-select2 .ui-select2-c .select2-title-content h3 {
+	background: #0b3c39;
+	color: #fff;
+	margin: auto 50px;
+	overflow: hidden;
+	white-space: nowrap;
+	text-overflow: ellipsis
+}
+
+.select2-title-content .select2-cancel,.select2-title-content .select2-ok {
+	position: absolute;
+	top: 50%;
+	left: 0;
+	color: #fff;
+	padding: 5px 10px;
+	transform: translateY(-50%);
+	-webkit-transform: translateY(-50%);
+	z-index: 2
+}
+
+.select2-title-content .select2-ok {
+	left: auto;
+	right: 0
+}
+
+.ui-select2 .ui-select2-c>.select2-ok {
+	margin: 0;
+	border-radius: 0 0 5px 5px
+}
+
+.ui-select2 .ui-select2-c>.select2-ok:after {
+	border-bottom: 1px solid #e1e1e1;
+	top: -1px;
+	right: 0;
+	transform: scaleY(.5);
+	-webkit-transform: scaleY(.5)
+}
+
+.ui-select2 .ui-select2-c h3 {
+	background: #fff
+}
+
+.ui-select2 .ui-select2-c h3:after {
+	background: #e1e1e1;
+	left: 0;
+	bottom: 0;
+	transform: scaleY(.5);
+	-webkit-transform: scaleY(.5)
+}
+
+.ui-select2 .select2-content {
+	display: block;
+	position: relative;
+	border-radius: 0;
+	z-index: 20;
+	overflow: hidden
+}
+
+.ui-select2 .select2-collect,.ui-select2 .ui-select2-c h3 {
+	border-radius: 5px 5px 0 0
+}
+
+.ui-select2 .select2-content ul,.ui-select2 .select2-open-con .select2-select,.ui-select2 .select2-select {
+	border-radius: 0 0 5px 5px
+}
+
+.ui-select2 .ui-select2-c h3 {
+	text-align: center;
+	font-size: 16px;
+	height: 42px;
+	line-height: 42px;
+	color: #333
+}
+
+.ui-select2 .select2-content ul {
+	width: 100%
+}
+
+.ui-select2 .select2-content ul li {
+	width: 100%;
+	border-radius: 5px;
+	height: 35px;
+	line-height: 35px
+}
+
+.select2-ul {
+	height: 105px;
+	overflow: hidden
+}
+
+.select2-larger .select2-ul {
+	height: 175px
+}
+
+.ui-select2 .select2-content p {
+	height: 35px;
+	border-color: #ccc;
+	position: absolute;
+	top: 50%;
+	left: 0;
+	width: 100%;
+	border-top: 1px solid #ddd;
+	border-bottom: 1px solid #ddd;
+	margin-top: -19px;
+	pointer-events: none
+}
+
+.ui-select2 table {
+	width: 100%
+}
+
+.ui-select2 table li span {
+	display: block;
+	min-width: 32px
+}
+
+body .city-select2-pro table td {
+	width: 100%
+}
+
+body .city-select2-city table td {
+	width: 50%
+}
+
+.ui-select2 .select2-content ul .actives {
+	font-size: 16px
+}
+
+.ui-select2 .select2-ul-mask:after {
+	content: '';
+	position: absolute;
+	z-index: 3;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	pointer-events: none;
+	background: linear-gradient(#fff 0,rgba(245,245,245,0) 52%,rgba(245,245,245,0) 48%,#fff 100%);
+	background: -webkit-gradient(linear,left bottom,left top,from(#fff),color-stop(.52,rgba(245,245,245,0)),color-stop(.48,rgba(245,245,245,0)),to(#fff));
+	background: -webkit-linear-gradient(#fff 0,rgba(245,245,245,0) 52%,rgba(245,245,245,0) 48%,#fff 100%);
+	background: -moz-linear-gradient(#fff 0,rgba(245,245,245,0) 52%,rgba(245,245,245,0) 48%,#fff 100%)
+}

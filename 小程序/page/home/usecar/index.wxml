@@ -1,0 +1,2 @@
+<!--page/home/usecar/index.wxml-->
+<web-view src="http://10.101.66.45:3000/view/main.html?code=oOCyauBMJdRPl2g71L1zbn9JyA_4&logintype=wx#/useCar"></web-view>

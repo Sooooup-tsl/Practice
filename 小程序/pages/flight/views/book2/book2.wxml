@@ -1,0 +1,308 @@
+<view class="booking">
+  <!-- 航班及退改 start -->
+  <view class="section border-bottom">
+    <view class="flight section arrow-icon" bindtap="showFlightInfo">
+      <view class="flight-info">{{flightInfo.flyDate}} {{flightInfo.flyWeek}} {{flightInfo.flyOffOnlyTime}} {{flightInfo.flightNo}}</view>
+      <view class="flight-airport">
+        {{flightInfo.otsn}}{{flightInfo.boardPoint}} — {{flightInfo.atsn}}{{flightInfo.offPoint}}
+      </view>
+    </view>
+    <view class="refundchange split-top arrow-icon-price" bindtap="showRefundInfo">
+      <view class="ticketprice">成人票：<text>¥{{flightInfo.cabins[0].clientTicketPrice}}</text>/人</view>
+      <view class="refundchange-price clearfix">
+        <block wx:if="{{refundChange.refundLowestPrice != -1 && refundChange.changeLowestPrice != -1 }}">
+          <view class="refundprice">退票费：<text>¥{{refundChange.refundLowestPrice}}</text>起</view>
+          <view class="changeprice">改签费：<text>¥{{refundChange.changeLowestPrice}}</text>起</view>
+          <view class="changeprice">机建燃油费：<text>¥{{price.building + price.fuel}}</text></view>
+        </block>
+        <view class="refundprice" wx:if="{{refundChange.refundLowestPrice < 0 || refundChange.changeLowestPrice < 0}}">退改签规则请查看更多详情</view>
+        <!-- <view class="moreinfo" bindtap="showRefundInfo"><span>更多详情</span></view> -->
+      </view>
+    </view>
+  </view>
+  <!-- 航班及退改 end -->
+  <view class="passenger section mt6 border-top border-bottom">
+    <view class="passenger-top">
+      <strong>乘机人</strong>
+      <block wx:if="{{passengers.length}}">
+        <span wx:if="{{adultNum && childrenNum}}">{{adultNum}}成人+{{childrenNum}}儿童</span>
+        <span wx:if="{{!childrenNum && adultNum}}">{{adultNum}}成人</span>
+        <span wx:if="{{childrenNum && !adultNum}}">{{childrenNum}}儿童</span>
+      </block>
+      <view class="addpass" bindtap="addPassenger"><span>添加乘机人</span></view>
+    </view>
+    <block wx:if="{{passengers.length}}">
+      <view class="passenger-info split-top-line arrow-icon" wx:for="{{passengers}}" wx:key="index">
+        <view data-index="{{index}}" class="passenger-info-icon {{ passengerActive[index] ? 'passenger-info-icon_rotate' : '' }}" catchtap="showDelBtn"></view>
+        <view class="passenger-info-des" data-index="{{index}}" bindtap="editPassenger">
+          <strong>{{item.name}} （{{item.passengertype === '1' ? '成人票' : '儿童票'}}）</strong>
+          <p>{{item.cardtype}}：{{item.cardno}}</p>
+        </view>
+        <view data-index="{{index}}" class="passenger-info-del {{ passengerActive[index] ? 'passenger-info-del_show' : ''}}" catchtap="delPassenger"></view>
+      </view>
+    </block>
+  </view>
+
+  <view class="section mobile mt6 clearfix border-top border-bottom">
+    <span>手机号</span>
+    <input type="number" placeholder="用于接收通知短信" value="{{mobileNum}}" maxlength="11" bindinput="getMobileNum" />
+  </view>
+
+  <view class="section mt6 border-top border-bottom" wx:if="{{insuList.length}}">
+    <block wx:if="{{accidentInsu.price}}">
+      <view class="panel_checkable clearfix">
+        <view class="panel_checkable-info">
+          <view>
+            <strong class="panel_checkable-info-icon" bindtap="showAccidentInfo"><span>{{accidentInsu.name}}</span></strong><span>¥{{accidentInsu.price}}/人</span><i wx:if="{{accidentInsu.isBuy && (adultNum + childrenNum) > 0}}">×{{adultNum + childrenNum}}</i>
+          </view>
+          <p wx:if="{{accidentInsu.isBuy}}">{{accidentInsu.des[0]}}</p>
+          <p wx:else>{{accidentInsu.des[1]}}</p>
+        </view>
+        <switch data-type="{{accidentInsu.type}}" checked="{{accidentInsu.isBuy ? true : false}}" bindchange="insuSelect" />
+      </view>
+    </block>
+  </view>
+
+  <!-- 报销凭证 start -->
+  <view class="section mt6 border-top border-bottom" wx:if="mailConfig.isCanMail">
+    <view class="panel_checkable clearfix">
+      <view class="panel_checkable-info">
+        <view><strong><span>报销凭证</span></strong><span>¥{{mailConfig.mailSendFee}}</span></view>
+        <p wx:if="{{ (mailConfig.mailContent == 0) && !accidentInsu.isBuy }}">行程单</p>
+        <p wx:if="{{ (mailConfig.mailContent == 1) && !accidentInsu.isBuy}}">套餐发票</p>
+        <p wx:if="{{ (mailConfig.mailContent == 0) && accidentInsu.isBuy}}">行程单 + 保险发票</p>
+        <p wx:if="{{ (mailConfig.mailContent == 1) && accidentInsu.isBuy}}">套餐发票 + 保险发票</p>
+      </view>
+      <switch bindchange="mailSelect" checked="{{isNeedMail}}" />
+    </view>
+    <view class="mail" wx:if="{{isNeedMail}}">
+      <view class="mail-method split-top">
+        <view class="mail-title">配送方式</view>
+        <view class="mail-content">
+          <p class="mail-method-name">{{mailConfig.mailDescription}}</p>
+          <p class="mail-method-des">预计{{mailConfig.arriveDate}}送达</p>
+        </view>
+      </view>
+      <view class="mail-address split-top" bindtap="showMailAdress">
+        <view class="mail-title">配送地址</view>
+        <view class="mail-content">
+          <block wx:if="{{mailInfo}}">
+            <view class="mail-address-name arrow-icon">
+              <p>{{mailInfo.name}}（收）</p>
+              <p>{{mailInfo.mobile}}</p>
+            </view>
+            <p class="mail-address-des">{{mailInfo.province}}{{mailInfo.city}} {{mailInfo.region}} {{mailInfo.street}}</p>
+          </block>
+          <block wx:if="{{!mailInfo}}">
+            <view class="mail-address-name arrow-icon">
+              <p class="mail-address-name-none">点击编辑收货地址</p>
+            </view>
+          </block>
+        </view>
+      </view>
+      <view class="mail-thing split-top">
+        <view class="mail-title">配送内容</view>
+        <view class="mail-content">
+          <view class="mail-thing-name">
+            <p wx:if="{{mailConfig.mailContent == 1}}">套餐发票</p>
+            <p wx:if="{{mailConfig.mailContent == 0}}">行程单</p>
+            <p wx:if="{{accidentInsu.isBuy}}">保险发票</p>
+          </view>
+        </view>
+      </view>
+      <view class="invoice-main split-top"  wx:if="{{mailConfig.mailContent == 1}}">
+        <view class="mail-invoice">
+          <view class="invoice-title">发票抬头</view>
+          <view class="invoice-type">
+              <span data-type="company" class="{{isCompanyTitle&&isShowInvoice?'active':''}}" bindtap="selectInvoiceType">公司</span>
+              <span data-type="person" class="person {{(!isCompanyTitle)&&isShowInvoice?'active':''}}" bindtap="selectInvoiceType">个人</span>
+          </view>
+        </view>
+        <view class="invoice-write" wx:if="{{isShowInvoice}}">
+          <view wx:if="{{isCompanyTitle}}">
+            <view class="input-side">
+                <input type="text" data-id="1" value="{{invoiceCompTitle}}" bindchange="getInvoice" placeholder="请输入公司发票抬头"/>
+            </view>
+            <view class="input-side">
+                <input type="text" bindchange="getIdentifier" value="{{customerIdentifier}}" maxlength="30" placeholder="纳税人识别号或信用代码(限字母与数字)"/>
+            </view>
+          </view>
+          <view wx:if="{{!isCompanyTitle}}">
+            <view class="input-side">
+                <input type="text" data-id="2" value="{{invoicePerTitle}}" bindchange="getInvoice" placeholder="请输入个人发票抬头"/>
+            </view>
+          </view>
+        </view>
+      </view>
+       <!--<view class="mail-invoice split-top"  wx:if="{{mailConfig.mailContent == 1}}">
+        <view class="mail-title">发票抬头</view><input type="text" value="{{invoiceTitle}}" placeholder="请输入发票抬头" bindinput="getInvoice" />
+      </view>-->
+    </view>
+  </view>
+  <!-- 报销凭证 end -->
+  <view class="agreement">
+    <p>我已阅读:</p>
+    <p class="agreement-info" bindtap="showAgreeInfo">关于民航乘客携带锂电及危险品乘机的限制性公告</p>
+  </view>
+  <!-- 金额明细 start -->
+  <view class="mask" wx-if="{{show.priceInfo}}" id="priceMask" catchtap="hidePriceMask">
+    <view class="price_detail">
+      <p>金额明细</p>
+      <view class="price_detail-ticket section border-top border-bottom">
+        <ul class="adult_price {{childrenNum ? '' : 'non-border-bottom'}}" wx:if="{{adultNum}}">
+          <li><span class="price_detail-item">成人票</span><span class="price_detail-price">¥{{price.adult}}</span><span>x{{adultNum}}人</span></li>
+          <li><span class="price_detail-item">机建+燃油</span><span class="price_detail-price">¥{{price.building + price.fuel}}</span><span>x{{adultNum}}人</span></li>
+        </ul>
+        <ul wx:if="{{childrenNum}}">
+          <li><span class="price_detail-item">儿童票</span><span class="price_detail-price">¥{{price.children}}</span><span>x{{childrenNum}}人</span></li>
+          <li><span class="price_detail-item">机建+燃油</span><span class="price_detail-price">¥{{price.cFuel}}</span><span>x{{childrenNum}}人</span></li>
+        </ul>
+      </view>
+      <view class="price_detail-others section border-top mt6" wx:if="{{accidentInsu.isBuy || isNeedMail}}">
+        <ul>
+          <li wx:if="{{accidentInsu.isBuy}}"><span class="price_detail-item">航班意外险</span><span class="price_detail-price">¥{{accidentInsu.price}}</span><span>x{{adultNum + childrenNum}}份</span></li>
+          <li wx:if="{{isNeedMail}}"><span class="price_detail-item">邮寄费</span><span class="price_detail-price">¥{{mailConfig.mailSendFee}}</span></li>
+        </ul>
+      </view>
+    </view>
+  </view>
+  <!-- 金额明细 end -->
+  <view class="bottom_bar">
+    <view class="total_price {{show.priceInfo ? 'total_price_up' : ''}}" bindtap="showPriceInfo">总额：<text>¥{{ totalPrice ? totalPrice : '---'}}</text></view>
+    <view class="submit_btn" bindtap="submitOrder">提交订单</view>
+  </view>
+
+</view>
+
+<!-- 航班信息弹窗 start -->
+<view class="popup" wx:if="{{show.flightInfo}}">
+  <view class="popup-box">
+    <view class="popup-box-content">
+      <view class="popup-box-content-top">
+        <p class="flight_info">{{flightInfo.airCompanyName}}{{flightInfo.flightNo}}　{{flightInfo.flyDateDot}}　{{flightInfo.flyWeek}}</p>
+        <p class="airplane_info"><span wx:if="{{flightInfo.fRateInt}}">准点率{{flightInfo.fRateInt}}%</span>　<span>{{flightInfo.mfg}}餐食</span>　<span>{{flightInfo.CraftName}}({{flightInfo.ACPlaneType}}型机)</span></p>
+      </view>
+      <view class="popup-box-content-bottom">
+        <view>
+          <p class="time">{{flightInfo.flyOffOnlyTime}}</p>
+          <p class="airport">{{flightInfo.otsn}}{{flightInfo.boardPoint}}</p>
+        </view>
+        <view class="long_arrow">
+          <view class="stop" wx:if="{{flightInfo.stopNum > 0}}">经停</view>
+        </view>
+        <view>
+          <p class="time">{{flightInfo.arrivalOnlyTime}}</p>
+          <p class="airport">{{flightInfo.atsn}}{{flightInfo.offPoint}}</p>
+        </view>
+      </view>
+    </view>
+    <view class="popup-box-close" bindtap="closeFlightInfo"></view>
+  </view>
+</view>
+<!-- 航班信息弹窗 end -->
+
+<!-- 退改签说明 start -->
+<view class="dialog" wx:if="{{show.refundInfo}}" >
+  <view class="mask"></view>
+  <view class="dialog-box">
+    <view class="dialog-body">
+      <view class="dialog-content">
+        <view class="dialog-title">价格及退改签说明</view>
+        <scroll-view scroll-y="true" style="height: 280px">
+          <view class="dialog-subtitle">价格说明</view>
+          <table>
+            <thead>
+            <tr>
+              <th>乘客类型</th><th>票价</th><th>机建+燃油</th><th>总计</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+              <td>成人</td>
+              <td>¥{{price.adult}}</td>
+              <td>¥{{price.building}} + {{price.fuel}}</td>
+              <td class="highlight">¥{{price.adult + price.building + price.fuel }}</td>
+            </tr>
+            <tr>
+              <td>儿童</td>
+              <td>¥{{price.children}}</td>
+              <td>¥{{price.cFuel}}</td>
+              <td class="highlight">¥{{ price.children + price.cFuel }}</td>
+            </tr>
+            </tbody>
+          </table>
+          <block wx:if="{{refundChange.row.length}}">
+            <view class="dialog-subtitle">退改签说明</view>
+            <table>
+              <thead>
+              <tr>
+                <th wx:for="{{refundChange.titles}}" wx:key="index">
+                  {{item}}
+                </th>
+              </tr>
+              </thead>
+              <tbody>
+              <tr wx:for="{{refundChange.row}}" wx:key="index">
+                <td wx:for="{{item}}" wx:key="index">{{item}}</td>
+              </tr>
+              </tbody>
+            </table>
+          </block>
+          <block wx:if="{{refundChange.remark}}">
+            <view class="dialog-subtitle">其他说明</view>
+            <view class="dialog-text">
+              {{refundChange.remark}}
+            </view>
+          </block>
+        </scroll-view>
+      </view>
+      <view class="dialog-close">
+        <view class="close-button" bindtap="hideDialogLayer">
+        </view>
+      </view>
+    </view>
+  </view>
+</view>
+<!-- 退改签说明 end -->
+<view class="dialog" wx:if="{{!modal.hiddenScroll}}">
+  <view class="mask"></view>
+  <view class="dialog-box">
+    <view class="dialog-body">
+      <view class="dialog-content">
+        <view class="dialog-title">{{modal.title}}</view>
+        <scroll-view scroll-y="true" style="height: 280px;">
+          <view class="dialog-subtitle">
+            <text>{{modal.message}}</text>
+          </view>
+        </scroll-view>
+      </view>
+      <view class="dialog-close">
+        <view class="close-button" bindtap="modalScrollConfirm">
+        </view>
+      </view>
+    </view>
+  </view>
+</view>
+<!-- 许可协议弹窗 start -->
+<view class="dialog" wx:if="{{!modal.hiddenScrollAgree}}">
+  <view class="mask"></view>
+  <view class="dialog-box">
+    <view class="dialog-body">
+      <view class="dialog-content">
+        <view class="dialog-title">{{modal.title}}</view>
+        <scroll-view scroll-y="true" style="height: 280px">
+            <view wx:for="{{modal.data}}" class="detail-in-title">
+              {{item[0]}}
+              <view wx:for="{{item[1]}}" wx:for-item="i" class="detail-in-content">
+                {{i}}
+              </view>
+            </view>
+        </scroll-view>
+      </view>
+      <view class="dialog-close">
+        <view class="close-button" bindtap="modalScrollAgreeConfirm">
+        </view>
+      </view>
+    </view>
+  </view>
+</view>

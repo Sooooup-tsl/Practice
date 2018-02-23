@@ -1,0 +1,84 @@
+<scroll-view style="height: 100%" scroll-y="true" scroll-top="{{scrollTop}}">
+  <view class="city-container">
+    <view class="city-search {{inputFocus ? 'search-input-focus':''}}">
+      <view class="search-input-box {{inputFocus || searchInputValue ? 'search-input-box-padding':''}}">
+        <icon type="search" size="13" class="search-icon"></icon>
+        <view class="search-input-view  {{inputFocus || searchInputValue ? 'search-input-view-padding':''}}">
+          <input class="search-input search-input-active" placeholder-class="placeholder-font" placeholder="{{placeholder}}" type="text" bindinput="searchCityHandler" bindfocus="searchCityFocus" bindblur="searchCityBlur" value="{{searchInputValue}}" />
+        </view>
+      </view>
+      <view bindtap="cancelInput" class="{{inputFocus || searchInputValue ? 'search-cancel':'none'}}">取消</view>
+    </view>
+    <view wx:if="{{tabItems}}" class="tab-bar-panel flex {{inputFocus || searchInputValue  ? 'none' :''}}">
+      <view bindtap="tabClickHandler" wx:for="{{tabItems}}" wx:for-item="tabitem" wx:key="name" data-id="{{tabitem.id}}" data-index="{{index}}" data-name="{{tabitem.name}}" class="tab-bar flex-g-1 {{tabIndex == index ? 'tab-bar-active':''}}">
+        <text class=" {{tabIndex == index ? 'tab-text-active':''}}">{{tabitem.name}}</text>
+      </view>
+    </view>
+    <view class="city-panel {{inputFocus || searchInputValue ? 'none' :''}}">
+      <view>
+
+        <!-- tab1-->
+        <view class="location-city" wx:if="{{showLocation && (!tabItems || (tabItems && tabIndex == 0 ))}}">
+          <text class="list-title">当前城市</text>
+          <view class="location-city-list">
+            <view class="block-item location-block">
+              <view class="block-item-text location-item-text {{selectCity === locationInfo[cityId] || selectCity === locationInfo[cityName] ? 'city-item-select' : ''}}" data-datas="{{locationInfo.exdata}}" data-location-reload="{{locationInfo.reload}}" bindtap="locationCitySelectHandler"
+              data-disable="{{locationDisable}}">{{locationInfo.localtionType || locationInfo[cityName]}}
+                <text wx:if="{{locationInfo.locationSuccess}}" class="location-disable-txt ">{{locationDisable ? locationDisableTxt : 'GPS定位'}}</text>
+              </view>
+            </view>
+          </view>
+          <view wx:if="{{locationItems && locationItems[0]}}">
+            <text class="list-title">{{nearLocationName}}</text>
+            <view class="location-city-list">
+              <view class="block-item" wx:for="{{locationItems}}" wx:for-item="item1" data-datas="{{item1.exdata}}" data-disable="{{item1.disable}}" bindtap="citySelectHandler">
+                <text class="block-item-text  {{selectCity === item1.name ||selectCity === item1.cityId || selectCity === item1.cityName ? 'city-item-select' : ''}}">{{item1.name}}</text>
+              </view>
+            </view>
+          </view>
+          <!--location viewview end-->
+        </view>
+        <view class="custom-city" wx:for="{{customItems}}" wx:for-item="item2">
+          <text class="list-title">{{item2.title}}</text>
+          <view class="custom-city-list">
+            <view class="block-item" wx:for="{{item2.list}}" wx:for-item="item3" wx:key="exdata" data-datas="{{item3.exdata}}" data-disable="{{item3.disable}}" bindtap="citySelectHandler">
+              <text class="block-item-text {{selectCity && (selectCity === item3[cityId] || selectCity === item3[cityName]) ? 'city-item-select' : ''}}">{{item3[cityName]}}</text>
+            </view>
+          </view>
+        </view>
+      </view>
+      <view class="letter-items">
+        <text class="list-title">{{letterTitle}}</text>
+        <view class="letter-container">
+          <view class="letter-item-side" wx:for="{{letterList}}" wx:for-item="letter" wx:key="*this">
+            <text class="letter-item {{selectletter === letter ? 'letter-item-select' : ''}}" data-onLoading="{{letterOnLoading === letter}}" data-letter="{{letter}}" bindtap="letterTapHandler">{{letter}}</text>
+          </view>
+
+          <!--<text class="letter-item {{selectletter === letter ? 'letter-item-select' : ''}}" data-onLoading="{{letterOnLoading 
+          === letter}}"  wx:for="{{letterList}}" wx:for-item="letter" data-letter="{{letter}}" bindtap="letterTapHandler" >{{letter}}</text>-->
+        </view>
+      </view>
+      <view class="city-list-detail" wx:if="{{letterListData}}">
+        <text wx:for="{{letterListData}}" wx:for-item="letters" wx:for-index="idx" wx:key="exdata" data-datas="{{letters.exdata}}" bindtap="citySelectHandler" class="line-item {{selectCity == letters.name ||selectCity === letters[cityId] || selectCity === letters[cityName] ? 'city-list-select' : ''}} {{idx === letterListData.length - 1? 'border-none':''}}">{{letters[cityName]}}</text> 
+      </view>
+      <view class="city-list-detail without-letter-message" wx:if="{{withoutLetterMessage}}">
+        <view>{{withoutLetterMessage}}</view>
+      </view>
+    </view>
+    <view class="search-panel {{inputFocus || searchInputValue ? '' :'none'}}">
+
+      <!--<scroll-view class="search-scroll" scroll-y="true">-->
+      <view class="search-no-match" wx:if="{{searchInputValue && requestComplete && (!searchData || !searchData[0])}}">{{searchTitleTips}}</view>
+      <view class="search-panel-list {{!(item && item.list && item.list != undefined) && isFlight ? 'second':''}}" wx:if="{{!!searchData}}" wx:for="{{searchData}}" wx:for-item="item" wx:key="exdata" bindtap="citySelectHandler" data-disable="{{item.clickable == 0 || item.disable}}" data-datas="{{item.exdata}}">
+        <image class="think-icon" wx:if="{{iconList[item[icon]]}}"  src="{{iconList[item[icon]]}}"></image>
+        <!--<text class="think-font">{{item[cityName]}}<text class="think-font-small" wx:if="{{item.spitCity}}">{{','+item.spitCity}}</text></text>-->
+        <text wx:if="{{item.near == 1}}">邻近：</text>
+        <text wx:for="{{item[cityName]}}" wx:for-item="txt" class="{{searchInputValueJson[txt] ? 'red':''}}">{{txt}}</text>
+        <text wx:if="{{item.spitCity}}" wx:for="{{',' + item.spitCity}}" wx:for-item="txt" class="{{searchInputValueJson[txt] ? 'red':''}}">{{txt}}</text>
+        <text wx:if="{{item.near == 1}}" class="distances">{{item.distance}}</text>
+      </view>
+
+      <!--</scroll-view>-->
+    </view>
+  </view>
+</scroll-view>

@@ -1,0 +1,872 @@
+<view class="order-details-container">
+  <view class="order-block">
+    <view class="status">
+      <span class="order-state color{{order.OrderFlagNum}}">{{order.orderFlagName}}</span>
+      <i class="flight-icon icon-info-red" bindtap="showTraceDialogLayer"></i>
+      <view class="stamp-border" wx:if="{{statusInfo.isCanYK}}"><view class="stamp">抢票单</view></view>
+      <span class="price arrow" bindtap="showTotalDialogLayer">¥{{finance.customerShouldPay}}</span>
+      <view class="remark">{{order.orderIips}}</view>
+      <span class="left-hole"></span>
+      <span class="right-hole"></span>
+    </view>
+    <view class="flight-info">
+      <view class="info">
+        <span class="pr4">{{flight.flyOffDay}}</span>
+        <span class="pr4">{{flight.airCompanyName}}</span>
+        <span class="pr4">{{flight.flightNo}}</span>
+      </view>
+      <view class="actual" wx:if="{{flight.isShareFlight}}">
+        <span class="pr4">实际乘坐</span>
+        <span class="pr4">{{flight.mainFlightAirWay}}</span>
+        <span class="pr4">{{flight.mainFlightNo}}</span>
+      </view>
+      <view class="time flex">
+        <view class="from flex-g-1">
+          <view class="city">{{flight.startCityName}}</view>
+          {{flight.flyOffTime}}
+          <i>{{flight.startPortName}}{{flight.startPortFloor}}</i>
+        </view>
+        <view class="order-arrow">
+          <view class="arrow-main"></view>
+        </view>
+        <view class="to flex-g-1">
+          <view class="city">{{flight.endCityName}}</view>
+          {{flight.arriveTime}}
+          <i>{{flight.endPortName}}{{flight.endPortFloor}}</i>
+        </view>
+      </view>
+    </view>
+   
+    <view class="block-section border-top">
+      <!--<view class="block-cell border-bottom" bindtap="showServiceIntroLayer">
+        <span class="cell-title">服务说明：</span>
+        <span class="cell-label">{{extend.tgqRuleInfo.Remark}}</span>
+        <view class="more"></view>
+      </view>-->
+      <view class="block-cell" bindtap="showIntroDialogLayer">
+        <span class="cell-title">退改签及服务说明：</span>
+        <span class="cell-label">查看行李额及退改费用</span>
+        <view class="more"></view>
+      </view>
+    </view>
+  </view>
+
+  <view class="order-block" wx:if="{{assireveSimple.length > 0}}">
+    <view class="label-title" wx:if="{{order.orderFlagName == '已取消' || order.orderFlagName == '待支付'}}">已选服务</view>
+    <view class="label-title" wx:if="{{order.orderFlagName != '已取消' && order.orderFlagName != '待支付'}}">已购服务</view>
+    <view class="block-section border-top">
+      <view class="block-cell2 border-bottom" wx:for="{{assireveSimple}}" wx:for-index="x" wx:if="{{assireveSimple[x].assirevePrice || assireveSimple[x].assireveCount}}"
+      data-assireveType="{{assireveSimple[x].assireveType}}" bindtap="showVipRoomLayer">
+        <span class="cell-title2">{{assireveSimple[x].assireveTypeName}}</span>
+        <!--<span class="cell-label2" wx:if="{{assireveSimple[x].assirevePrice && assireveSimple[x].assireveCode != 4 && assireveSimple[x].assireveCode == 0}}">x{{passenger.length}}人</span>
+        <span class="cell-label2" wx:if="{{assireveSimple[x].assirevePrice && assireveSimple[x].assireveCode != 4 && assireveSimple[x].assireveCode != 0}}">¥{{assireveSimple[x].assirevePrice}}x{{passenger.length}}人</span>
+        <span class="cell-label2" wx:if="{{!assireveSimple[x].assirevePrice && assireveSimple[x].assireveCount}}">{{assireveSimple[x].assireveCount}}份</span>
+        <span class="cell-label2" wx:if="{{assireveSimple[x].assireveCode == 4}}">{{assireveSimple[x].assireveCount}}天</span>-->
+        <span class="cell-label2" wx:if="{{assireveSimple[x].assireveCount}}">{{assireveSimple[x].assireveCount}}份</span>
+        <view class="more"></view>
+      </view>
+      <!--<view class="block-cell2 border-bottom" data-assireveType="VipLounge" bindtap="showVipRoomLayer">
+        <span class="cell-title2">贵宾休息室</span>
+        <span class="cell-label2">x{{passenger.length}}人</span>
+        <view class="more"></view>
+      </view>
+      <view class="block-cell2 border-bottom" data-assireveType="HotelVouchers" bindtap="showVipRoomLayer">
+        <span class="cell-title2">酒店券</span>
+        <span class="cell-label2">¥50x{{passenger.length}}份</span>
+        <view class="more"></view>
+      </view>
+      <view class="block-cell2 border-bottom" data-assireveType="TransportVouchers" bindtap="showVipRoomLayer">
+        <span class="cell-title2">接送机券</span>
+        <span class="cell-label2">¥50x{{passenger.length}}份</span>
+        <view class="more"></view>
+      </view>
+      <view class="block-cell2 border-bottom" data-assireveType="MealService" bindtap="showVipRoomLayer">
+        <span class="cell-title2">餐食券</span>
+        <span class="cell-label2">¥50x{{passenger.length}}份</span>
+        <view class="more"></view>
+      </view>
+      <view class="block-cell2 border-bottom" data-assireveType="ParkingCar" bindtap="showVipRoomLayer">
+        <span class="cell-title2">机场停车</span>
+        <span class="cell-label2">x{{passenger.length}}天</span>
+        <view class="more"></view>
+      </view>
+      <view class="block-cell2 border-bottom" data-assireveType="InsuredPriceEscort" bindtap="showVipRoomLayer">
+        <span class="cell-title2">保驾护航</span>
+        <span class="cell-label2">x{{passenger.length}}份</span>
+        <view class="more"></view>
+      </view>
+      <view class="block-cell2 border-bottom" data-assireveType="RefundSecure" bindtap="showVipRoomLayer">
+        <span class="cell-title2">退改无忧</span>
+        <span class="cell-label2">x{{passenger.length}}份</span>
+        <view class="more"></view>
+      </view>
+      <view class="block-cell2 border-bottom" data-assireveType="AccidentIns" bindtap="showVipRoomLayer">
+        <span class="cell-title2">航班意外险</span>
+        <span class="cell-label2">x{{passenger.length}}份</span>
+        <view class="more"></view>
+      </view>
+      <view class="block-cell2 border-bottom" data-assireveType="DelayIns" bindtap="showVipRoomLayer">
+        <span class="cell-title2">航班延误险</span>
+        <span class="cell-label2">x{{passenger.length}}份</span>
+        <view class="more"></view>
+      </view>
+      <view class="block-cell2 border-bottom" data-assireveType="SyntheticalIns" bindtap="showVipRoomLayer">
+        <span class="cell-title2">航班综合险</span>
+        <span class="cell-label2">x{{passenger.length}}份</span>
+        <view class="more"></view>
+      </view>-->
+     </view>
+  </view>
+
+  <view class="order-block">
+    <view class="label-title">乘机人</view>
+    <view class="block-section border-top">
+      <view wx:for="{{passenger}}" wx:for-index="i">
+        <view class="passenger-list border-bottom">
+          <view class="pl">
+            <view class="passenger-name">{{passenger[i].passengerName}}（{{passenger[i].passengerDesc}}）</view>
+            <view class="passenger-no">{{passenger[i].certTypeDesc}}：{{passenger[i].certNO}}</view>
+            <view class="passenger-no" wx:if="{{passenger[i].extendInfo.checkSeatNo}}">座位号：{{passenger[i].extendInfo.checkSeatNo}}</view>
+          </view>
+          <view class="pr ticket-status color{{passenger[i].ticketFlagColor}} {{passenger[i].ticketFlagShow=='0' ? 'hide' : ''}}" data-ticketState="{{passenger[i].ticketState}}" data-passagerIndex="{{i}}"  bindtap="showChangeDialogLayer">{{passenger[i].ticketState}}</view>
+        </view>
+      </view>
+      <view class="block-cell2 border-bottom">
+        <span class="pl">联系电话</span>
+        <b class="pr">{{order.linkMobile}}</b>
+      </view>
+      <view class="block-cell2" wx:if="{{mail.isExitMail}}">
+        <span class="pl">报销凭证</span>
+        <b class="pr arrow logistics" bindtap="showMailDialogLayer">查看物流信息</b>
+      </view>
+    </view>
+  </view>
+
+    <!--<view class="order-block order-total-wrap">
+        <view class="order-total">
+            <span class="pl">订单总额</span>
+            <span class="pr arrow" bindtap="showTotalDialogLayer"><b>¥</b>{{finance.CustomerShouldPay}}</span>
+        </view>
+        <view class="order-no border-top">
+            <span class="pl">订单号</span>
+            <span class="pr">{{order.SerialId}}</span>
+        </view>
+        <view class="order-no border-top arrow {{returnOrder?'show':'hide'}}" bindtap="showReturnDialogLayer">
+            <span class="pl">退票信息</span>
+        </view>
+        
+    </view>
+
+    <view class="order-block">
+        <label class="label-title pl">产品规定</label>
+        <span class="pr arrow" bindtap="showIntroDialogLayer">退改签政策</span>
+    </view>-->
+
+    <!--<view class="order-block hide {{mail.IsExitMail=='1'?'show':''}}">-->
+    <!-- <view wx:for="{{mail.FlightMailInfolist}}" wx:for-index="i" class="{{mail.IsExitMail=='1'?'show':'hide'}}">
+        <view class="order-block">
+            <label class="label-title pl">报销凭证</label>
+            <span class="pr arrow" data-IsExitMail="{{mail.IsExitMail}}" data-mailIndex="{{i}}" bindtap="showMailDialogLayer">{{mail.showMailDate}}送达</span>
+        </view>
+    </view>-->
+
+  <!--<view class="details-btn {{btnStatus.IsCanRefund == '1' || btnStatus.IsCanCancel == '1' ? 'show':'hide'}}">
+    <view wx:if="{{!isRefundSuccess}}" class="btn green {{btnStatus.IsCanRefund == '1'?'show':'hide'}}" bindtap="goToReturn">退票</view>
+    <view class="btn gray {{btnStatus.IsCanCancel == '1'?'show':'hide'}}" bindtap="showCancelOrderDialog">取消订单</view>
+  </view>-->
+
+  <view class="btn gray {{statusInfo.isCanCancel == '1' ? 'show' : 'hide'}}" bindtap="showCancelOrderDialog">取消订单</view>
+  <view wx:if="{{statusInfo.isCanRefund && !statusInfo.isCanChange}}" class="btn gray" bindtap="goToReturn">退票</view>  
+  <view class="btn-group {{statusInfo.isCanRefund == '1' && statusInfo.isCanChange == '1' ? 'show':'hide'}}">
+    <span class="button" bindtap="goToReturn">退票</span>
+    <span class="button" bindtap="goToChange">改期</span>
+  </view>
+
+</view>
+<!-- <view class="btn-wrap {{btnStatus.IsCanPay == '1'?'show':'hide'}}">
+  <view class="btn green" bindtap="goToPay">立即支付</view>
+</view> -->
+<view class="btn-wrap {{statusInfo.isCanPay == '1'?'show':'hide'}}">
+  <view class="btn green" bindtap="goToPay">立即支付</view>
+</view>
+
+<!--价格明细弹层-->
+<view class="popup" wx:if="{{showTotalDialog}}">
+  <view class="title">金额明细</view>
+  <view class="content" wx:if="{{order.isBOrder != '1' && order.isDOrder != '1'}}">
+    <view class="price-list" wx:if="{{finance.customerTicketPrice}}">
+      <span class="name">票价</span>
+      <span class="value">¥{{finance.customerTicketPrice}}</span>
+    </view>
+    <view class="price-list" wx:if="{{finance.orderBuildPrice || finance.orderTaxPrice}}">
+      <span class="name">机建 + 燃油</span>
+      <span class="value">¥{{finance.allBuildAndTax}}</span>
+    </view>
+    <view class="price-list" wx:if="{{finance.insureFee}}">
+      <span class="name">保险费</span>
+      <span class="value">¥{{finance.insureFee}}</span>
+    </view>
+    <view class="price-list" wx:if="{{finance.tgwyAllPrice}}">
+      <span class="name">退改无忧</span>
+      <span class="value">¥{{finance.tgwyAllPrice}}</span>
+    </view>
+    <view class="price-list" wx:if="{{finance.forVIPRoomPrice}}">
+      <span class="name">贵宾休息室</span>
+      <span class="value">¥{{finance.forVIPRoomPrice}}</span>
+    </view>
+    <view class="price-list" wx:if="{{finance.pickUpVoucherAllPrice}}">
+      <span class="name">接送机券</span>
+      <span class="value">¥{{finance.pickUpVoucherAllPrice}}</span>
+    </view>
+    <view class="price-list" wx:if="{{finance.mealTotalPrice}}">
+      <span class="name">餐食券</span>
+      <span class="value">¥{{finance.mealTotalPrice}}</span>
+    </view>
+    <view class="price-list" wx:if="{{finance.carparkPrice}}">
+      <span class="name">机场停车</span>
+      <span class="value">¥{{finance.carparkPrice}}</span>
+    </view>
+    <view class="price-list" wx:if="{{finance.hotelVoucherAllPrice}}">
+      <span class="name">酒店券</span>
+      <span class="value">¥{{finance.hotelVoucherAllPrice}}</span>
+    </view>
+    <view class="price-list" wx:if="{{finance.bjhhTotalPrice}}">
+      <span class="name">保价护航</span>
+      <span class="value">¥{{finance.bjhhTotalPrice}}</span>
+    </view>
+    <view class="price-list" wx:if="{{finance.mailPrice}}">
+      <span class="name">邮寄费</span>
+      <span class="value">¥{{finance.mailPrice}}</span>
+    </view>
+    <view class="price-list" wx:if="{{order.isReduce == 1 && finance.reduceMoney}}">
+      <span class="name">直减金额</span>
+      <span class="value">-¥{{finance.reduceMoney}}</span>
+    </view>
+    <view class="price-list" wx:if="{{finance.reducePaymentType}}">
+      <span class="name">立减支付</span>
+      <span class="value">-¥{{finance.reducePaymentType}}</span>
+    </view>
+    <view class="price-list" wx:if="{{finance.reduceAmount}}">
+      <span class="name">立减金额</span>
+      <span class="value">-¥{{finance.reduceAmount}}</span>
+    </view>
+    <view class="price-list" wx:if="{{finance.redFee}}">
+      <span class="name">抵用券</span>
+      <span class="value">-¥{{finance.redFee}}</span>
+    </view>
+  </view>
+  <view class="content" wx:if="{{order.isBOrder == '1'}}">
+    <view class="price-list" wx:if="{{finance.changgeGaiFee}}">
+      <span class="name">改期费</span>
+      <span class="value">¥{{finance.changgeGaiFee}}</span>
+    </view>
+    <view class="price-list" wx:if="{{finance.changeUpFee}}">
+      <span class="name">升舱费</span>
+      <span class="value">¥{{finance.changeUpFee}}</span>
+    </view>
+    <!--<view class="price-list" wx:if="{{finance.bearPrice}}">
+      <span class="name">退票无忧节省</span>
+      <span class="value">¥{{finance.bearPrice}}</span>
+    </view>-->
+  </view>
+  <view class="content" wx:if="{{order.isDOrder == '1'}}">
+    <view class="price-list" wx:if="{{finance.dChangeFee}}">
+      <span class="name">变更费</span>
+      <span class="value">¥{{finance.dChangeFee}}</span>
+    </view>
+    <view class="price-list" wx:if="{{finance.changeUpFee}}">
+      <span class="name">机票差价</span>
+      <span class="value" wx:if="{{finance.changeUpFee > 0}}">¥{{finance.changeUpFee}}</span>
+      <span class="value" wx:else>-¥{{-finance.changeUpFee}}</span>
+    </view>
+    <view class="price-list" wx:if="{{finance.serviceFee}}">
+      <span class="name">服务费</span>
+      <span class="value">¥{{finance.serviceFee}}</span>
+    </view>
+    <view class="price-list" wx:if="{{finance.bearPrice}}">
+      <span class="name">退票无忧节省</span>
+      <span class="value">¥{{finance.bearPrice}}</span>
+    </view>
+  </view>
+  <view class="popup-close">
+    <view class="close-button" bindtap="hideTotalDialogLayer">
+    </view>
+  </view>
+</view>
+
+<!-- 订单跟踪弹层 -->
+<view class="popup" wx:if="{{showTraceDialog}}">
+  <view class="title">订单跟踪</view>
+  <view class="content">
+    <view class="trace-list" wx:for="{{extend.trackList}}">
+      {{item.content}}
+      <view class="trace-time">{{item.time}}</view>
+    </view>
+  </view>
+  <view class="popup-close">
+    <view class="close-button" bindtap="hideTraceDialogLayer">
+    </view>
+  </view>
+</view>
+
+<!-- 服务说明弹层 -->
+<!--<view class="popup" wx:if="{{showServiceIntro}}">
+  <view class="title">服务说明</view>
+  <view class="content">
+    {{extend.tgqRuleInfo.Remark}}
+  </view>
+  <view class="popup-close">
+    <view class="close-button" bindtap="hideServiceIntroLayer">
+    </view>
+  </view>
+</view>-->
+
+<!--退改签说明弹层-->
+<view class="popup" wx:if="{{showIntroDialog}}">
+  <view class="title">退改签规则</view>
+  <view class="content">
+    <view class="highlight" wx:if="{{order.tgwyDiscountPer}}">已购退改无忧，首次退改可减少{{order.tgwyDiscountPer}}%手续费</view>
+    <view wx:for="{{tgqData}}">
+      <view wx:if="{{item.type == 1}}">成人</view>
+      <view wx:else>儿童</view>
+      <table class="tab_change">
+        <tbody>
+          <tr>
+            <td class="tab_tit">退票手续费</td>
+            <td>
+              <view wx:for="{{item.refund.rule}}" wx:for-item="refund">
+                <span class="change_time">{{refund[0]}}</span>
+                <span wx:if="{{refund[1]}}">{{refund[1]}}</span>
+              </view>
+            </td>
+          </tr>
+          <tr>
+            <td class="tab_tit">同舱改期费</td>
+            <td>
+              <view wx:for="{{item.change.rule}}" wx:for-item="change">
+                <span class="change_time">{{change[0]}}</span>
+                <span wx:if="{{change[1]}}">{{change[1]}}</span>
+              </view>
+            </td>
+          </tr>
+          <tr>
+            <td class="tab_tit">签转手续费</td>
+            <td>
+              <view wx:for="{{item.endorse.rule}}" wx:for-item="endorse">
+                <span class="change_time">{{endorse[0]}}</span>
+                <span wx:if="{{endorse[1]}}">{{endorse[1]}}</span>
+              </view>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </view>
+    <view>行李额：{{tgqData[0].specialRemark }}</view>
+    <!--<table>
+      <thead>
+        <tr wx:for="{{tgqData}}" wx:for-index="i" wx:if="{{i==0}}">
+          <th wx:for="{{item}}" wx:for-item="t" >{{t}}</th>-->
+            <!--<th>{{tgqData[i][1]}}</th>-->
+            <!--<th>{{tgqData[i][2]}}</th>-->
+            <!--<th>{{tgqData[i][3]}}</th>-->
+        <!--</tr>
+      </thead>
+      <tbody>
+        <tr wx:for="{{tgqData}}" wx:for-index="j" wx:if="{{j > 0}}">
+          <td wx:for="{{item}}" wx:for-item="t">{{t}}</td>-->
+            <!--<td>{{tgqData[j][1]}}</td>
+            <td>{{tgqData[j][2]}}</td>
+            <td>{{tgqData[j][3]}}</td>-->
+        <!--</tr>
+      </tbody>
+    </table>-->
+  </view>
+  <view class="popup-close">
+    <view class="close-button" bindtap="hideIntroDialogLayer">
+    </view>
+  </view>
+</view>
+
+<!-- 辅营产品弹层 -->
+<view class="popup" wx:if="{{showVipRoom}}">
+  <!-- 微信提示 -->
+  <view class="warn">
+    <i class="flight-icon icon-alarm"></i>
+    <span>小程序暂时不支持对您购买的产品进行相关操作，如果需要请进入“微信钱包-火车票机票”查看。</span>
+  </view>
+  <!-- 贵宾休息室弹层 -->
+  <view class="classname" wx:if="{{showAttr == 'VipLounge'}}">
+    <view class="title">{{showAttrData.name}}</view>
+    <view class="content2">
+      <view class="line">
+        <span class="label">位置：</span>
+        <span>{{showAttrData.location}}</span>
+      </view>
+      <view class="line">
+        <span class="label">服务：</span>
+        <span>{{showAttrData.freeService}}</span>
+      </view>
+      <view class="line">
+        <span class="label">说明：</span>
+        <span>{{showAttrData.warmTips}}</span>
+      </view>
+      <image wx:for="{{showAttrData.imgList}}" wx:for-index="y" src="{{showAttrData.imgList[y]}}" />
+    </view>
+  </view>
+  <!-- 机场停车 -->
+  <view class="classname" wx:if="{{showAttr == 'ParkingCar'}}">
+    <view class="title">机场停车</view>
+    <view class="content2">
+      <view class="line2">
+        <span class="label">交车位置：</span>
+        <span>{{showAttrData.receiveAddress}}</span>
+        <!--<view>{{showAttrData.getAddress}}</view>-->
+      </view>
+      <view class="line2">
+        <span class="label">交车时间：</span>
+        <span>{{showAttrData.receiveDate}}</span>
+      </view>
+      <view class="line2">
+        <span class="label">购买天数：</span>
+        <span>{{showAttrData.useDays}}天</span>
+      </view>
+      <view class="line2">
+        <span class="label">订单状态：</span>
+        <span class="highlight">{{order.orderFlagName}}</span>
+      </view>
+      <view class="tc_tips label">
+        <view class="">预约取车：提前60分钟以上预约</view>
+        <view class="">立即取车：司机将在60分钟内到达预约地点</view>
+      </view>
+    </view>
+  </view>
+  <!-- 退改无忧 -->
+  <view class="classname refun" wx:if="{{showAttr == 'RefundSecure'}}">
+    <view class="title">退改无忧</view>
+    <view class="content2">
+      <view wx:for="{{showAttrData}}" class="{{index == showAttrData.length - 1 ? 'refun_bot1' : 'refun_bot'}}">
+        <view class="line2">
+          <span class="label">购买乘客：</span>
+          <span class="highlight">{{item.passengerName}}</span>
+        </view>
+        <view class="line2">
+          <span class="label">状态：</span>
+          <span class="highlight">{{item.useState}}</span>
+        </view>
+        <view class="line2">
+          <span class="label">使用状态：</span>
+          <span class="highlight" wx:if="{{item.canUse == 0}}">不可用</span>
+          <span class="highlight" wx:else>可用</span>
+        </view>
+      </view>
+      <view>说明</view>
+      <view wx:for="{{order.tgwyProductDes}}">{{item}}</view>
+    </view>  
+  </view>
+  <!-- 接送机券 || 酒店券 -->
+  <view class="classname" wx:if="{{showAttr == 'TransportVouchers' || showAttr == 'HotelVouchers'}}">
+    <view class="title" wx:if="{{showAttr == 'TransportVouchers'}}">接送机券</view>
+    <view class="title" wx:else>酒店券</view>
+    <view class="content2">
+      <view wx:for="{{showAttrData[0].vocherDesc}}">{{item}}</view>
+      <!--<view>1、15元购买面额为50元接送机优惠券，机票订单支付成功后发券；</view>
+      <view>2、优惠券自发券日起30天内有效，可预订同程微信渠道“接送机产品”（使用入口：关注微信公众号“微信钱包”-火车票机票-飞机票-飞机助手-机场接送）;</view>
+      <view>3、使用优惠券，每张接送机订单可立减50元；</view>
+      <view>4、每笔订单限使用一张优惠券，满51元订单可使用；</view>
+      <view>5、优惠券可以与机票一同退订，不支持单退优惠券；未使用状态的优惠券可退，已过期等其它状态的优惠券突发退订；</view>-->
+    </view>  
+  </view>
+  <!-- 酒店券 -->
+  <!--<view class="classname" wx:if="{{showAttr == 'HotelVouchers'}}">
+    <view class="title">{{showAttrData.name}}</view>
+    <view class="content2">
+      <view>{{showAttrData.vocherDesc}}</view>
+      <view>1、28元购买70元国内酒店优惠券，机票订单支付成功后发券；</view>
+      <view>2、优惠券自发券日起30天内有效，可预订同程微信渠道“国内酒店产品”（使用入口：关注微信公众号“同程旅游网”-产品预订-酒店，可立即使用）；</view>
+      <view>3、使用优惠券，每笔国内酒店订单可立减70元；一经使用不退换，且一次性使用，不拆分、不转赠、不提现；</view>
+      <view>4、每笔订单限使用一张优惠券，满250元订单可使用；</view>
+      <view>5、优惠券在有效期内未使用，可随机票一起退订，不支持单退优惠券；若优惠券为已使用或已过期等其它状态，则无法退订；</view>
+    </view>
+  </view>-->
+  <!-- 餐食券 -->
+  <view class="classname" wx:if="{{showAttr == 'MealService'}}">
+    <view class="title">机场餐食券</view>
+    <view class="content2">
+      <view class="po_box">
+        <view class="po_tit">使用规则</view>
+        <view wx:for="{{showAttrData.useRules}}">{{item}}</view>
+        <!--<view>1、抵用券可在任意指定餐厅消费，可叠加使用，使用时需出示短信凭证；</view>
+        <view>2、可提供服务费发票，线下支付部分由商家开具发票</view>-->
+      </view>
+      <view class="po_box">
+        <view class="po_tit">退改签规则</view>
+        <view wx:for="{{showAttrData.tgqRules}}">{{item}}</view>
+        <!--<view>1、抵用券自购买之日起生效，有效截止日期至航班起飞后30天；</view>
+        <view>2、有效期内未使用可退订；</view>
+        <view>3、抵用券不随机票改签而改签；</view>-->
+      </view>
+      <view class="po_box">
+        <view class="po_tit">可使用餐券</view>
+        <view wx:for="{{showAttrData.diningList}}" wx:for-index="z">
+          <view>餐厅名称：{{showAttrData.diningList[z].name}}</view>
+          <view>餐厅位置：{{showAttrData.diningList[z].location}}</view>
+          <view>营业时间：{{showAttrData.diningList[z].openTime}}</view>
+          <image wx:if="{{showAttrData.diningList[z].imgUrl.length > 0}}" wx:for="{{showAttrData.diningList[z].imgUrl}}" src="{{item}}" />
+        </view>
+      </view>
+    </view>
+  </view>
+  <!-- 保价护航 -->
+  <view class="classname" wx:if="{{showAttr == 'InsuredPriceEscort'}}">
+    <view class="title">保价护航</view>
+    <view class="content2">
+      <view class="line2">
+        <span class="label">购买份数：</span>
+        <span>¥{{showAttrData.baseInfo.keepType}}x{{showAttrData.baseInfo.passengerCount}}份</span>
+      </view>
+      <view class="line2">
+        <span class="label">保价形式：</span>
+        <span>返{{showAttrData.baseInfo.paymentMultiple}}倍差价</span>
+      </view>
+      <view class="line2">
+        <span class="label">报价基准：</span>
+        <span class="highlight">¥{{showAttrData.baseInfo.basePrice}}</span>
+      </view>
+      <view>说明：</view>
+      <view wx:for="{{showAttrData.baseInfo.orderDetailDes}}">{{item}}</view>
+      <!--<view>1、购买后如发现线上销售渠道票价低于当时您购票的价格，可申请“我要保价”返2倍差价;</view>
+      <view>2、请在飞机起飞后7天内完成保价申请；</view>
+      <view>3、如果机票发生退改则“保价护航”自动取消，无法再进行保价申请</view>-->
+    </view>
+  </view>
+  <!-- 航班意外险 -->
+  <view class="classname" wx:if="{{showAttr == 'AccidentIns'}}">
+    <view class="title">航班意外险</view>
+    <view class="content2">
+      <view class="po_box">
+        <view class="po_tit">投保人</view>
+        <view class="bor_bot" wx:for="{{extend.insDispDetail.accidentInsList}}" wx:for-item="insList1">
+          <span>{{insList1.passengerName}}</span>
+          <view class="classname" wx:if="{{insList1.insuranceNo}}">保单号：{{insList1.insuranceNo}}</view>
+        </view>
+      </view>
+      <!--<view class="po_box">
+        <view class="po_tit">保险介绍</view>
+        <view>1、航班延误被保险人必须乘坐投保航班且航班抵达目的地时延误3小时及以上：300元；</view>
+        <view>2、返航或备将：300元；</view>
+        <view>3、航班取消：100元；</view>
+      </view>
+      <view class="po_box">
+        <view class="po_tit">理赔</view>
+        <view>1、被保险人出险后，请在第一时间拨打同程旅游服务热线和投诉电话4007-777-777报案；</view>
+        <view>2、点击页面“延误理赔”自助赔付；</view>
+      </view>-->
+    </view>
+  </view>
+  <!-- 航班延误险 -->
+  <view class="classname" wx:if="{{showAttr == 'DelayIns'}}">
+    <view class="title">航班延误险</view>
+    <view class="content2">
+      <view class="po_box">
+        <view class="po_tit">投保人</view>
+        <view class="bor_bot" wx:for="{{extend.insDispDetail.delayInsList}}" wx:for-item="insList">
+          <span>{{insList.passengerName}}</span>
+          <view class="classname" wx:if="{{insList.insuranceNo}}">保单号：{{insList.insuranceNo}}</view>
+        </view>
+      </view>
+    </view>
+  </view>
+  <!-- 航班综合险 -->
+  <view class="classname" wx:if="{{showAttr == 'SyntheticalIns'}}">
+    <view class="title">航班综合险</view>
+    <view class="content2">
+       <view class="po_box">
+        <view class="po_tit">投保人</view>
+        <view class="bor_bot" wx:for="{{extend.insDispDetail.synInsList}}" wx:for-item="insList">
+          <span>{{insList.passengerName}}</span>
+          <view class="classname" wx:if="{{insList.insuranceNo}}">保单号：{{insList.insuranceNo}}</view>
+        </view>
+      </view>
+    </view>
+  </view>
+  <!-- 关闭 -->
+  <view class="popup-close">
+    <view class="close-button" bindtap="hideVipRoomLayer">
+    </view>
+  </view>
+</view>
+
+<!-- 机场停车弹层 -->
+<!--<view class="popup" style="display:none">
+  <view class="warn">
+    <i class="flight-icon icon-alarm"></i>
+    <span>小程序暂时不支持对您购买的产品进行相关操作，如果需要请进入“微信钱包-火车票机票”查看。</span>
+  </view>
+  <view class="title">机场停车</view>
+  <view class="content2">
+    <view class="line2">
+      <span class="label">交车位置：</span>
+      <span>T2航站楼</span>
+      <span>T2停车楼一层07通道</span>
+    </view>
+    <view class="line2">
+      <span class="label">交车时间：</span>
+      <span>10-12 04:25</span>
+    </view>
+    <view class="line2">
+      <span class="label">购买天数：</span>
+      <span>3天</span>
+    </view>
+    <view class="line2">
+      <span class="label">订单状态：</span>
+      <span class="highlight">待支付</span>
+    </view>
+  </view>
+  <view class="popup-close">
+    <view class="close-button" bindtap="hideVipRoomLayer">
+    </view>
+  </view>
+</view>-->
+
+<!--<view class="dialog order-details" wx:if="{{showReturnDialog}}">
+    <view class="mask"></view>
+    <view class="dialog-box">
+        <view class="dialog-body">
+            <view class="dialog-content">
+                <view class="dialog-title border-bottom">退票信息</view>
+                <view class="dialog-list-wrap">-->
+
+                    <!--<view class="dialog-status">退票状态：<span class="color1">已改签</span></view>
+                    <view class="dialog-status">退票乘客：<span>赵晶晶（成人）</span></view>-->
+                    
+                    <!--<view class="return-details">
+                        <view class="return-list">申请退票时间：{{returnOrder.refundApplyTime}}</view>
+                        <view class="return-list">支付总金额：¥{{returnOrder.totalPayAmount}}</view>
+                        <view class="return-list">退票手续费：¥{{returnOrder.refundFee}}</view>
+                        <view class="return-list">已退金额：<span class="orange">¥{{returnOrder.canRefundMoney}}</span>
+                        （退票预计{{returnOrder.refundBackDays!=""? returnOrder.refundBackDays : 5}}日内到账）
+                        </view>
+                    </view>
+
+                </view>
+            </view>
+            <view class="dialog-close">
+                <view class="close-button" bindtap="hideReturnDialogLayer"></view>
+            </view>
+
+        </view>
+    </view>
+</view>-->
+
+<!--退票弹框-->
+<view class="popup" wx:if="{{showReturnDialog}}">
+  <view class="title">退票详情</view>
+  <view class="content2 return">
+      <view class="line2">
+        <span class="label">退票状态：</span>
+        <span class="highlight">{{returnOrder.passentList[0].state}}</span>
+      </view>
+      <view class="line2 label_p">
+        <span class="label">退票人：</span>
+        <span wx:for="{{returnOrder.passentList}}">{{item.name}}({{item.desc}})</span>
+      </view>
+      <view class="return_con">
+        <view class="line2">
+          <span class="label">申请退票时间：</span>
+          <span>{{returnOrder.refundApplyTime}}</span>
+        </view>
+        <view class="line2">
+          <span class="label">支付总金额：</span>
+          <span>¥{{returnOrder.totalPayAmount}}</span>
+        </view>
+        <view class="line2">
+          <span class="label">退票手续费：</span>
+          <span>¥{{returnOrder.refundFee}}</span>
+        </view>
+        <view class="line2">
+          <span class="label">实退金额：</span>
+          <span class="highlight">¥{{returnOrder.canRefundMoney}}</span>(退款预计5天内到账)
+        </view>
+      </view>
+  </view>
+  <view class="popup-close">
+    <view class="close-button" bindtap="hideChangeDialogLayer"></view>
+  </view>
+</view>
+
+<!--改签弹框-->
+<view class="popup" wx:if="{{showChangeDialog}}">
+  <view class="title">改期信息</view>
+  <view class="content2">
+    <view class="line2">
+      <span class="label">改签状态：</span>
+      <span class="highlight">{{passengerChange.ticketState}}</span>
+    </view>
+    <view class="line2">
+      <span class="label">改签人：</span>
+      <span>{{passengerChange.passengerName}}</span>
+    </view>
+    <view class="line2">
+      <span class="label">改期时间：</span>
+      <span>{{changeInfo.changeApplyDate}}</span>
+    </view>
+    <view class="change_fly">{{changeInfo.flyOffDay}} {{changeInfo.airCompanyName}} {{changeInfo.flightNo}}</view>
+    <view class="order-detail">
+      <view class="time flex">
+        <view class="from">
+          <span>{{flight.flyCity}}</span>
+          {{changeInfo.flyOffTime}}
+          <i>{{changeInfo.startPortName}}{{changeInfo.startPortFloor}}</i>
+        </view>
+        <view class="order-arrow">
+            <view class="arrow-main">
+            </view>
+        </view>
+        <view class="to">
+          <span>{{flight.goCity}}</span>
+          {{changeInfo.arriveTime}}
+          <i>{{changeInfo.endPortName}}{{changeInfo.endPortFloor}}</i>
+        </view>
+      </view>
+    </view>
+  </view>
+  <view class="popup-close">
+    <view class="close-button" bindtap="hideChangeDialogLayer"></view>
+  </view>
+</view>
+<!--<view class="dialog order-details" wx:if="{{showChangeDialog}}">
+    <view class="mask"></view>
+    <view class="dialog-box">
+        <view class="dialog-body">
+            <view class="dialog-content">
+                <view class="dialog-title border-bottom">改期信息</view>
+                
+                <view class="dialog-list-wrap">
+
+                    <view class="dialog-status">改签状态：<span class="color{{passengerChange.ticketFlagColor}}">{{passengerChange.TicketState}}</span></view>
+                    <view class="dialog-status">改签乘客：<span>{{passengerChange.PassengerName}}（{{passengerChange.PassengerDesc}}）</span></view>
+
+                    <view class="fz12 border-top">
+                        改签后航班信息
+                    </view>
+                    <view class="order-detail">
+                        <view class="order-detail info">
+                            <span class="pr4">{{changeInfo.airCompanyName}}{{changeInfo.flightNo}}</span>
+                            <span class="pr4">{{changeInfo.flyOffDay}}</span>
+                        </view>
+                    </view>
+                    <view class="order-detail">
+                        <view class="time flex">
+                            <span class="from">{{changeInfo.flyOffTime}}<i>{{changeInfo.startPortName}}{{changeInfo.startTml}}</i></span>
+                            <view class="order-arrow">
+                                <view class="arrow-main">
+                                </view>-->
+                                <!--<em>经停</em>
+                                <span class="stop-city">井冈山</span>-->
+                            <!--</view>
+                            <span class="to">{{changeInfo.arriveTime}}<i>{{changeInfo.endPortName}}{{changeInfo.endTml}}</i></span>
+                        </view>
+                    </view>
+                </view>
+            </view>
+            <view class="dialog-close">
+                <view class="close-button" bindtap="hideChangeDialogLayer">
+                </view>
+            </view>
+
+        </view>
+    </view>
+</view>-->
+
+<!--邮寄详情弹框-->
+<view class="popup" wx:if="{{showMailDialog}}">
+  <view class="title">邮寄详情</view>
+  <view class="content">
+    <view class="mail_dialog">
+      <view class="mail_title">配送内容</view>
+      <view wx:for="{{mailDetails.ContentInfoList}}" wx:for-index="m">
+        {{mailDetails.ContentInfoList[m].ContentName}} <span class="highlight">¥{{mailDetails.ContentInfoList[m].ContentAmount}}</span>
+      </view>
+    </view>
+    <view class="mail_dialog">
+      <view class="mail_title">配送地址</view>
+      <view>{{mailDetails.Contact}}(收)</view>
+      <view>{{mailDetails.ContactMobile}}</view>
+      <view>{{mailDetails.DetailAddress}}</view>
+    </view>
+    <view class="mail_dialog">
+      <view class="mail_title">配送方式</view>
+      <view>{{mailDetails.SendDescription}}</view>
+      <view>预计{{mailDetails.ArriveDate}}到达</view>
+    </view>
+    <view class="mail_dialog">
+      <view class="mail_title">物流信息</view>
+      <view wx:if="{{!mailDetails.RouteProcesses}}">暂无</view>
+      <view class="mail_list {{n == (mailDetails.RouteProcesses.length - 1) ? 'no_left' : ''}}" wx:for="{{mailDetails.RouteProcesses}}" wx:for-index="n" wx:for-item="mailList" wx:if="{{mailDetails.RouteProcesses.length > 0}}" >
+        <view class="mail_info {{n == 0 ? 'green_left' : ''}}">{{mailList.Remark}}</view>
+        <view>{{mailList.DateTime}}</view>
+      </view>
+    </view>
+  </view>
+  <view class="popup-close">
+    <view class="close-button" bindtap="hideMailDialogLayer">
+    </view>
+  </view>
+</view>
+<!--<view class="popup" wx:if="{{showMailDialog}}">
+  <view class="dialog order-details">
+      <view class="mask"></view>
+      <view class="dialog-box">
+          <view class="dialog-body">
+
+              <view class="dialog-content">
+                  <view class="dialog-title border-bottom">邮寄详情</view>
+                  
+                  <view class="dialog-list-wrap">
+
+                      <view class="mail-list">
+                          <label class="label-name">配送方式</label>
+                          <view class="mail-info">
+                              <view>{{mailDetails.SendDescription}}</view>
+                              <view class="small">预计{{mailDetails.ArriveDate}}送达</view>
+                          </view>
+                      </view>
+                      <view class="mail-list line border-top">
+                          <label class="label-name">配送地址</label>
+                          <view class="mail-info">
+                              <view>{{mailDetails.Contact}}（收）</view>
+                              <view>{{mailDetails.ContactMobile}}</view>
+                              <view class="small">{{mailDetails.DetailAddress}}</view>
+                          </view>
+                      </view>
+                      <view class="mail-list line border-top">
+                          <label class="label-name">配送内容</label>
+                          <view class="mail-info">
+
+                              <view wx:for="{{mailDetails.ContentInfoList}}" wx:for-index="j">
+                                  <view>{{mailDetails.ContentInfoList[j].ContentName}}<span class="orange" wx:if="{{mailDetails.ContentInfoList[j].ContentAmount>0}}">¥{{mailDetails.ContentInfoList[j].ContentAmount}}</span></view>
+                              </view>
+
+                          </view>
+                      </view>
+                      <view class="mail-list line border-top {{mailDetails.InvoiceTitle!=''?'show':'hide'}}">
+                          <label class="label-name">发票抬头</label>
+                          <view class="mail-info">
+                              <view wx:for="{{mailDetails.InvoiceTitle}}" wx:for-index="k">
+                              {{mailDetails.InvoiceTitle[k]}}
+                              </view>
+                          </view>
+                      </view>
+
+                  </view>
+
+              </view>
+              <view class="dialog-close">
+                  <view class="close-button" bindtap="hideMailDialogLayer">
+                  </view>
+              </view>
+
+          </view>
+      </view>
+  </view>
+</view>-->

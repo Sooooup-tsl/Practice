@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>require</title>
+</head>
+<body>
+	<script type="text/javascript" src="require.js"></script>
+	<script type="text/javascript">
+	require.config({
+		paths: {
+			//当百度的jquery没有加载成功后，会加载本地js目录下的jquery
+			"jquery": ["http://libs.baidu.com/jquery/2.0.3/jquery","js/jquery"],
+			"a": "a",
+			"underscore": "underscore"
+		}
+	})
+	//require中的依赖是一个数组，即使只有一个依赖，你也必须使用数组来定义
+	require(["jquery","underscore"],function($){
+	    $(function(){
+	        var list = [1, 2, 3]
+			var demo = _.map(list, function(num){ 
+				return num * 3; 
+			});
+			
+			var even = _.find([1, 2, 3, 4, 5, 6], function(num){ 
+				return num % 2 == 0;
+			});
+			var listOfPlays = [
+				{title:"ha",author: "Shakespeare", year: 1611},
+				{title:"ha",author: "Shakespeare", year: 1211}
+			]
+			var g = _.where(listOfPlays, {author: "Shakespeare", year: 1611});
+			console.log(g);
+	    })
+	})
+	</script>
+	<span>body</span>
+</body>
+</html>

@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, user-scalable=no,initial-scale=1, minimum-scale=1, maximum-scale=1">
+	<title>vue watch</title>
+</head>
+<body>
+	<div id="watch"></div>
+</body>
+<script type="text/javascript" src="vue.js"></script>
+<script type="text/javascript">
+	var data = {
+		a: '1'
+	}
+	var vm = new Vue({
+		el: '#watch',
+		data: data
+	})
+	console.log(vm.$data === data ); //true
+	console.log(vm.$el === document.getElementById("watch")); //true
+	// $watch 是一个实例方法
+	vm.$watch('a',function(newVal,oldVal) {
+		console.log("new="+ newVal,"old=" + oldVal);//new=2 old=1
+	})
+	vm.a = 2; 
+</script> 
+</html>

@@ -1,0 +1,5 @@
+<!--pages/history/history.wxml-->
+<block wx:for="{{logs}}" wx:for-item="log">
+    <view class="item">{{log}}</view>
+</block>
+<view class="btn" bindtap="jumpPrev">返回上一级</view>

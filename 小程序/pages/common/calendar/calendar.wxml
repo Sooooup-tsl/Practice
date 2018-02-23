@@ -1,0 +1,43 @@
+<!--index.wxml-->
+<view class="calendar-container">
+    <view class="tips-message" wx:if="{{tipsMessage}}" ><icon class="message-icon" type="info_circle" size="15" color="#9a7126" ></icon>{{tipsMessage}}</view>
+    <view class="week-title flex">
+        <text class="weekday day-color">日</text>
+        <text class="weekday">一</text>
+        <text class="weekday">二</text>
+        <text class="weekday">三</text>
+        <text class="weekday">四</text>
+        <text class="weekday">五</text>
+        <text class="weekday day-color">六</text>
+    </view>
+    <scroll-view class="calendar-scroll {{tipsMessage ? 'calendar-scroll-more':''}}" scroll-y="true" bindscrolltolower="bottomEventHandle" lower-threshold="200" >
+        <view class="month-wrapper" wx:for="{{dates}}" wx:for-item="item" wx:key="headDate" >
+            <text class="month-title tc">{{item.headDate}}</text>
+            <view class="month-container">
+                
+                <view class="month-line flex" wx:for="{{item.month}}" wx:for-item="months" >
+                    <view class="days tc" wx:for="{{months}}" wx:for-item="day" wx:key="date"  wx:for-index="idx" bindtap="clickHandler" 
+                     data-date="{{day.date}}" data-festival="{{day.festival}}" data-extend="{{dateExtend[day.date].value}}" data-extra="{{dateExtend[day.date] && dateExtend[day.date].extra}}" data-disable="{{ (day.disable && !(lastEndDate2 && day.times > lastEndDate && day.times < lastEndDate2)) || (noExtendDataDisable && !dateExtend[day.date].value) }}" data-times="{{day.times}}" >
+                        <view 
+class="day-item-box {{day.className + (selectDate == day.date ? ( ( (day.disable && !(lastEndDate2 && day.times > lastEndDate && day.times < lastEndDate2)) || (noExtendDataDisable && !dateExtend[day.date].value) ) ? ' day-active-disable ':' day-active ') :'') + ((currentDate && day.times >= currentDate[0] && day.times <= currentDate[1]) ? (  ( (day.disable && !(lastEndDate2 && day.times > lastEndDate && day.times < lastEndDate2)) || (noExtendDataDisable && !dateExtend[day.date].value) )  ? ' day-current-disable ':' day-current ') :'')}}" >
+                            <view wx:if="{{day.holiday}}" class="day-holiday {{(day.className || selectDate == day.date || (currentDate && day.times >= currentDate[0] && day.times <= currentDate[1]) ) && 'day-holiday-white'}} ">假</view>
+                            <view class="day-item {{day.isWeekday? 'weekday-color':''}} {{( (day.disable && !(lastEndDate2 && day.times > lastEndDate && day.times < lastEndDate2)) || (noExtendDataDisable && !dateExtend[day.date].value) )  ? 'day-disable' : ''}}  {{(selectDate == day.date || (currentDate && day.times >= currentDate[0] && day.times <= currentDate[1])) && 'day-color-white'}}">{{day.txt}}</view>
+                            <!--<view wx:if="{{ (currentDate_ && currentDate_[day.times]>=0 ) || dateExtend[day.date].value}}" style="{{dateExtend[day.date].style}}"  class="recent-day tc  {{(day.className || selectDate == day.date || (currentDate && day.times >= currentDate[0] && day.times <= currentDate[1])) && 'day-recent-white'}}">
+                            {{ (currentDate_ && currentDate_[day.times] >= 0 ? rangeText[currentDate_[day.times]]:dateExtend[day.date].value )}} </view>-->
+
+                            <view class='day-bottomTxt {{currentDate_ && currentDate_[day.times] >= 0 ? "":"prices"}} {{day.monthlowestprice == 1 ? "red":""}}'>{{ (currentDate_ && currentDate_[day.times] >= 0 ? rangeText[currentDate_[day.times]]:day.bottomTxt)}}</view>
+                        </view>
+                    </view>
+                </view>
+
+            </view>
+        </view>
+    </scroll-view>
+   
+    <view class="totast-tips totast-tips1 {{toastHidden1 ? 'hide':''}} {{!toastHidden ? 'hide':''}}">
+        {{toastText1}}
+    </view>
+    <view class="totast-tips {{toastHidden ? 'hide':''}}">
+        {{toastText}}
+    </view>
+</view>

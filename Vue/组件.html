@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, user-scalable=no,initial-scale=1, minimum-scale=1, maximum-scale=1">
+	<title>vue watch</title>
+</head>
+<body>
+	<div id="app">
+		<counter heading="Dislikes" color="green"></counter>
+		<counter heading="Likes" color="red"></counter>
+	
+	<template id="counter-template">
+		<h1>{{ heading }}</h1>
+		<button @click="count += 1" style="background: {{ color }}">{{ count }}</button>
+	</template>
+	</div>
+</body>
+<script type="text/javascript" src="vue.min.js"></script>
+<script type="text/javascript">
+
+Vue.component('counter',{
+	template: '#counter-template',
+	props: ['heading','color'],
+	data: function() {
+		return {
+			count: 0
+		}
+	}
+})
+// 实例
+new Vue({
+	el: '#app'
+})
+</script> 
+</html>

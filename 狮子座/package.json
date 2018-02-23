@@ -1,0 +1,21 @@
+{
+  "name": "shizizuo",
+  "version": "1.0.0",
+  "description": "狮子座上传API不要脸测试用",
+  "main": "app.js",
+  "scripts": {
+    "init": "node app.js",
+    "add": "node addTpl.js",
+    "modify": "node modifyTpl.js",
+    "uploadZip": "gulp zip && node uploadZip.js"
+  },
+  "author": "huqiwen",
+  "license": "ISC",
+  "devDependencies": {
+    "form-data": "^2.2.0",
+    "gulp": "^3.9.1",
+    "gulp-zip": "^4.0.0",
+    "node-fetch": "^1.7.1",
+    "request": "^2.81.0"
+  }
+}

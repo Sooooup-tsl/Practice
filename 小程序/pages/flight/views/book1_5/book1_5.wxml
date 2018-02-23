@@ -1,0 +1,179 @@
+<view class="flight-info flex">
+  <view class="flight-info-summary flex-g-1">
+    <view class="flight-info-summary-main">
+      {{flightData.airCompanyName}}{{flightData.flightNo}} {{flightData.flyDate}}
+    </view>
+    <view class="flight-info-summary-detail">
+      <span wx:if="{{flightData.fRateInt}}">准点率{{flightData.fRateInt}}%</span> {{flightData.mfg}}餐食 {{flightData.CraftName}}({{flightData.ACPlaneType}}型机)
+    </view>
+  </view>
+  <view class="flight-info-splitter"></view>
+  <view class="flight-info-summary flex-g-1">
+    <view class="airport-info fn-clear flex">
+      <view class="from flex-g-1">
+        {{flightData.flyOffOnlyTime}}
+        <view class="station">{{flightData.otsn}}{{flightData.boardPoint}}</view>
+      </view>
+      <view class="arrow">
+        <view class="arrow-icons">
+          <view class="stop" wx:if="{{flightData.stopNum > 0}}">经停</view>
+          <view class="arrow-main">
+          </view>
+        </view>
+      </view>
+      <view class="to flex-g-1">
+        {{flightData.arrivalOnlyTime}}
+        <view class="station">{{flightData.atsn}}{{flightData.offPoint}}</view>
+      </view>
+    </view>
+  </view>
+</view>
+<view class="cabin border-top">
+  <view class="cabin-tabs border-bottom flex">
+    <block wx:if="{{cabinTabData.specialSale.length > 0 && cabinTabData.businessSale.length > 0}}">
+      <view class="tab flex-g-1 {{cabinType == 1 ? 'active' : ''}}"
+            bindtap="changeCabinType"
+            data-type="1">经济舱</view>
+      <view class="tab flex-g-1 {{cabinType == 2 ? 'active' : ''}}"
+            bindtap="changeCabinType"
+            data-type="2">头等舱/商务舱</view>
+    </block>
+    <view wx:else class="simpleTab flex-g-1">
+      {{cabinType == 1 ? '经济舱' : '头等舱/商务舱'}}
+    </view>
+  </view>
+  <view class="products" wx:if="{{cabinType == 1}}">
+    <block wx:for="{{cabinTabData.specialTab}}" wx:key="index">
+      <view class="product border-bottom">
+        <view class="product-price">
+          <span>¥</span>{{item.pm}}
+          <view class="discount"
+                wx:if="{{item.discountRate < 10}}">{{item.discountRate}}折</view>
+          <view class="discount"
+                wx:else>全折{{item.roomDes}}</view>
+        </view>
+        <view class="product-detail">
+          <view class="company-icon flightLB_16 logo_{{item.flightCompanyShort}}"
+                wx:if="{{item.sortNum == 1}}"></view>
+          <view class="company-icon flightLB_16 logo_TC"
+                wx:elif="{{item.sortNum == 2}}"></view>
+          <view class="flight-icon icon-shield"
+                wx:elif="{{item.sortNum == 3}}"></view>
+          {{item.showName}}/<view class="rule" data-index="{{item.oriIndex}}" bindtap="showProductInfo">退改签规定</view>
+        </view>
+        <view class="order-button {{item.ticketsNum != 'A' ? 'show-tickets' : ''}}"
+              data-index="{{item.oriIndex}}"
+              bindtap="createTempOrder">
+          <block wx:if="{{item.ticketsNum == 'A'}}">
+            预订
+          </block>
+          <block wx:if="{{item.ticketsNum != 'A'}}">
+            <view class="order">预订</view>
+            <view class="tickets">余{{item.ticketsNum}}张</view>
+          </block>
+        </view>
+      </view>
+    </block>
+  </view>
+  <view class="products" wx:elif="{{cabinType == 2}}">
+    <block wx:for="{{cabinTabData.businessTab}}" wx:key="index">
+      <view class="product border-bottom">
+        <view class="product-price">
+          <span>¥</span>{{item.pm}}
+          <view class="discount"
+                wx:if="{{item.discountRate < 10}}">{{item.discountRate}}折</view>
+          <view class="discount"
+                wx:else>全折{{item.roomDes}}</view>
+        </view>
+        <view class="product-detail">
+          <view class="company-icon flightLB_16 logo_{{item.flightCompanyShort}}"
+                wx:if="{{item.sortNum == 1}}"></view>
+          <view class="company-icon flightLB_16 logo_TC"
+                wx:elif="{{item.sortNum == 2}}"></view>
+          <view class="flight-icon icon-shield"
+                wx:elif="{{item.sortNum == 3}}"></view>
+          {{item.showName}}/<view class="rule" data-index="{{item.oriIndex}}" bindtap="showProductInfo">退改签规定</view>
+        </view>
+        <view class="order-button {{item.ticketsNum != 'A' ? 'show-tickets' : ''}}"
+              data-index="{{item.oriIndex}}"
+              bindtap="createTempOrder">
+          <block wx:if="{{item.ticketsNum == 'A'}}">
+            预订
+          </block>
+          <block wx:if="{{item.ticketsNum != 'A'}}">
+            <view class="order">预订</view>
+            <view class="tickets">余{{item.ticketsNum}}张</view>
+          </block>
+        </view>
+      </view>
+    </block>
+  </view>
+</view>
+<!-- 价格及改签说明 -->
+<view class="dialog" wx:if="{{showDialog}}" >
+  <view class="mask"></view>
+  <view class="dialog-box">
+    <view class="dialog-body">
+      <view class="dialog-content">
+        <view class="dialog-title">价格及退改签说明</view>
+        <scroll-view scroll-y="true" style="height: 280px">
+          <block wx:if="{{productInfo.priceDes}}">
+            <view class="dialog-subtitle">价格说明</view>
+            <table>
+              <thead>
+              <tr>
+                <th>乘客类型</th><th>票价</th><th>机建+燃油</th><th>总计</th>
+              </tr>
+              </thead>
+              <tbody>
+              <tr>
+                <td>成人</td>
+                <td>¥{{productInfo.priceDes.adultTicketPrice}}</td>
+                <td>¥{{productInfo.priceDes.adultOilTax}}</td>
+                <td class="highlight">¥{{productInfo.priceDes.adultTotalPrice}}</td>
+              </tr>
+              <tr>
+                <td>儿童</td>
+                <td>¥{{productInfo.priceDes.childTicketPrice}}</td>
+                <td>¥{{productInfo.priceDes.childOilTax}}</td>
+                <td class="highlight">¥{{productInfo.priceDes.childTotalPrice}}</td>
+              </tr>
+              </tbody>
+            </table>
+          </block>
+          <block wx:if="{{productInfo.tgq}}">
+            <view class="dialog-subtitle">退改签说明</view>
+            <table>
+              <thead>
+              <tr>
+                <th wx:for="{{productInfo.tgq.titles}}" wx:key="index">
+                  {{productInfo.tgq.titles[index]}}
+                </th>
+              </tr>
+              </thead>
+              <tbody>
+              <tr wx:for="{{productInfo.tgq.rules}}" wx:key="index">
+                <td wx:for="{{productInfo.tgq.rules[index]}}" wx:key="index">{{item}}</td>
+              </tr>
+              </tbody>
+            </table>
+          </block>
+          <block wx:if="{{productInfo.specialMark}}">
+            <view class="dialog-subtitle">其他说明</view>
+            <view class="dialog-text">
+              {{productInfo.specialMark}}
+            </view>
+          </block>
+        </scroll-view>
+      </view>
+      <view class="dialog-close">
+        <view class="close-button" bindtap="hideDialogLayer">
+        </view>
+      </view>
+    </view>
+  </view>
+</view>
+
+<toast hidden="{{toastHidden}}" icon="warn" duration="2000" bindchange="toastChange">
+  {{toastText}}
+</toast>

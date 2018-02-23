@@ -1,0 +1,46 @@
+<view id="SA_flight_header">
+    <view class="sa-search sa-search-reset startAddress_search_box">
+        <view class="startAddress_city" id="SA_flight_city" bindtap="fromCityHandler">{{fromCity}}</view>
+        <input id="SA_flight_key" class="startAddress_search border_box" />
+        
+            <view class="startAddress_placeholder SA_flight_placeholder">请输入出发地址</view>
+        
+        <image class="startAddress_icon" id="SA_flight_icon" src="https://img1.40017.cn/cn/TC_Car/h5/img/index/search_icon.png?v=2016092603"></image>
+        <image class="startAddress_delete" id="SA_flight_delete" src="https://img1.40017.cn/cn/TC_Car/h5/img/common/delete.png?v=2016092603"></image>
+    </view>
+</view>
+
+
+<view id="SA_flight_Apage" class="pageABC SA_flight_pageABC" style="display: block;">
+    <view id="startAddress_currentPosition">
+        <view id="startAddress_local" class="startAddress_local_address">
+            <view class="startAddress_address_box border_box startAddress_hotel">
+                <view class="activeGrey startAddress_address_li" data-cid="226" data-scityname="苏州" data-lon="120.616537000569" data-lat="31.303203996991" data-map="高德"  bindtap="getAddress" data-adr="{{localAdr}}">
+                    <view class="startAddress_place">{{localAdr.place}}</view>
+                    <view class="startAddress_address">{{localAdr.address}}</view>
+                </view>
+            </view>
+        </view>
+    </view>
+</view>
+<view id="SA_flight_Bpage" class="pageABC SA_flight_pageABC" style="display: block;">
+    <view id="startAddress_nearbyPosition">
+        <view id="startAddress_nearby">
+            <view class="startAddress_address_box border_box startAddress_nearby_address"  wx:for="{{nearAdrList}}" wx:key="{{index}}" bindtap="getAddress" data-adr="{{item}}">
+                <view class="activeGrey startAddress_address_li" data-cid="226" data-scityname="苏州" data-lon="120.616537000569" data-lat="31.303203996991" data-map="高德"  bindtap="getAddress" data-adr="{{localAdr}}">
+                    <view class="startAddress_place">{{item.place}}</view>
+                    <view class="startAddress_address">{{item.address}}</view>
+                </view>
+            </view>
+        </view>
+    </view>
+</view>
+<view class="calendar-bar flex" bindtap="calendarHandler">
+    <view wx:if="{{tab != 1}}" class="label-calendar flex-g-1">出发日期</view>
+    <view class="text-calendar {{tab == 1 ? 'flex-g-1 tl' : 'flex-g-2 tr'}}">
+        <view class="choose-date" style="{{tab ==1 && 'margin-left:0'}}">{{date}}</view>
+        <view class="choose-diff">{{diff}}</view>
+        <view class="choose-week date-desc">{{week}}</view>
+        <view class="choose-week">{{showDate}}</view>
+    </view>
+</view>

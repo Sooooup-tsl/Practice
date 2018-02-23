@@ -1,0 +1,214 @@
+/*@import "../../styles/base.wxss";*/
+
+page{
+    background:#eee;
+}
+.order-money{
+    height:62px;
+    background:#fff;    
+    padding:0 15px;
+    line-height:62px;
+    font-size:29px;
+    color:#f63;
+    margin-bottom:5px;
+    box-sizing:content-box; 
+}
+.order-money text{
+    font-size:12px;
+    color:#999;
+    position:relative;
+    top:-7px;
+    padding-right:5px;
+}
+
+.order-info{    
+    padding-bottom:100px;
+}
+.order-info .content{
+    background:#fff;
+}
+.order-info .flight-info{
+    height:100px;
+    padding:0 15px 0;
+    box-sizing:content-box; 
+}
+.order-info .flgihtno{
+    padding-top:8px;
+    font-size:12px;
+    color:#000;
+    line-height:28px;
+    height:28px;
+    box-sizing:content-box; 
+}
+.order-info .flgihtno text{
+    padding-right:8px;
+}
+.order-info .flight-date{
+    height:67px;
+    position:relative;
+}
+.order-info .flight-date .air{
+    width:32%;
+    position:absolute;
+    top:8px;
+}
+.order-info .flight-date .left{
+    left:0;
+}
+.order-info .flight-date .right{
+    right:0;
+}
+.order-info .flight-date .air text{
+    display: block;
+    text-align:center;
+}
+.order-info .flight-date .air text:first-child{
+    font-size:22px;
+    color:#333;
+    line-height:25px;
+}
+.order-info .flight-date .air text:last-child{
+    font-size:12px;
+    color:#666;
+    line-height:18px;
+}
+.order-info .flight-date .center{
+    position:absolute;
+    left:32%;
+    top:19px;    
+    width:36%;
+    margin: auto; 
+}
+.order-info .center .arrow-main {
+	display:block;
+    position: relative;
+	margin-top:3px;
+	height: 1px;
+    background-color: #ccc;
+}
+.order-info .center .arrow-main:after {
+    content: '';
+    position: absolute;
+    right: -2px;
+    top: -2px;
+    width: 0;
+    height: 0;
+    border-bottom: 3px solid #ccc;
+    border-right: 10px solid transparent;
+}
+.order-info .flight-date .jinting{
+    border:1px solid #ccc;
+    color:#999;
+    font-size:10px;
+    height:14px;
+    line-height:14px;
+    border-radius:7px;  
+    padding:0 5px; 
+    position:absolute;
+    left:50%;
+    top:22px;
+    -webkit-transform: translate(-50%, -50%);
+    transform:translate(-50%,-50%);
+    display:inline-block;
+    background:#fff;
+}
+/*.order-info .passger-list{
+    border-bottom:1px solid #dedede;
+}*/
+.order-info .passger-info{
+    height:63px;
+    overflow:hidden;
+    padding:0 0 0 15px;
+    position:relative;  
+    box-sizing:content-box;  
+}
+.order-info .passger-info .passger-tt{
+    font-size:12px;
+    color:#999;
+    padding-top:4px;
+    display:block;
+    width:54px;
+    position:absolute;
+    left:15px;
+    top:8px;
+}
+.order-info .passger-info .passger-detail{
+    position:absolute;
+    top:8px;
+    left:69px;
+    right:0;
+    padding:0 15px 8px 5px;
+    line-height:21px;
+    height:46px;
+    box-sizing:content-box;
+}
+.order-info .last .passger-detail{
+    border:none;    
+}
+.order-info .passger-info view text{
+    font-size:14px;
+    color:#333;
+}
+.order-info .passger-info view text:last-child{
+    font-size:12px;
+}
+.order-info .phone{
+    height:44px;
+    line-height:44px;
+    position:relative;
+}
+.order-info .phone text:first-child{
+    font-size:12px;
+    color:#999;
+    padding-left:15px;
+    width:54px;
+    display:inline-block;
+}
+.order-info .phone text:last-child{
+    font-size:14px;
+    color:#333;
+    padding-left:5px;    
+}
+
+.bottom-pay{
+    background:#fff;
+    height:81px;  
+    position:fixed;
+    bottom:0;
+    left:0;
+    right:0;
+    text-align:center;
+    padding:0 7px;
+    /*box-shadow:0 -2px 8px rgba(0,0,0,.1);*/
+}
+.bottom-pay button{
+    height:44px;
+    margin:8px 0 5px;
+    background:#06bc02;
+    color:#fff;
+    border:none;
+}
+.bottom-pay .gray{
+    background:#dedede;
+}
+.bottom-pay view{
+    font-size:11px;
+    color:#999;
+    line-height:18px;
+    height:18px;
+}
+.bottom-pay view.expired{
+    color:#f63;
+}
+.bottom-pay view text{
+    background:#888;
+    color:#fff;
+    height:14px;
+    padding:0 2px;
+    margin:0 1px;
+}
+.bottom-pay view text:first-child{
+    margin-left:3px;
+}
+
+

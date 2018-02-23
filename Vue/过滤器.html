@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, user-scalable=no,initial-scale=1, minimum-scale=1, maximum-scale=1">
+	<title>vue自定义排序</title>
+</head>
+<body>
+<ul id="orderByName">
+	<!-- capitalize首字母大写，uppercase全部大写，lowercase全部小写 -->
+	<li v-for="user in infos">{{ user.name | capitalize }}</li>
+	<p>----------------------------------</p>
+	<!-- 自定义排序 -->
+	<li v-for="user in infos | orderBy ageByTen order">{{ user.name }} - {{ user.age }}</li>
+	<p>----------------------------------</p>
+	<!-- 显示第 2 到 3 元素-->
+	<li v-for="user in infos | limitBy 2 1">{{ user.name }} - {{ user.age }}</li>
+	<p>----------------------------------</p>
+	<!-- 显示含a的对象-->
+	<li v-for="user in infos | filterBy 'a' in 'name' ">{{ user.name }} - {{ user.age }}</li>
+	<p>----------------------------------</p>
+
+	<!-- 仅限数字123.... -->
+	<li class="car{{ num.id | pluralize '1' '2' '3' }}" v-for="num in num">{{ num.id }} {{ num.id | pluralize 'st' 'nd' 'rd' }}</li>
+	<p>----------------------------------</p>
+	<!-- 为 DOM 元素注册一个索引，方便通过所属实例的 $els 访问这个元素。 -->
+	<span v-el:msg>hello</span>
+</ul>
+
+<script type="text/javascript" src="vue.js"></script>
+<script type="text/javascript">
+	var vm = new Vue({
+		el: '#orderByName',
+		data: {
+			order: 1,
+			num: [
+				{
+					id: 1
+				},
+				{
+					id: 2
+				},
+				{
+					id: 3
+				}
+			],
+			infos: [
+				{
+					name: "jackK",
+					age: 20
+				},
+				{
+					name: "tom",
+					age: 18
+				},
+				{
+					name: "david",
+					age: 19
+				}
+			]
+		},
+		methods: {
+			ageByTen: function(a,b){
+				return Math.floor(a.age-b.age)
+			},
+			dd: function(){
+				console.log(this.$els.msg.textContent)
+			}
+		}
+	});
+	vm.dd();
+</script> 
+</body>
+</html>

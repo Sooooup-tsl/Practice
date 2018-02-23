@@ -1,0 +1,4 @@
+<!--pages/key/index.wxml-->
+<switch wx:for="{{numberArray}}" wx:key='*this'>{{item}}</switch>
+<button bindtap="addNumberToFront">prepend</button>
+<button bindtap="addNumberToEnd">append</button>

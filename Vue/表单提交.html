@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, user-scalable=no,initial-scale=1, minimum-scale=1, maximum-scale=1">
+	<title>vue watch</title>
+</head>
+<body>
+
+<div id="checkbox">
+	<input type="checkbox" v-model="checked">
+	<label for="checkbox">{{ checked }}</label>
+</div>
+<!-- 复选框 -->
+<div id="checkname">
+	<input type="checkbox" v-model="checkname" value="jack"><label for="jack">jack</label>
+	<input type="checkbox" v-model="checkname" value="bob"><label for="bob">bob</label>
+	<input type="checkbox" v-model="checkname" value="tom"><label for="tom">tom</label>
+	<p>{{checkname | json}}</p>
+</div>
+<!-- 单选框 -->
+<div id="radio">
+	<input type="radio" v-model="radioname" value="one"/><label for="one">one</label>
+	<input type="radio" v-model="radioname" value="two"/><label for="two">two</label>
+	<p>选择：{{radioname}}</p>
+</div>
+<!-- 下拉列表框 -->
+<div id="selected">
+	<select v-model="selected">	
+		<option v-for="obj in weeks" v-bind:value="obj.value">{{obj.text}}</option>
+	</select>
+	<span>{{selected}}</span>
+</div>
+</body>
+<script type="text/javascript" src="vue.js"></script>
+<script type="text/javascript">
+var vm = new Vue({
+	el:'#checkbox',
+	data: {
+		checked:''
+	}
+})
+//复选框
+new Vue({
+	el:"#checkname",
+	data:{
+		checkname:[]
+	}
+})
+//单选框
+new Vue({
+	el: '#radio',
+	data: {
+		radioname: []
+	}
+})
+//下拉列表
+new Vue({
+	el: '#selected',
+	data:{
+		selected: '1',
+		weeks: [{text: '周一',value: '1'},
+				{text: '周二',value: '2'},
+				{text: '周三',value: '3'}
+		]
+	}
+})
+</script> 
+</html>

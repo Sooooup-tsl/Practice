@@ -1,0 +1,38 @@
+<!--pages/list/list.wxml-->
+<!-- <text>pages/list/list.wxml</text>
+<view>hello {{helloData.name}}</view>
+<view class="classname">{{count}}</view>
+<button bindtap="changeName">click me!</button>
+<button bindtap="add">增加1</button> -->
+<!-- 数据绑定 -->
+<view>hello {{name}}</view>
+<button bindtap="changeName">点击</button>
+<!-- 列表渲染 -->
+<view wx:for="{{array}}">{{item}}</view>
+<view wx:for="{{array2}}">
+	{{index}}: {{item.message}}
+</view>
+<!-- 九九乘法表 -->
+<view wx:for='{{[1,2,3,4,5,6,7,8,9]}}' wx:for-item="i">
+	<view wx:for='{{[1,2,3,4,5,6,7,8,9]}}' wx:for-item='j'>
+		{{i}} * {{j}} = {{i * j}}
+	</view>
+</view>
+<!-- 块级循环 -->
+<block wx:for="{{[1,2,3]}}">
+	<view>{{index}}: </view>
+	<view>{{item}}</view>
+</block>
+<!-- 条件渲染 -->
+<view wx:if="{{flag == 'aaa'}}">aaa</view>
+<view wx:elif="{{flag == 'bbb'}}">bbb</view>
+<view wx:else="{{flag == 'ccc'}}">ccc</view>
+<!-- 模板 -->
+<template name='staffName'>
+	<view>FirstName: {{ firstName }}, secondName: {{secondName}}</view>
+</template>
+<template is='staffName' data='{{...staffA}}'></template>
+<template is='staffName' data='{{...staffB}}'></template>
+<template is='staffName' data='{{...staffC}}'></template>
+<!-- 事件 -->
+<button bindtap='add'>点击  {{count}}</button>

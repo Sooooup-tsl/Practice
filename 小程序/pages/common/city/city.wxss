@@ -1,0 +1,281 @@
+page{
+  height: 100%;
+  background: #e9ecf1;
+}
+.city-container {
+  padding: 0;
+  min-height: 100%;
+  background-color: #e9ecf1;
+  box-sizing: border-box;
+}
+
+.city-search {
+  position: relative;
+}
+
+.search-icon {
+  position: absolute;
+  top: 50%;
+  margin-top: -7px;
+  left: 20px;
+}
+
+.search-input-view {
+  height: 35px;
+  padding-left: 30px;
+  background: #fff;
+  border-radius: 30px;
+  padding-right: 65px;
+}
+
+.search-input-view-padding {
+  padding-right: 0;
+}
+
+.search-input {
+  height: 35px;
+  font-size: 16px;
+  color: #000;
+}
+
+.placeholder-font {
+  font-size: 14px;
+  color: #666;
+}
+
+.search-cancel {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 65px;
+  border: none;
+  text-align: center;
+  font-size: 14px;
+  height: 49px;
+  line-height: 49px;
+  color: #09bb07;
+  z-index: 20;
+}
+
+.search-input-box {
+  background: #ededed;
+  padding: 7px 8px;
+  position: relative;
+}
+
+
+/**/
+
+.search-input-box-padding {
+  margin-right: 58px;
+}
+
+.search-no-match {
+  font-size: 14px;
+  color: #000;
+  text-align: center;
+  padding: 15px;
+}
+
+
+/*tab*/
+
+.tab-bar-panel {
+  -webkit-box-align: stretch;
+  align-items: stretch;
+  line-height: 40px;
+}
+
+.tab-bar {
+  color: #000;
+  font-size: 16px;
+  border-bottom: 0.03rem solid #e4e4e4;
+  text-align: center;
+}
+
+.tab-text-active {
+  color: #09bb07;
+  border-bottom: 2px solid #09bb07;
+  line-height: 40px;
+  display: inline-block;
+}
+
+.list-title {
+  display: block;
+  color: #999;
+  font-size: 12px;
+  padding: 12px 0px 8px 14px;
+  background-color: #e9ecf1;
+}
+
+.special-title {
+  padding: 15px 0px 10px 15px;
+}
+
+.block-item {
+  height: 28px;
+  padding-right: 10px;
+  line-height: 28px;
+  display: inline-block;
+  margin-top: 10px;
+  min-width: 33.3333333333%;
+  box-sizing: border-box
+}
+
+.line-item {
+  height: 44px;
+  line-height: 44px;
+  margin-left: 15px;
+  border-bottom: 0.03rem solid #ccc;
+  display: block;
+  font-size: 16px;
+  color: #333;
+}
+
+.block-item-text {
+  font-size: 12px;
+  background-color: #fff;
+  border: 0.03rem solid #dddddd;
+  text-align: center;
+  display: inline-block;
+  border-radius: 2px;
+  width: 100%;
+  box-sizing: border-box;
+  color: #666;
+}
+
+.location-block {
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.location-item-text {
+  text-align: left;
+  padding-left: 16px;
+}
+
+.location-disable-txt {
+  margin-left: 20px;
+  color: #999;
+}
+
+.location-city-list,
+.custom-city-list {
+  padding: 0 5px 10px 15px;
+  margin-top: -8px;
+}
+
+.letter-container {
+  padding: 0px 5px 0px 15px;
+}
+
+.letter-item-side {
+  width: 16.666666666666%;
+  height: 44px;
+  line-height: 44px;
+  text-align: center;
+  padding-right: 10px;
+  margin-bottom: 10px;
+  display: inline-block;
+  box-sizing: border-box;
+}
+
+.letter-item {
+  width: 100%;
+  border: 0.03rem solid #ddd;
+  background-color: #fff;
+  display: inline-block;
+  border-radius: 2px;
+  font-size: 12px;
+}
+
+.city-item-select {
+  border: 0.03rem solid #23beae;
+  color: #23beae;
+}
+
+.letter-item-select {
+  border-color: #dedede;
+  background-color: #dedede;
+}
+
+.city-list-detail {
+  background-color: #fff;
+}
+.search-panel{
+  font-size: 14px;
+  background-color: #fff;
+}
+.search-panel-list {
+  display: -webkit-box;
+  padding-left: 10px;
+  height: 44px;
+  line-height: 44px;
+  -webkit-box-align: center;
+  border-bottom: 0.03rem solid #ccc;
+  position: relative;
+}
+
+.think-icon {
+  display: block;
+  width: 20px;
+  height: 20px;
+  -webkit-box-flex: 0;
+  position: relative;
+  margin-top: -2px;
+}
+
+.think-font {
+  display: block;
+  margin-left: 13px;
+  font-size: 16px;
+  color: #000;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  -webkit-box-flex: 1;
+}
+
+.search-scroll {
+  position: absolute;
+  padding-top: 49px;
+  top: 0;
+  bottom: 0;
+  width: 100%;
+  height: 100%;
+}
+.without-letter-message{
+  padding: 5px 10px;
+  font-size: 13px;
+  padding-bottom: 50px;
+  background-color: #e9ecf1;
+}
+.without-letter-message view{
+  background: #fff;
+  padding: 5px 0 5px 10px;
+}
+.border-none {
+  border: none;
+}
+.think-font-small{
+    font-size: 12px;
+    color: #999;
+}
+.none {
+  display: none;
+}
+.red{
+  color: red;
+}
+.second{
+  margin-left: 23px;
+  padding-left: 0;
+}
+.distances{
+    position: absolute;
+    top: 0;
+    right: 0;
+    padding: 0 10px;
+    font-size: 12px;
+    color: #999;
+}

@@ -1,0 +1,460 @@
+page {
+    color: #666;
+    -webkit-text-size-adjust: 100% !important;
+    -webkit-tap-highlight-color: rgba(0,0,0,0);
+	overflow-x:hidden;
+    height:100%;
+}
+input{
+    outline: none;
+    font-size: 100%;
+    -webkit-appearance:none;
+}
+page, view, ul, li, input, p, th, td, button, section {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+ul{
+    width:100%;
+}
+ul, li, p{
+    display:block;
+}
+table {
+    display: table;
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+th {
+    text-align: inherit;
+    display: table-cell;
+}
+thead {
+    display: table-header-group;
+}
+tbody {
+    display: table-row-group;
+}
+tr {
+    display: table-row;
+}
+td {
+    display: table-cell;
+}
+em, th ,i{
+    font-style: normal;
+    font-weight: 500;
+}
+ol, ul {
+    list-style: none;
+}
+.fn-clear:after {
+    visibility: hidden;
+    display: block;
+    font-size: 0;
+    content: " ";
+    clear: both;
+    height: 0;
+}
+.fn-clear {
+    zoom: 1;
+}
+.none {
+	display:none;
+}
+.clear-both{
+    clear:both;
+}
+
+.border-bottom,.border-top, .split-top, .split-bottom{
+    position: relative;
+}
+
+.border-top::before {
+  content: " ";
+  position: absolute;
+  left: 0;
+  top: 0;
+  right: 0;
+  height: 1px;
+  border-top: 1px solid rgba(0, 0, 0, 0.2);
+    -webkit-transform: scaleY(0.5);
+    -webkit-transform-origin: 0 0;
+  transform-origin: 0 0;
+  transform: scaleY(0.5);
+}
+
+.border-bottom::after {
+  content: " ";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  height: 1px;
+  border-bottom:  1px solid rgba(0, 0, 0, 0.2);
+    -webkit-transform: scaleY(0.5);
+    -webkit-transform-origin: 0 100%;
+  transform-origin: 0 100%;
+  transform: scaleY(0.5);
+}
+.split-bottom::after {
+    content: "";
+    width: 200%;
+    height: 1px;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    border-bottom: 1px solid #dcdcdc;
+    -webkit-transform: scale(0.5);
+    transform: scale(0.5);
+    -webkit-transform-origin: 0 100%;
+    transform-origin: 0 100%;
+    box-sizing: border-box;
+}
+
+.split-top::before {
+    content: "";
+    width: 200%;
+    height: 1px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    border-bottom: 1px solid #dcdcdc;
+    -webkit-transform: scale(0.5);
+    transform: scale(0.5);
+    -webkit-transform-origin: 0 0;
+    transform-origin: 0 0;
+    box-sizing: border-box;
+}
+
+.dialog{
+    position:fixed;
+    top:0;
+    left:0;
+    bottom:0;
+    right:0;
+    z-index:999;
+}
+.dialog .mask{
+    position:absolute;
+    top:0;
+    left:0;
+    bottom:0;
+    right:0;
+    z-index:10;
+    background-color:rgba(0,0,0,.6);
+}
+.dialog .dialog-box{
+    position: relative;
+    z-index:12;
+    height:100%;
+}
+.dialog .dialog-box .dialog-body{
+    width:100%;
+    box-sizing: border-box;
+    padding: 20px 28px;
+    position: absolute;
+    z-index:12;
+    top: 40%;
+    margin-top:-50%;
+}
+.dialog .dialog-box .dialog-body .dialog-content{
+    background-color:white;
+    padding: 14px 10px;
+    border-radius: 5px;
+}
+.dialog .dialog-close {
+    position: relative;
+    margin-top: 30px;
+    z-index: 12;
+    color: #fff;
+    text-align: center;
+}
+.dialog .dialog-close .close-button {
+    box-sizing: content-box;
+    background-color: rgba(0, 0, 0, .2);
+    height: 28px;
+    width: 28px;
+    position: absolute;
+    left: 50%;
+    margin-left: -14px;
+    border-radius: 28px;
+    border: 1px solid rgba(255, 255, 255, .5);
+}
+.dialog .dialog-close .close-button:before {
+    content: "";
+    border-left: 1px solid #fff;
+    -webkit-transform: rotate(45deg);
+    transform: rotate(45deg);
+    position: absolute;
+    top: 6px;
+    left: 50%;
+    height: 16px;
+}
+.dialog .dialog-close .close-button:after {
+    content: "";
+    border-left: 1px solid #fff;
+    -webkit-transform: rotate(-45deg);
+    transform: rotate(-45deg);
+    position: absolute;
+    top: 6px;
+    left: 50%;
+    height: 16px;
+}
+.dialog .dialog-title {
+    font-size: 12px;
+    margin-bottom: 14px;
+    color: #999;
+}
+.dialog .dialog-subtitle {
+    font-size: 10px;
+    color: #999;
+    margin: 0 0 6px 0;
+}
+
+.dialog .detail-in-title{
+    font-size:14px;
+    color:#333333;
+    margin:3px 0;
+    line-height:1.2;
+}
+
+.dialog .detail-in-content{
+    font-size:12px;
+    color:#999999;
+    margin:6px 0;
+    line-height:1.2;
+}
+
+.dialog .dialog-text {
+    color: #333;
+    font-size: 10px;
+}
+.dialog table {
+    width: 99%;
+    text-align: center;
+    margin-bottom: 14px;
+}
+.dialog th {
+    text-align: center;
+    border: 1px solid #cecece;
+    height: 27px;
+    font-size: 11px;
+    line-height: 27px;
+    background-color: #f1f1f1;
+    color: #666;
+    white-space: nowrap;
+}
+.dialog td {
+    border: 1px solid #cecece;
+    height: 33px;
+    font-size: 10px;
+    color: #333;
+    vertical-align: middle;
+}
+.dialog td.highlight {
+    color: #ff6633;
+}
+
+.flight-icon {
+    display: inline-block;
+    background: url(https://file.40017.cn/flight/image/wechatapp/wxapp-icons.png?1) no-repeat;
+    background-size: 400px 264px;
+    zoom: 0.5;
+}
+.flight-icon.icon-left-bar {
+    background-position: -8px -7px;
+    width: 23px;
+    height: 251px;
+}
+.flight-icon.icon-right-bar {
+    background-position: -31px -7px;
+    width: 23px;
+    height: 251px;
+}
+.flight-icon.icon-transfer {
+    background-position: -58px -10px;
+    width: 66px;
+    height: 66px;
+}
+.flight-icon.icon-arrow {
+    background-position: -62px -81px;
+    width: 15px;
+    height: 8px;
+}
+.flight-icon.icon-price-active {
+    background-position: -60px -93px;
+    width: 38px;
+    height: 38px;
+}
+.flight-icon.icon-price {
+    background-position: -106px -93px;
+    width: 38px;
+    height: 38px;
+}
+.flight-icon.icon-time-active {
+    background-position: -60px -134px;
+    width: 38px;
+    height: 38px;
+}
+.flight-icon.icon-time {
+    background-position: -106px -134px;
+    width: 38px;
+    height: 38px;
+}
+.flight-icon.icon-add {
+    background-position: -65px -176px;
+    width: 32px;
+    height: 32px;
+}
+.flight-icon.icon-delete {
+    background-position: -107px -176px;
+    width: 32px;
+    height: 32px;
+}
+.flight-icon.icon-pencil {
+    background-position: -58px -215px;
+    width: 28px;
+    height: 31px;
+}
+.flight-icon.icon-trash {
+    background-position: -91px -217px;
+    width: 40px;
+    height: 40px;
+}
+.flight-icon.icon-right-arrow {
+    background-position: -130px -13px;
+    width: 10px;
+    height: 25px;
+}
+.flight-icon.icon-departure {
+    background-position: -146px -13px;
+    width: 35px;
+    height: 25px;
+}
+.flight-icon.icon-arrival {
+    background-position: -148px -51px;
+    width: 35px;
+    height: 25px;
+}
+.flight-icon.icon-shield {
+    background-position: -153px -90px;
+    width: 23px;
+    height: 30px;
+}
+.flight-icon.icon-plane {
+    background-position: -152px -124px;
+    width: 28px;
+    height: 28px;
+}
+.flight-icon.icon-info {
+    background-position: -150px -156px;
+    width: 28px;
+    height: 28px;
+}
+.flight-icon.icon-info-red {
+  background-position: -226px -182px;
+  width: 28px;
+  height: 28px;
+}
+.flight-icon.icon-question {
+    background-position: -148px -186px;
+    width: 30px;
+    height: 30px;
+}
+.flight-icon.icon-checkbox-active {
+    background-position: -139px -217px;
+    width: 42px;
+    height: 42px;
+}
+.flight-icon.icon-checkbox {
+    background-position: -182px -216px;
+    width: 42px;
+    height: 42px;
+}
+.flight-icon.icon-check {
+    background-position: -192px -181px;
+    width: 26px;
+    height: 26px;
+}
+.flight-icon.icon-cert {
+    background-position: -190px -10px;
+    width: 32px;
+    height: 32px;
+}
+.flight-icon.icon-safe {
+    background-position: -190px -53px;
+    width: 32px;
+    height: 32px;
+}
+.flight-icon.icon-ticket {
+    background-position: -190px -90px;
+    width: 32px;
+    height: 32px;
+}
+.flight-icon.icon-detail-down {
+    background-position: -190px -124px;
+    width: 34px;
+    height: 26px;
+}
+.flight-icon.icon-detail-up {
+    background-position: -190px -155px;
+    width: 34px;
+    height: 26px;
+}
+.flight-icon.icon-coffee-cup {
+    background-position: -224px -8px;
+    width: 162px;
+    height: 162px;
+}
+.flight-icon.icon-alarm {
+  background-position: -230px -217px;
+  width: 22px;
+  height: 25px;
+}
+/* 航空公司logo */
+.flightLB_16{display:inline-block}
+.flightLB_16{background:url(https://wx.40017.cn/touch/weixin/flight/img/wechatnew/flightlogo_20_v2.png) no-repeat; background-size: 35px;}
+
+/**20.png**/
+.logo_TC{ background-position: 0 0;}
+.logo_CZ{ background-position:-12px 0;}
+.logo_MU{ background-position:-24px 0;}
+.logo_HU{ background-position:0 -48px;}
+.logo_SC{ background-position:-24px -24px;}
+.logo_3U{ background-position:0 -24px;}
+.logo_MF{ background-position:-24px -48px;}
+.logo_FM{ background-position:-12px -24px;}
+.logo_GS{ background-position:-24px -12px;}
+.logo_9C{ background-position:0 -84px;}
+.logo_ZH{ background-position:-12px -48px;}
+.logo_KN{ background-position:0 -72px;}
+.logo_HO{ background-position:0 -12px;}
+.logo_BK{ background-position:-12px -72px;}
+.logo_EU{ background-position:-24px -72px;}
+.logo_8L{ background-position:-12px -12px;}
+.logo_CN{ background-position:0 -48px;}
+.logo_JD{ background-position:-12px -36px;}
+.logo_NS{ background-position:-12px -60px;}
+.logo_G5{ background-position:0 -36px;}
+.logo_PN{ background-position:0 -60px;}
+.logo_JR{ background-position:-24px -36px;}
+.logo_KY{ background-position:-12px -84px;}
+.logo_TV{ background-position:-24px -84px;}
+.logo_GJ{ background-position:-12px -96px;}
+.logo_YI{ background-position:-24px -96px;}
+.logo_DZ{ background-position:0 -108px;}
+.logo_QW{ background-position:-12px -108px;}
+.logo_DR{ background-position:0px -120px;}
+.logo_UQ{ background-position:-24px -108px;}
+.logo_FU{background-position:-12px -120px}
+.logo_AQ{background-position:-24px -120px;}
+.logo_GX{background-position:0px -132px;}
+.logo_Y8{background-position:-12px -132px;}
+.logo_GY{background-position:-24px -132px;}
+.logo_RY{background-position:0px -144px;}
+.logo_A6{background-position:-12px -144px;}
+.logo_9H{background-position:-24px -144px;}
+.logo_GT{background-position:0 -156px;}
+.logo_CA{ background-position:-12px -156px;}

@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, user-scalable=no,initial-scale=1, minimum-scale=1, maximum-scale=1">
+	<title>vue路由</title>
+</head>
+<body>
+	<div id="app">
+		<h1>hello Vue</h1>
+		<p>
+			<a v-link="{ path: '/foo' }">Go to foo</a>
+			<a v-link="{ path: '/foo/bar' }">Go to bar</a>
+			<a v-link="{ path: '/foo/baz' }">Go to baz</a>
+		</p>
+		<p>
+			<a v-link="{ name: 'user', params: { userId: 123 }}">User</a>
+		</p>
+		<!-- 路由外链 -->
+		<router-view></router-view>		
+	</div>
+</body>
+<script type="text/javascript" src="vue.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/vue-router/0.7.10/vue-router.min.js"></script>
+<script type="text/javascript">
+	var Foo = Vue.extend({
+	  template:
+	    '<div class="foo">' +
+	      '<h2>This is Foo!</h2>' +
+	      '<router-view></router-view>' + 
+	    '</div>'
+	})
+	var Bar = Vue.extend({
+		template: '<p>this is bar</p>'
+	})
+	var Baz = Vue.extend({
+		template: '<p>this is baz</p>'
+	})
+	//路由器需要一个跟组件
+	var app = Vue.extend({})
+	//创建一个实例
+	var router = new VueRouter();
+
+	router.map({
+		'/foo': {
+			 // 路由匹配到/foo时，会渲染一个Foo组件
+			component: Foo,
+			 // 在/foo下设置一个子路由
+			subRoutes: {
+				'/': {
+					component: {
+						template: '<p>Default for Foo'
+					}
+				},
+				'/bar': {
+					component: Bar
+				},
+				'/baz': {
+					component: Baz
+				}
+			}
+		},
+		'/user/:userId': {
+			name: 'user', //给这条路径加上一个名字
+			component: {
+				template: '<div>有名称的路径</div>'
+			}
+		}
+	})
+	router.start(app,"#app")
+</script> 
+</html>

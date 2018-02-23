@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>React</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width,height=device-height, user-scalable=no,initial-scale=1, minimum-scale=1, maximum-scale=1">
+	<meta name="format-detection" content="telphone=no, email=no"/>  
+	<meta name="description" content=""/>
+	<meta name="keywords" content=""/>
+	<script type="text/javascript" src="js/react.js"></script>
+	<script type="text/javascript" src="js/react-dom.js"></script>
+	<script type="text/javascript" src="js/browser.min.js"></script>
+</head>
+<body>
+	<div id="example"></div>
+	<div id="example2"></div>
+	<script type="text/babel">
+	//遇到 HTML 标签（以 < 开头），就用 HTML 规则解析；遇到代码块（以 { 开头），就用 JavaScript 规则解析
+	//HTML 模板
+	ReactDOM.render(
+		<h1> HELLO WORLD </h1>,
+		document.getElementById("example")
+	);
+	//ReactDOM.render()
+	var names = ["marry","lee","jackson"];
+	ReactDOM.render(
+		<div>
+		{	
+			names.map(function(name){
+				return <div>Hi，{name} ！</div>
+			})
+		}
+		</div>,
+		document.getElementById("example")
+	);
+	//jsx语法
+	var arr = [
+		<div>hi</div>,
+		<h1>karry</h1>,
+	];
+	ReactDOM.render(
+		<div>{arr}</div>,
+		document.getElementById("example")
+	);
+	//组件
+	var HelloMessage = React.createClass({
+	  	render: function() {
+	    	return <h1>Hello {this.props.name}</h1>;
+	  	}
+	});
+	ReactDOM.render(
+	  	<HelloMessage name="John" />,
+	  	document.getElementById("example")
+	);
+	//this.props.children
+	//如果当前组件没有子节点，它就是 undefined ;如果有一个子节点，数据类型是 object ；如果有多个子节点，数据类型就是 array
+	var NotesList = React.createClass({
+		render: function() {
+			return (
+				<ol>
+				{
+					React.Children.map(this.props.children,function(child){
+						return <li>{child}</li>
+					})
+				}
+				</ol>
+			)
+		}
+	})
+	ReactDOM.render(
+		<NotesList>
+		 	<span>hello</span>
+		 	<span>world</span>
+		</NotesList>,
+		document.getElementById("example")
+	)
+	//PropTypes
+	var MyTitle = React.createClass({
+		propTypes:{
+			title:React.PropTypes.string.isRequired
+		},
+
+		render: function () {
+			return <h1>hi  {this.props.title}</h1>
+		}
+	})
+	var data = 123;
+	ReactDOM.render(
+		<MyTitle title={data} />,
+		document.getElementById("example")
+	)
+	//getDefaultProps设置组件属性的默认值
+	var MyTitle = React.createClass({
+		getDefaultProps :function() {
+			return {
+				title : "hello world"
+			}
+		},
+		render:function(){
+			return <h1>{this.props.title}</h1>
+		}
+	})
+	ReactDOM.render(
+		<MyTitle />,
+		document.getElementById("example")
+	)
+	//获取真实的DOM节点
+	var MyComponent = React.createClass({
+		handleClick : function(){
+			this.refs.myTextInput.focus();
+		},
+		render:function(){
+			return (
+				<div>
+					<input type="text" ref="myTextInput" />
+					<input type="button" value="Focus" onClick={this.handleClick} />
+				</div>
+			)
+		}
+	})
+	ReactDOM.render(
+		<MyComponent />,
+		document.getElementById("example")
+	)
+
+	//样式
+	var styles = {
+		backgroundColor: "red",
+	}
+	ReactDOM.render(
+		<div style={styles}>dsasaa</div>,
+		document.getElementById("example")
+	)
+
+	//this.state
+	var LikeButton = React.createClass({
+		getInitialState: function(){
+			return {liked: false}
+		},
+		handleClick:function(event){
+			this.setState({liked: !this.state.liked})
+		},
+		render:function(){
+			var text = this.state.liked ? 'liked' : 'haven\'t liked';
+			return (
+				<div onClick={this.handleClick}>
+				<p>You {text} is Click</p>
+				</div>
+			)
+		}
+	})
+	ReactDOM.render(
+		<LikeButton />,
+		document.getElementById("example")
+	)
+
+	//表单
+	var Input = React.createClass({
+		getInitialState:function(){
+			return {value: "helloworld"}
+		},
+		handleChange:function(e){
+			this.setState({value:e.target.value})
+		},
+		render:function(){
+			var value = this.state.value;
+			return(
+				<div>
+					<input type="text" value={value} onChange={this.handleChange} />
+					<p>{value}</p>
+				</div>
+			)
+		}
+	})
+	ReactDOM.render(
+		<Input />,
+		document.getElementById("example2")
+	)
+	//组件的生命周期
+	var Hello = React.createClass({
+		getInitialState = function(){
+			return { opacity: 1 };
+		},
+		componentDidMount:function(){
+			this.timer = setInterval(function(){
+				var opacity = this.state.opacity;
+				opacity -=.05;
+				if(opacity<0.1){
+					opacity = 1.0;
+				}
+				this.state({
+					opacity: opacity
+				})
+			}.bind(this),100)
+		},
+		render:function(){
+			return (
+				<div style={{opacity: this.state.opacity}}>
+					hello,{this.props.name}
+				</div>
+			)
+		}
+	})
+	ReactDOM.render(
+		<Hello />,
+		document.getElementById("example")
+	)
+	</script>
+</body>
+</html>

@@ -1,0 +1,223 @@
+.calendar-container {
+  padding: 0 0 20px 0;
+  background: #fff;
+  overflow: hidden;
+  height: 100%;
+  box-sizing: border-box;
+}
+
+.tips-message {
+  padding-left: 33px;
+  line-height: 35px;
+  height: 35px;
+  overflow: hidden;
+  font-size: 12px;
+  background-color: #ffe8a1;
+  position: relative;
+  color: #9a7126;
+}
+
+.message-icon {
+  position: absolute;
+  left: 10px;
+  top: 50%;
+  margin-top: -8px;
+  line-height: 15px;
+  height: 15px;
+}
+
+.calendar-scroll {
+  height: 100%;
+  position: absolute;
+  top: 0;
+  padding-top: 28px;
+  box-sizing: border-box;
+}
+
+.calendar-scroll-more {
+  padding-top: 63px;
+}
+
+.month-wrapper {
+  margin-top: 5px;
+  padding: 0 2px;
+}
+
+.week-title {
+  background: #556a72;
+  color: #fff;
+  /*flex-direction:row;*/
+  -webkit-box-pack: center;
+  justify-content: center;
+  /*display: flex;*/
+  width: 100%;
+  height: 28px;
+}
+
+.week-title .weekday {
+  line-height: 28px;
+}
+
+.month-title {
+  display: block;
+  /*text-align: center;*/
+  font-size: 16px;
+  color: #000;
+  font-weight: bold;
+  padding: 15px 0 10px;
+}
+
+.month-line {
+  /*flex-direction:row;*/
+  -webkit-box-pack: center;
+  justify-content: center;
+  /*display: flex;*/
+  height: 67px;
+}
+
+.month-week {
+  height: 40px;
+}
+
+.weekday {
+  width: 14.28%;
+  text-align: center;
+  font-size: 14px;
+  line-height: 40px;
+  color: #fff;
+}
+
+.days {
+  width: 14.28%;
+  /*text-align: center;*/
+  font-size: 14px;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  flex-direction: column;
+  -webkit-box-pack: center;
+  justify-content: center;
+  -webkit-box-align: center;
+  align-items: center;
+  position: relative;
+  padding: 5px 3px;
+  height: 100%;
+  box-sizing: border-box;
+}
+
+.day-item {
+  width: 100%;
+  line-height: 38px;
+  height:50px;
+
+}
+
+.day-color {
+  color: #09bb07;
+}
+
+.weekday-color {
+  color:#09bb07;
+}
+
+.day-disable {
+  color: #b2b2b2;
+}
+
+.day-holiday {
+  position: absolute;
+  right: -1px;
+  top: -1px;
+  font-size: 9px;
+  height: 12px;
+  line-height: 12px;
+  color: #09bb07;
+}
+.day-bottomTxt{
+  position:absolute;
+  bottom: 24px;
+  left:50%;
+  transform: translate(-50%,150%);
+  width:100%;
+  font-size: 10px;
+  color: #09bb07;
+}
+
+/*#e7e7e7*/
+
+.day-today {
+  background-color: #e7e7e7;
+  border-radius: 2px;
+  font-size: 14px;
+  /* color: #fff; */
+}
+
+.day-item-box {
+  position: relative;
+  margin: 0 0;
+  border-radius: 4px;
+}
+
+.day-active,
+.day-current {
+  background-color: #09bb07;
+  border-radius: 2px;
+  font-size: 14px;
+  color: #fff;
+}
+
+.recent-day {
+  position: absolute;
+  font-size: 10px;
+  width: 100%;
+  /*text-align: center;*/
+  bottom: 4px;
+  left: 0;
+  line-height: 12px;
+  color: #09bb07;
+}
+
+.day-current-disable,
+.day-today-disable,
+.day-active-disable {
+  background-color: #daf5da;
+  font-size: 14px;
+  color: #09bb07;
+}
+
+.day-holiday-white,
+.day-color-white,
+.day-recent-white {
+  color: #fff;
+}  
+ /* .day-holiday-white {
+  color: #fff;
+}  */
+
+.totast-tips {
+  background: rgba(0, 0, 0, 0.6);
+  padding: 10px 15px;
+  border-radius: 5px;
+  position: absolute;
+  left: 50%;
+  -webkit-transform: translateX(-50%);
+  transform: translateX(-50%);
+  bottom: 30px;
+  color: #fff;
+  font-size: 14px;
+  line-height: 20px;
+  z-index: 10;
+}
+.day-active .prices{
+    color: #fff;
+}
+.prices{
+    color: #999;
+}
+.red{
+    color: red;
+}
+
+
+/*.none {
+  display: none
+}*/

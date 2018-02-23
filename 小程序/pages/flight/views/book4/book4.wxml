@@ -1,0 +1,43 @@
+<view class="flight">
+    <view class="main">
+        <view class="success-tt border-bottom"><text>预订成功</text></view>
+        <view class="order-info border-bottom">
+            <view class="flight-info border-bottom">
+                <view class="flgihtno">
+                    <text>{{flight[0].Flights[0].FlyOffDate}}</text>
+                    <text>{{flight[0].DayOfWeek}}</text>
+                    <text>{{flight[0].Flights[0].FlightNo}}</text>
+                </view>
+                <view class="flight-date">
+                    <view class="air left">
+                        <text class="city-name">{{flight[0].Flights[0].StartCity}}</text>
+                        <text class="time">{{flight[0].Flights[0].FlyOffOnlyTime}}</text>
+                        <text class="airport">{{flight[0].Flights[0].StartPortTouchName}} {{flight[0].Flights[0].StartPortFloor}}</text>
+                    </view>
+                    <view class="center">
+                        <view class="arrow-main"></view>
+                    </view>
+                    <view class="air right">
+                        <text class="city-name">{{flight[0].Flights[0].EndCity}}</text>
+                        <text class="time">{{flight[0].Flights[0].ArrivalOnlyTime}}</text>
+                        <text class="airport">{{flight[0].Flights[0].EndPortTouchName}} {{flight[0].Flights[0].EndPortFloor}}</text>
+                    </view>
+                </view>
+            </view>
+            <view class="passger">
+                <view class="passger-info border-bottom" bindtap="toOrderDetail">
+                    <text>乘机人</text>
+                    <text class="box-con">{{passgerName}}</text>
+                    <text class="flight-icon icon-right-arrow"></text>
+                </view>
+                <view class="phone">
+                    <text>联系手机</text>
+                    <text class="box-con">{{flight[0].Telepone}}</text>
+                </view>
+            </view>
+        </view>
+    </view>
+    <view class="bottom-btn">
+        <button bindtap="toOrderDetail">查看订单详情</button>
+    </view>
+</view>

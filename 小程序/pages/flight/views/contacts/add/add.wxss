@@ -1,0 +1,159 @@
+/*@import "../../../styles/flight-icons.wxss";*/
+page,.contacts-add-page{
+  height:100%
+}
+
+.card {
+  box-shadow: 0 2px 3px rgba(220, 222, 225, 0.8);
+  border-radius: 2px;
+  background: #fff;
+}
+
+.contacts-add-page {
+  background: #efeff4;
+  padding: 0 4px 15px 4px;
+  box-sizing: border-box;
+  height: 100%;
+  overflow-y: scroll;
+  position: relative;
+
+}
+
+.input {
+  border: none;
+  height: 44px;
+  line-height: 44px;
+  -webkit-box-flex: 1;
+  display: block;
+  padding: 0 15px;
+  font-size: 14px;
+}
+
+.contacts-add-cell {
+  padding: 0 15px;
+  margin-top: 4px;
+}
+
+.contacts-add-name-icon {
+  display: inline-block;
+  margin-top:30px;
+  margin-left:5px;
+}
+
+.contacts-add-title {
+  height: 44px;
+  line-height: 44px;
+  font-size: 14px;
+  color: #999;
+  padding:0 15px;
+  text-align: right;
+}
+
+
+.contacts-add-line {
+  height: 44px;
+  line-height: 44px;
+  display: -webkit-box;
+  box-sizing: border-box;
+  position: relative;
+}
+
+.border-top::after {
+  content: "";
+  width: 200%;
+  height: 1px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+  -webkit-transform: scale(0.5);
+  transform: scale(0.5);
+  -webkit-transform-origin: 0 0;
+  transform-origin: 0 0;
+  box-sizing: border-box;
+}
+
+label {
+  font-size: 14px;
+  color: #000;
+  width: 87px;
+  display: block;
+  position: relative;
+}
+
+label.icon:after {
+  content: "";
+  display: block;
+  position: absolute;
+  top: 15px;
+  right: 5px;
+  width: 9px;
+  height: 15px;
+  background: url('http://img1.40017.cn/touch/hb/c/wxapp/image/common/arrow_list_common_right.png') no-repeat;
+  background-size: 9px 15px;
+}
+
+.contacts-add-picker {
+  -webkit-box-flex: 1;
+  display: block;
+  height: 44px;
+  line-height: 44px;
+}
+
+.contacts-add-iconright {
+  position: relative;
+  display: block;
+  padding-right: 15px;
+}
+
+.contacts-add-iconright:after {
+  content: "";
+  display: block;
+  position: absolute;
+  top: 15px;
+  right: 0;
+  width: 9px;
+  height: 15px;
+  background: url('http://img1.40017.cn/touch/hb/c/wxapp/image/common/arrow_list_common_right.png') no-repeat center;
+  background-size: 9px 15px;
+}
+
+.placeholder-class {
+  height: 44px;
+  line-height: 44px;
+  color: #ccc;
+  font-size: 14px;
+}
+
+.contacts-add-save {
+  margin: 10px 20px 0 20px;
+  height: 44px;
+  line-height: 44px;
+  font-size: 20px;
+  color: #fff;
+  background: #ff5346;
+  text-align: center;
+  border-radius: 5px;
+}
+
+.toastView{
+  position:absolute;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: flex;
+  justify-content: center;
+  width:100%;
+  top:150px;
+}
+
+.toastView .toastContent{
+  height:40px;
+  line-height:40px;
+
+  background-color:rgba(0,0,0,.7);
+  padding:0 15px;
+
+  border-radius:5px;
+  color:white;
+  font-size:12px;
+}

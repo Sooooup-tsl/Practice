@@ -1,0 +1,1003 @@
+#index,
+#indexTrain {
+	height: 100%;
+}
+.index_tab_title {
+	background-color: #FFF;
+	border-top: 3px solid #E3E5E8;
+}
+.index_tab_title  view {
+	width: 50%;
+	height: 44px;
+	line-height: 44px;
+	text-align: center;
+	font-size: 18px;
+	color: #333;
+	float: left;
+}
+.index_tab_title .index_tab_on {
+	color: #23BEAE;
+	border-bottom: 3px solid #23BEAE;
+}
+.index_contain {
+    margin-bottom: 20px
+}
+.index_songche_box,
+.index_jieche_box,
+.index_appoint_box,
+.index_taxi_box,
+.index_fromAirport_box,
+.index_toAirport_box {
+	background-color: #FFF;
+}
+.index_songche_box  view,
+.index_jieche_box  view,
+.index_appoint_box  view:not(.index_exchange),
+.index_taxi_box  view,
+.index_fromAirport_box  view,
+.index_toAirport_box  view{
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
+    height: 56px;
+    line-height: 56px;
+	font-size: 0;
+    margin-left: 15px;
+	position: relative;
+    color: #bbb;
+}
+.index_usecartime{
+    height: 56px!important;
+    line-height: 56px!important;
+}
+.index_songche_box  view:not(.index_space):before,
+.index_jieche_box  view:not(.index_space):before,
+.index_appoint_box .index_usecartime:before,
+.index_fromAirport_box  view:not(.index_space):before,
+.index_toAirport_box  view:not(.index_space):before{
+	display: block;
+	content: "";
+	width: 8px;
+	height: 8px;
+	border-top: 2px solid #BFBFBF;
+	border-right: 2px solid #BFBFBF;
+	-webkit-transform: rotate(45deg);
+	-moz-transform: rotate(45deg);
+	-ms-transform: rotate(45deg);
+	-o-transform: rotate(45deg);
+	transfrom: rotate(45deg);
+	position: absolute;
+	top: 50%;
+    right: 16.5px;
+    margin-top: -5px;
+}
+.index_jieche_box  view.index_space,
+.index_songche_box  view.index_space,
+.index_appoint_box  view.index_space,
+.index_fromAirport_box  view.index_space,
+.index_toAirport_box  view.index_space{
+    background: #f2f4f7;
+    height: 10px;
+    margin-left: -15px;
+}
+.index_appoint_box  view.index_exchange{
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 14px;
+    height: 20px;
+    background: white;
+    z-index: 1;
+    padding: 33.5px 15px 33.5px 12px;
+    display: none;
+}
+.index_songche_box  view  span,
+.index_jieche_box  view  span,
+.index_appoint_box  view  span,
+.index_taxi_box  view  span,
+.index_fromAirport_box  view  span,
+.index_toAirport_box  view  span{
+    width: 82%;
+    width: calc(100% - 56px);
+    height: 56px;
+    border: 0 none;
+    font-size: 17px;
+    padding-left: 27px;
+    display: inline-block;
+}
+.index_jieche_box  view.index_jieStation  span,
+.index_songche_box  view.index_startaddress  span,
+.index_appoint_box  view.index_startaddress  span,
+.index_appoint_box  view.index_endaddress  span,
+.index_taxi_box  view.index_startaddress  span,
+.index_taxi_box  view.index_endaddress  span,
+.index_fromAirport_box  view.index_leaveAirport  span,
+.index_toAirport_box  view.index_leaveCity  span{
+    padding-left: 0;
+    padding-right: 27px;
+    margin-left: 27px;
+}
+.index_startaddress  label,
+.index_endaddress  label,
+.index_songji_Terminal  label,
+.index_jieji_Terminal  label,
+.index_destination  label,
+.index_songStation  label,
+.index_jieStation  label,
+.index_arriveCity  label,
+.index_arriveAirport  label,
+.index_leaveAirport  label,
+.index_leaveCity  label {
+    display: block;
+    content: "";
+    position: absolute;
+    left: 4.5px;
+    top: 24.5px;
+    width: 16px;
+    height: 16px;
+}
+.index_usecartime label {
+    display: block;
+    content: "";
+    position: absolute;
+    left: 0;
+    width: 15px;
+    height: 15px;
+    background: url("https://img1.40017.cn/cn/TC_Car/h5/img/common/datetime.png?v=2016092603") no-repeat;
+    background-size: 100%;
+    top: 20.5px;
+}
+.index_fromAirport_box .index_usecartime label,
+.index_toAirport_box .index_usecartime label {
+    background: url("https://img1.40017.cn/cn/TC_Car/h5/img/index/calendar.png?v=2016092603") no-repeat;
+    background-size: 100%;
+    top: 14px;
+}
+.index_jieche_box .index_jieStation label,
+.index_songche_box .index_startaddress label,
+.index_appoint_box .index_startaddress label,
+.index_taxi_box .index_startaddress label,
+.index_fromAirport_box .index_leaveAirport label,
+.index_toAirport_box .index_leaveCity label{
+    background: url("https://img1.40017.cn/cn/TC_Car/h5/img/common/startAddress.png?v=2016092603") no-repeat;
+    background-size: 100%;
+    width: 7px;
+    height: 7px;
+}
+.index_songche_box .index_songStation label,
+.index_jieche_box .index_destination label,
+.index_appoint_box .index_endaddress label,
+.index_taxi_box .index_endaddress label,
+.index_fromAirport_box .index_arriveCity label,
+.index_toAirport_box .index_arriveAirport label{
+    background: url("https://img1.40017.cn/cn/TC_Car/h5/img/common/endAddress.png?v=2016092603") no-repeat;
+    background-size: 100%;
+    width: 7px;
+    height: 7px;
+}
+.index_confirm {
+	display: block;
+	width: 94%;
+	width: calc(100% - 30px);
+	height: 44px;
+    line-height: 44px;
+	font-size: 18px;
+	color: #FFF;
+	margin: 8px auto 0;
+	border: 0 none;
+	-webkit-border-radius: 3px;
+	-moz-border-radius: 3px;
+	border-radius: 3px;
+}
+.index_feature {
+    width: 189px;
+    height: 25px;
+    border: 2px solid #a5e3dc;
+    border-radius: 25px;
+    padding: 0 13px;
+    margin: 20px auto;
+    font-size: 0;
+}
+.index_feature_time {
+    position: relative;
+    display: inline-block;
+    width: 13px;
+    height: 13px;
+    border: 1px solid #2bc0b1;
+    border-radius: 50%;
+    margin: 5px 7px 0 0;
+    vertical-align: top;
+}
+.index_feature_time::before {
+    content: '';
+    position: absolute;
+    top: 2.5px;
+    left: 6px;
+    width: 1px;
+    height: 5px;
+    background-color: #23beae;
+}
+.index_feature_time::after {
+    content: '';
+    position: absolute;
+    top: 6.5px;
+    left: 6px;
+    width: 5px;
+    height: 1px;
+    background-color: #23beae;
+}
+.index_feature_content {
+    display: inline-block;
+    height: 25px;
+    line-height: 25px;
+    font-size: 14px;
+    color: #23beae;
+}
+.index_feature_point,
+.index_feature_taxi{
+    margin-top: 20px;
+    text-align: center;
+}
+.index_feature_point .index_feature_span,
+.index_feature_taxi .index_feature_span{
+    height: 27px;
+    line-height: 27px;
+    font-size: 12px;
+    color: #cdd1d5;
+    position: relative;
+}
+.index_feature_point .index_feature_img{
+    width: 25px;
+    height: 25px;
+}
+.index_feature_taxi .index_feature_img{
+    width: 33.5px;
+    height: 36px;
+}
+.index_footer_bottom {
+    position: fixed;
+    text-align: center;
+    background: #fff;
+    bottom: 0;
+    width: 100%;
+    color: #666;
+}
+.index_footer_bottom view{
+	position: relative;
+    width: 50%;
+    float: left;
+    height: 44px;
+    line-height: 44px;
+    font-size: 16px;
+}
+.index_footer_bottom p:nth-child(1):after{
+    position: absolute;
+    top: 8.5px;
+    right: 0;
+    content: "";
+    width: 1px;
+    height: 27px;
+    background: #dcdcdc;
+}
+.index_footer_bottom p  span{
+    display: block;
+    height: inherit;
+    border: 0;
+    text-align: right;
+    width: 93px;
+    margin: auto;
+}
+.index_footer_bottom span.index_kefu{
+    background: url(https://img1.40017.cn/cn/TC_Car/h5/img/index/kefu.png?v=2016092603) no-repeat;
+    background-size: 20px;
+    background-position: 0;
+}
+.index_footer_bottom span.index_myOrder{
+    background: url(https://img1.40017.cn/cn/TC_Car/h5/img/index/order.png?v=2016092603) no-repeat;
+    background-size: 18px;
+    background-position: 0;
+}
+.color333{
+	color: #333;
+}
+
+.index_usedelay label{
+	top: 25px
+}
+.index_usecartime.index_usedelay::before{
+	margin-top: 5px
+}
+.index_history_title {
+    width: 73.437%;
+    margin: 28px auto;
+    position: relative;
+}
+.index_history_title  p {
+    width: 50%;
+    height: 1px;
+    float: left;
+}
+.index_line_left {
+    background: linear-gradient(to left, #ccc, #f2f4f7);
+}
+.index_line_right {
+    background: linear-gradient(to right, #ccc, #f2f4f7);
+}
+/*红包*/
+.index_redPacket {
+    font-size: 12px;
+    text-align: center;
+    color: #666;
+}
+.index_redPacket span{
+    color: #ff5346;
+}
+/*出租车接驾*/
+.index_jiejia {
+    font-size: 12px;
+    text-align: center;
+    color: #666;
+}
+.index_jiejia span{
+    color: #ff5346;
+}
+.jie_index_tips_carLine,.song_index_tips_carLine ,.index_tips_carLine, .appoint_tips_carLine, .taxi_tips_carLine {
+    height: 30px;
+    line-height: 30px;
+    font-size: 12px;
+    color: #9e8052;
+    text-align: center;
+    background-color: #fff7dc;
+}
+.index_appoint_box  view.index_location_Icon,
+.index_taxi_box  view.index_location_Icon{
+    width: 95px;
+    height: 40px;
+    line-height: 1;
+    position: absolute;
+    top: 0;
+    right: 0;
+    margin: 8px 0;
+}
+.index_appoint_box  view.index_location_Icon  p,
+.index_taxi_box  view.index_location_Icon  p{
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 12px;
+    text-align: center;
+    font-size: 11px;
+    line-height: 11px;
+    color: #23beae;
+}
+.index_location_Icon:before {
+    display: block;
+    content: "";
+    width: 1px;
+    height: 199%;
+    height: calc(200%);
+    position: absolute;
+    left: 0;
+    top: -50%;
+    background-color: #E7E8EB;
+    -webkit-transform: scale(0.5);
+    -moz-transform: scale(0.5);
+    -ms-transform: scale(0.5);
+    -o-transform: scale(0.5);
+    transform: scale(0.5);
+    z-index: 1;
+}
+
+.index_location_Icon  img {
+    height: 18px;
+    width: 14px;
+    margin: 4px auto;
+    display: block;
+}
+#index_point_startaddress,
+#index_taxi_startaddress{
+    width: 70%;
+    width: calc(100% - 122px);
+}
+.index_orderInfo_cover{
+    display: none;
+    position: absolute;
+    overflow: hidden;
+    right: 0;
+    bottom: 12rem;
+    height: 56px;
+    width: 100%;
+}
+#index_orderInfo{
+    position: absolute;
+    /*top: 26rem;*/
+    right: -16.5px;
+    width: 193.5px;
+    height: 56px;
+    transition: all .2s ease-in-out;
+    overflow: hidden;
+    -webkit-transform: translateZ(0);
+    transform: translateZ(0);
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+    -webkit-perspective: 1000;
+    -ms-perspective: 1000;
+    perspective: 1000;
+}
+
+#index_orderInfo  p {
+    width: 70%;
+    /* margin-left: 50px; */
+    position: absolute;
+    top: 8px;
+    left: 65px;
+    height: 40px;
+    line-height: 20px;
+    font-size: 11px;
+    color: #fff;
+    z-index: 801;
+}
+
+#index_orderInfo img{
+    height:100%;
+}
+.carIcon {
+    display: inline-block;
+    width: 38px;
+    height: 38px !important;
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    border-radius: 100%;
+    border: none;
+    background: url(https://img1.40017.cn/cn/TC_Car/h5/img/index/carIcon.png) no-repeat;
+    background-size: 100% 100%;
+    animation: orderAction 1.5s ease-in infinite;
+    -webkit-animation: orderAction 1.5s ease-in infinite;
+}
+
+.orderTips {
+    font-size: 16px;
+    font-weight: bolder;
+}
+.index_orderInfo  img {
+    position: absolute;
+    height: 56px;
+}
+
+@-webkit-keyframes orderAction {
+    0% {
+        box-shadow: 0 0 0 0 #fff;
+    }
+    50% {
+        box-shadow: 0 0 10px 2px #fff;
+    }
+    100% {
+        box-shadow: 0 0 0 0 #fff;
+    }
+}
+@keyframes orderAction {
+    0% {
+        box-shadow: 0 0 0 0 #fff;
+    }
+    50% {
+        box-shadow: 0 0 10px 2px #fff;
+    }
+    100% {
+        box-shadow: 0 0 0 0 #fff;
+    }
+}
+.home_none{
+    display: none;
+}
+
+/*展示航班号*/
+#index_showFlight {
+    display: none;
+    width: 100%;
+    height: 5.12rem;
+    overflow: hidden;
+
+}
+
+.index_showFlights {
+    height: 5.12rem;
+    margin: .64rem .85rem;
+    overflow-x: auto;
+    white-space: nowrap;
+    -webkit-overflow-scrolling:touch;
+}
+
+.index_showFlightLi {
+    position: relative;
+    /*top: 1rem;*/
+    display: inline-block;
+    margin-right: .85rem;
+    width: 12.8rem;
+    height: 3.84rem;
+    color: #666;
+    background: #fff;
+    border: 1px solid #e6e6e6;
+    border-radius: 5px;
+
+}
+
+.index_showFlightOn {
+    border: 1px solid #23beae!important;
+    background: url(https://img1.40017.cn/cn/TC_Car/h5/img/index/index_arrow.png?v=2016092607) #eafffd no-repeat 100% 100%;
+    background-size: 1.35rem;
+    color: #23beae!important;
+}
+
+
+.index_showFlightOn .index_Arrow {
+    border-bottom: 1px solid #23beae!important;
+}
+.index_showFlightOn .index_showFlightNo:after {
+    background-color: #23beae!important;
+}
+.index_showFlightCon {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    width: 12.8rem;
+    height: 3.84rem;
+
+    -webkit-box-pack: justify;
+    -webkit-justify-content: space-between;
+    -ms-flex-pack: justify;
+    justify-content: space-between;
+    -webkit-box-align: center;
+    -webkit-align-items: center;
+    -ms-flex-align: center;
+    align-items: center;
+}
+
+.index_showFlightIn, .index_showFlightOut {
+    width: 2.56rem;
+    height: 3.02rem;
+    line-height: 1.51rem;
+    font-size: 1.19rem;
+    text-align: center;
+    white-space: normal;
+    overflow: hidden;
+}
+
+.index_showFlightNo {
+    width: 4.69rem;
+    height: 3.41rem;
+    text-align: center;
+    font-size: .85rem;
+}
+
+.index_showFlightNo  p {
+    height: 1.7rem;
+    line-height: 1.7rem;
+}
+
+.index_showFlightNo  p:nth-child(1) {
+    border-bottom: 1px solid #a7a7a7;
+}
+
+.index_showFlightNo:after {
+    content: '';
+    display: block;
+    position: relative;
+    margin-right: -.1rem;
+    margin-top: -1.95rem;
+    float: right;
+    right: 0;
+    width: .5rem;
+    height: 1px;
+    transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    -moz-transform: rotate(45deg);
+    -webkit-transform: rotate(45deg);
+    -o-transform: rotate(45deg);
+    background-color: #b6b6b6;
+}
+.index_showHeight {
+    line-height: 3.02rem!important;
+    position: relative;
+}
+
+.index_showFlightIn {
+    margin-left: 1.28rem;
+}
+
+.index_showFlightOut {
+    margin-right: 1.28rem;
+}
+
+.index_flightEnd {
+    position: relative;
+    margin-top: -.75rem;
+    top: .75rem;
+    display: inline-block;
+    margin-right: .85rem;
+    width: 12.8rem;
+    height: 3.84rem;
+    color: #666;
+    border-radius: 5px;
+    border: 1px dashed #e6e6e6;
+    background: #f2f4f7 !important;
+}
+
+
+.index_fix {
+    float: left;
+}
+.index_showFix {
+    margin-top: -.75rem;
+}
+
+.index_flightEndTips {
+    width: 12.8rem;
+    text-align: center;
+    line-height: 3.84rem;
+    font-size: 1.02rem;
+    color: #999;
+}
+
+/*送站送机location*/
+.index_locationIcon:before {
+    content: '[当前]';
+    color: #23beae;
+    margin-right: 5px;
+}
+/* 火车票待出行行程带入 */
+#ITTrain {
+    width: 100%;
+    height: 60px;
+    padding: 7px 0;
+    background-color: #F2F4F7;
+    overflow: hidden;
+    display: none;
+}
+.it_st_list {
+    height: 60px;
+    font-size: 0;
+    overflow-x: auto;
+    overflow-y: hidden;
+    white-space: nowrap;
+    -webkit-overflow-scrolling: touch;
+}
+/* 隐藏滚动条 start */
+.it_st_list::-webkit-scrollbar {
+    display: none;
+}
+/* 隐藏滚动条 end */
+.it_st_item {
+    position: relative;
+    display: inline-block;
+    width: 22rem;
+    height: 46px;
+    border: 1px solid #E6E6E6;
+    border-radius: 3px;
+    background-color: #FFF;
+    vertical-align: top;
+}
+.it_st_item:first-child {
+    margin-left: 15px;
+}
+.it_st_item + .it_st_item {
+    margin-left: 10px;
+}
+.it_st_item:last-child {
+    margin-right: 15px;
+}
+.it_sti_box {
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    width: 100%;
+    height: 100%;
+}
+.it_sti_left,
+.it_sti_middle,
+.it_sti_right {
+    height: 100%;
+    -webkit-flex: 1;
+    -ms-flexbox: 1;
+    flex: 1;
+}
+.it_sti_left {
+    color: #666;
+}
+.it_stil_address {
+    font-size: 14px;
+    line-height: 14px;
+    text-align: center;
+    width: 70px;
+    margin: 8px auto 0;
+}
+.it_stil_time {
+    font-size: 12px;
+    line-height: 12px;
+    margin-top: 5px;
+    text-align: center;
+}
+.it_sti_middle {
+    color: #999;
+}
+.it_stim_train_num {
+    font-size: 10px;
+    line-height: 10px;
+    text-align: center;
+    margin-top: 8px;
+}
+.it_stim_border {
+    position: relative;
+    height: 1px;
+    background-color: #999;
+    margin-top: 5px;
+}
+.it_stim_arrow {
+    position: absolute;
+    top: -2px;
+    right: 0;
+    width: 5px;
+    height: 1px;
+    background-color: #999;
+    -webkit-transform: rotate(45deg);
+    -moz-transform: rotate(45deg);
+    -o-transform: rotate(45deg);
+    transform: rotate(45deg);
+}
+.it_stim_date {
+    font-size: 10px;
+    line-height: 10px;
+    text-align: center;
+    margin-top: 5px;
+}
+.it_sti_right {
+    color: #666;
+}
+.it_stir_address {
+    font-size: 14px;
+    line-height: 14px;
+    text-align: center;
+    width: 70px;
+    margin: 8px auto 0;
+}
+.it_stir_time {
+    font-size: 12px;
+    line-height: 12px;
+    margin-top: 5px;
+    text-align: center;
+}
+.it_sti_on {
+    border: 1px solid #23BEAE;
+    background-color: #EAFFFD;
+}
+.it_sti_on::after {
+    content: '';
+    position: absolute;
+    bottom: -1px;
+    right: -1px;
+    width: 21px;
+    height: 19px;
+    background: url(https://img1.40017.cn/cn/TC_Car/h5/img/index/index_arrow.png?v=2016092607) no-repeat;
+    background-size: 100%;
+}
+.it_sti_on .it_sti_left {
+    color: #23BEAE;
+}
+.it_sti_on .it_sti_middle {
+    color: #48CDBF;
+}
+.it_sti_on .it_stim_border {
+    background-color: #48CDBF;
+}
+.it_sti_on .it_stim_arrow {
+    background-color: #48CDBF;
+}
+.it_sti_on .it_sti_right {
+    color: #23BEAE;
+}
+/* 推送优惠券 start */
+#pushDiscountCouponBox {
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color: rgba(0, 0, 0, 0.7);
+    z-index: 9;
+    -moz-transition: all 0.5s ease; /* Firefox 4 */
+    -webkit-transition: all 0.5s ease; /* Safari 和 Chrome */
+    -o-transition: all 0.5s eases;
+    transition: all 0.5s ease;
+    overflow: hidden;
+}
+.have_pdc_box {
+    position: relative;
+    top: 50%;
+    width: 26.82rem;
+    height: 29.18rem;
+    margin: -14.59rem auto;
+    font-size: 0;
+}
+.have_pdc_title {
+    width: 100%;
+}
+.have_pdc_content {
+    width: 14.50rem;
+    position: absolute;
+    left: 50%;
+    top: 5.71rem;
+    margin-left: -7.25rem;
+}
+.have_pdc_btn {
+    position: absolute;
+    left: 50%;
+    bottom: 0;
+    width: 20.65rem;
+    height: 4.94rem;
+    margin-left: -10.32rem;
+    background-color: #FCB800;
+    border: 0 none;
+    border-radius: 8px;
+    font-size: 30px;
+    color: #FFF;
+}
+.no_pdc_box {
+    position: relative;
+    top: 50%;
+    left: 50%;
+    margin-top: -18.73rem;
+    margin-left: -15.16rem;
+    width: 30.33rem;
+    height: 37.46rem;
+}
+.no_pdc_title {
+    position: absolute;
+    left: 50%;
+    width: 30.33rem;
+    height: 15.78rem;
+    margin-left: -15.16rem;
+    z-index: 10;
+}
+.no_pdc_content {
+    position: absolute;
+    top: 13.14rem;
+    left: 50%;
+    width: 26.62rem;
+    margin-left: -13.31rem; 
+    padding: 3.24rem 0 2.13rem;
+    background-color: #FFFEB4;
+    z-index: 9;
+    border-radius: 9px;
+}
+.no_pdc_item {
+    display: -webkit-flex;
+    display: flex;
+    -webkit-align-items: center;
+    -ms-flex-align: center;
+    align-items: center;
+    width: 25.08rem;
+    height: 5.97rem;
+    background-color: #FFB707;
+    margin: 0 auto;
+    color: #FFF;
+    position: relative;
+}
+.no_pdc_item::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 3px;
+    height: 5.97rem;
+    background-image: url(https://img1.40017.cn/cn/TC_Car/h5/img/index/push_discount_coupon_border.png?v=2017050201);
+    background-repeat: repeat-y;
+    background-size: 100%;
+}
+.no_pdc_item::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 3px;
+    height: 5.97rem;
+    background-image: url(https://img1.40017.cn/cn/TC_Car/h5/img/index/push_discount_coupon_border.png?v=2017050201);
+    background-repeat: repeat-y;
+    background-size: 100%;
+    -ms-transform: rotate(180deg);     /* IE 9 */
+    -moz-transform: rotate(180deg);    /* Firefox */
+    -webkit-transform: rotate(180deg); /* Safari 和 Chrome */
+    -o-transform: rotate(180deg); 
+    transform: rotate(180deg);
+}
+.no_pdc_item + .no_pdc_item {
+    margin-top: 9px;
+}
+.no_pdci_left {
+    width: 12.54rem;
+    padding-left: 2.13rem;
+}
+.no_pdcil_product {
+    font-size: 18px;
+    line-height: 18px;
+}
+.no_pdcil_notice {
+    font-size: 14px;
+    line-height: 14px;
+    margin-top: 9px;
+}
+.no_pdci_right {
+    display: -webkit-flex;
+    display: flex;
+    -webkit-align-items: center;
+    -ms-flex-align: center;
+    align-items: center;
+    width: 12.54rem;
+    height: 100%;
+    border-left: 1px dashed #FFE084;
+    padding-left: 1.53rem;
+}
+.no_pdcir_price {
+    font-size: 18px;
+    line-height: 18px;
+}
+.no_pdcir_price em {
+    font-size: 46px;
+    line-height: 46px;
+}
+.no_pdc_btn {
+    position: absolute;
+    top: 32.68rem;
+    left: 50%;
+    width: 15.61rem;
+    height: 4.69rem;
+    margin-left: -7.8rem;
+    background-color: #FF0000;
+    font-size: 20px;
+    color: #FFF;
+    border: 0 none;
+    border-radius: 5px;
+}
+#pushDiscountCouponBox.animate {
+    width: 0;
+    height: 0;
+    opacity: 0;
+    top: 95%;
+    left: 10%;
+}
+/* 推送优惠券 end */
+/* 顶部小圆点 start */
+.foot_rp_dot::after {
+    content: '';
+    position: absolute;
+    left: 50%;
+    bottom: 42px;
+    width: 4px;
+    height: 4px;
+    border-radius: 2px;
+    margin-left: 19px;
+    background-color: #FF5346;
+}
+/* 顶部小圆点 end */
+.wx_sign_success_box {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #FFF;
+    z-index: 99;
+    font-size: 0;
+    text-align: center;
+}
+.wxss_img {
+    width: 156px;
+    margin-top: 120px;
+}
+.wxss_title {
+    font-size: 26px;
+    line-height: 26px;
+    color: #666;
+    margin-top: 20px;
+}

@@ -1,0 +1,57 @@
+<view class="body">
+    <view class="page">
+        <!--<loading hidden="{{hideLoading}}">-->
+            <!--{{loadContent}}-->
+        <!--</loading>-->
+
+        <!--<modal title="温馨提示" class="modal" hidden="{{hideModal}}" no-cancel bindconfirm="modalChange">-->
+            <!--<view> {{modalContent}} </view>-->
+        <!--</modal>-->
+
+        <!--<toast hidden="{{hideDeleteSuccessLayer}}" duration="400" bindchange="cloaseDeleteSuccess">-->
+            <!--删除成功-->
+        <!--</toast>-->
+
+        <!--<modal title="温馨提示" class="modal" hidden="{{hideDeleteConfirmLayer}}" bindcancel="cancelDelete" bindconfirm="deletePassenger">-->
+            <!--<view>是否确定删除当前选中的乘客信息</view>-->
+        <!--</modal>-->
+
+        <view class="contact-btn card" catchtap="addPassenger">添加常用旅客</view>
+        <view class="contact-list">
+           <block wx:for="{{passengerList}}" wx:key="index">
+               <view class="contact-item card">
+                   <view class="contacts-left" bindtap="selectContacts" data-index="{{index}}">
+                       <text class="contacts-checkbox {{item.checked==1?'selected':''}}" ></text>
+                   </view>
+                   <view class="contacts-middle" bindtap="selectContacts" data-index="{{index}}">
+                       <view class="contacts-list-line">
+                           <label class="contacts-list-label contacts-list-name">{{item.name}}</label>
+                           <view class="contacts-list-cell contacts-list-cell-gender">{{item.passengertype=="1"?"(成人票)":"(儿童票)"}}</view>
+                       </view>
+                       <view class="contacts-list-line" wx:if="{{item.cardtype=='身份证'}}">
+                           <label class="contacts-list-label">身份证</label>
+                           <view class="contacts-list-cell">{{item.num.idCard}}</view>
+                       </view>
+                       <view class="contacts-list-line" wx:if="{{item.cardtype!='身份证'}}">
+                           <label class="contacts-list-label">{{item.cardtype}}</label>
+                           <view class="contacts-list-cell">{{item.cardno}}</view>
+                       </view>
+                       <view class="contacts-list-line" wx:if="{{item.cardtype!='身份证'}}">
+                           <label class="contacts-list-label">出生日期</label>
+                           <view class="contacts-list-cell">{{item.birthday}}</view>
+                       </view>
+                   </view>
+                   <view class="contacts-right" catchtap="editPassenger" data-index="{{index}}">
+                       <text class="contacts-edit-btn" ></text>
+                   </view>
+               </view>
+           </block>
+
+            <view class="empty-space"></view>
+        </view>
+        <view class="save-wrap">
+            <view class="contacts-remove" catchtap="deleteConfirm">删除</view>
+            <view class="contacts-select" catchtap="selectPassenger">确定</view>
+        </view>
+    </view>
+</view>

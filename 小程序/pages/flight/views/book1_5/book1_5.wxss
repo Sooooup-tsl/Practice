@@ -1,0 +1,224 @@
+page {
+    background-color: #e6e9ef;
+    padding-top: 5px;
+}
+
+.flight-info {
+    margin: 0 5px 5px 5px;
+    background-color: #fff;
+    border-radius: 5px;
+    -webkit-box-orient: vertical;
+    flex-direction: column;
+}
+
+.flight-info-summary {
+    margin: 16px auto 12px;
+    text-align: center;
+}
+
+.flight-info-summary-main {
+    padding-top: 4px;
+    color: #333;
+    font-size: 14px;
+    line-height: 14px;
+}
+
+.flight-info-summary-detail {
+    margin-top: 8px;
+    color: #999;
+    font-size: 12px;
+    line-height: 12px;
+}
+
+.flight-info-splitter {
+    position: relative;
+    border-top: 1px dotted #d9d9d9;
+    width: 100%;
+}
+
+.flight-info-splitter:before {
+    content: "";
+    position: absolute;
+    background-color: #e6e9ef;
+    width: 11px;
+    height: 22px;
+    box-sizing: border-box;
+    border-radius: 0 11px 11px 0;
+    top:-11px;
+    left: 0;
+}
+
+.flight-info-splitter:after {
+    content: "";
+    position: absolute;
+    background-color: #e6e9ef;
+    width: 11px;
+    height: 22px;
+    box-sizing: border-box;
+    border-radius: 11px 0 0 11px;
+    top:-11px;
+    right: 0;
+}
+
+.airport-info {
+    position:relative;
+    margin-bottom: 2px;
+}
+.airport-info .from,
+.airport-info .to {
+    font-size:17px;
+    line-height:17px;
+    text-align:center;
+    white-space:nowrap;
+    color:#333;
+}
+.airport-info .from .station,
+.airport-info .to .station {
+    display:block;
+    padding-top:9px;
+    font-size:10px;
+    line-height:10px;
+    text-align: center;
+    white-space:nowrap;
+    color: #999;
+}
+.arrow {
+    margin-left: 12px;
+    margin-right: 20px;
+    width: 100px;
+}
+.arrow .arrow-main {
+    display:block;
+    position: relative;
+    margin-top:15px;
+    border-top: 1px solid #ccc;
+}
+.arrow .arrow-main:after {
+    content: '';
+    position: absolute;
+    right: -3px;
+    top: -3px;
+    width: 0;
+    height: 0;
+    border-bottom: 3px solid #ccc;
+    border-right: 10px solid transparent;
+}
+.arrow-icons {
+    position:relative;
+}
+.arrow-icons .stop {
+    position:absolute;
+    left:50%;
+    top:-9px;
+    margin-left:-20px;
+    width:40px;
+    height: 18px;
+    background:#fff;
+    border-radius:18px;
+    border: 1px solid #ccc;
+    color:#999;
+    line-height:18px;
+    font-size:10px;
+    text-align:center;
+    z-index: 10;
+}
+.cabin {
+    background-color: #fff;
+}
+.cabin-tabs {
+    width: 100%;
+    font-size: 14px;
+    color: #333;
+}
+.cabin-tabs .tab {
+    text-align: center;
+    line-height: 42px;
+    position: relative;
+}
+.cabin-tabs .simpleTab {
+    margin: 10px 0 10px 15px;
+    line-height: 14px;
+}
+.cabin-tabs .tab.active:after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    height: 3px;
+    background-color: #09bb07;
+    left: 14px;
+    right: 14px;
+}
+.products {
+    background-color: white;
+}
+.product {
+    position: relative;
+    padding-top: 20px;
+}
+.product-price {
+    color: #ff6633;
+    font-size: 22px;
+    line-height: 22px;
+    margin:0 0 3px 15px;
+}
+.product-price span {
+    font-size: 14px;
+}
+.product-price .discount {
+    font-size: 14px;
+    line-height: 14px;
+    margin-left: 4px;
+    display: inline-block;
+    color: #999;
+}
+.product-detail {
+    margin-left: 15px;
+    padding-bottom: 20px;
+    font-size: 14px;
+}
+.product-detail .company-icon {
+    position: relative;
+    top: 1px;
+    width: 10px;
+    height: 10px;
+    margin-right: 3px;
+}
+.product-detail .rule {
+    display: inline-block;
+    color: #576b95;
+}
+.product .order-button {
+    background-color: #ff6633;
+    border-radius: 12px;
+    width: 120px;
+    height: 68px;
+    color: #fff;
+    position: absolute;
+    font-size: 28px;
+    line-height: 68px;
+    text-align: center;
+    top: 50%;
+    margin-top: -17px;
+    right: -28px;
+    -webkit-transform: scale(0.5);
+    -webkit-transform-origin: 0 0;
+    transform: scale(0.5);
+    transform-origin: 0 0;
+}
+.product .order-button.show-tickets {
+    font-size: 24px;
+    height: 72px;
+}
+.product .order-button.show-tickets .order {
+    height: 50%;
+    line-height: 36px;
+}
+.product .order-button.show-tickets .tickets {
+    line-height: 36px;
+    height: 50%;
+    background-color: white;
+    font-size: 22px;
+    color: #ff6633;
+    border: 1px solid #ff6633;
+    border-radius: 0 0 12px 12px;
+}

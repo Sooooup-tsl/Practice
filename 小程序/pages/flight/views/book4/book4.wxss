@@ -1,0 +1,149 @@
+/*@import "../../styles/base.wxss";*/
+/*@import "../../styles/flight-icons.wxss";*/
+
+page{
+    background:#eee;
+}
+.main{
+    background:#fff;
+}
+/*.order-info{
+    border-bottom:1px solid #e9e9e9;
+}*/
+.success-tt{    
+    height:54px;
+    text-align:center;
+    color:#28c54d;
+    font-size:20px;
+    line-height:54px;
+    box-sizing:content-box; 
+}
+.flight-info{
+    height:103px;    
+    padding:10px 15px;
+    box-sizing:content-box; 
+}
+.flight-info .flgihtno{
+    color:#333;
+    font-size:12px;
+    height:25px;
+    line-height:25px;
+}
+.flight-info .flgihtno text{
+    padding-right:8px;
+}
+.flight-info .flight-date{
+    height:73px;
+    position:relative;
+    padding-top:5px;
+}
+.flight-info .flight-date .air{
+    width:32%;
+    position:absolute;
+    top:8px;    
+}
+.flight-info .flight-date .left{
+    left:0;
+}
+.flight-info .flight-date .right{
+    right:0;
+}
+.flight-info .flight-date .air text{
+    display: block;
+    text-align:center;
+}
+.flight-info .flight-date .air .city-name{
+    font-size:16px;
+    color:#333;
+    line-height:30px;
+}
+.flight-info .flight-date .air .time{
+    font-size:22px;
+    color:#333;
+    line-height:22px;
+}
+.flight-info .flight-date .air .airport{
+    font-size:12px;
+    color:#666;
+    line-height:21px;
+    white-space:nowrap;
+}
+.flight-info .flight-date .center{
+    position:absolute;
+    left:32%;
+    top:47px;    
+    width:36%;
+    margin: auto;
+}
+.flight-info .flight-date .center{
+    position:absolute;
+    left:32%;      
+    width:36%;
+    margin: auto; 
+}
+.flight-info .center .arrow-main {
+	display:block;
+    position: relative;
+	margin-top:5px;
+	height: 1px;
+    background-color: #ccc;
+}
+.flight-info .center .arrow-main:after {
+    content: '';
+    position: absolute;
+    right: -2px;
+    top: -2px;
+    width: 0;
+    height: 0;
+    border-bottom: 3px solid #ccc;
+    border-right: 10px solid transparent;
+}
+.passger{
+    padding:0 0 0 15px;
+}
+.passger view{
+    height:44px;
+    line-height:44px;
+    font-size:12px;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+    padding-right:15px;
+    box-sizing:content-box; 
+    position:relative;
+}
+/*.passger .passger-info{
+    border-bottom:1px solid #e9e9e9;
+}*/
+.passger view text:first-child{
+    display:inline-block;
+    width:60px;
+    color:#999;    
+}
+.passger view text.box-con{
+    color:#333;
+    font-size:14px;
+    position:relative;    
+}
+.passger view .flight-icon{
+    position:absolute;
+    right:30px;
+    top:32px;
+}
+.bottom-btn{
+    background:#fff;
+    height:64px;  
+    position:fixed;
+    bottom:0;
+    left:0;
+    right:0;
+    text-align:center;
+    padding:0 15px;
+    box-shadow:0 -2px 8px rgba(0,0,0,.1);
+}
+.bottom-btn button{
+    height:44px;
+    margin:10px 0 0;
+    background:#06bc02;
+    color:#fff;
+}
